@@ -8,6 +8,8 @@ package data;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import logic.User;
 
 /**
@@ -76,5 +78,42 @@ public class UserMapper
         statement.executeUpdate();
 
     }
-
+    
+    public List<User> getAllUsers()throws Exception{
+        
+        List<User> users = new ArrayList();
+               
+        
+        String query = "SELECT * FROM user";
+        
+        
+        
+        
+        String userName = "";
+        String password = "";
+        String email = "";
+        double balance = 0.0;
+        
+        PreparedStatement stmt = connector.getConnection().prepareStatement(query);
+        ResultSet rs = stmt.executeQuery();
+        
+        while(rs.next()){
+            
+            userName = rs.getString("username");
+            password = rs.getString("password");
+            email = rs.getString("email");
+            balance = rs.getDouble("balance");
+            
+            User user = new User(userName, password, email, balance);
+            users.add(user);
+            
+        }
+        return users;
+    }
+    
+    
+    public static void main(String[] args) throws Exception {
+        UserMapper um = new UserMapper();
+        System.out.println(um.getAllUsers());
+    }
 }
