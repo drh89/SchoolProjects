@@ -9,7 +9,7 @@ package presentation;
  *
  * @author aamandajuhl
  */
-public class Temp
+public class UnknownCommand
 {
     
 }
