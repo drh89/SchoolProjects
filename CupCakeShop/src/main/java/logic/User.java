@@ -11,6 +11,8 @@ package logic;
  */
 public class User {
     
+    //TEST COMMENT FOR GIT!
+     
     private String userName;
     private String password;
     private String email;
