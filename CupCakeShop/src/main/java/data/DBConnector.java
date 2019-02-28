@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logic;
+package data;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,11 +11,11 @@ import java.util.Properties;
 
 /**
  *
- * @author sofieamalielandt
+ * @author aamandajuhl
  */
 public class DBConnector
 {
-     private Connection connection = null;
+    private Connection connection = null;
 
     //Constants
     private static final String IP = "157.230.97.130";
