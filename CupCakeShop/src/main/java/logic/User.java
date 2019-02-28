@@ -25,7 +25,14 @@ public class User {
         this.email = email;
         this.balance = balance;
     }
-
+    public User(String userName, String password, String email){
+        
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.balance = 0.0;
+    }
+    
     /**
      * @return the userName
      */
