@@ -37,8 +37,8 @@ public class NewUserCommand extends Command
 
             String res = c.addUser(u);
 
-            HttpSession session = request.getSession();
-            session.setAttribute("user", u);
+            //HttpSession session = request.getSession();
+            //session.setAttribute("user", u);
 
             response.setContentType("text/html;charset=UTF-8");
             try (PrintWriter out = response.getWriter())

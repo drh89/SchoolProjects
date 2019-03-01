@@ -37,7 +37,7 @@ public class MenuCommand extends Command
             out.println("<title>JSP Page</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Hej " + user.getUserName() + ", du er nu på userpage!!</h1>");
+            out.println("<h1>User: " + user.getUserName() + "              Balance: " + user.getBalance() + "</h1>");
             out.println("</body>");
             out.println("</html>");
 
