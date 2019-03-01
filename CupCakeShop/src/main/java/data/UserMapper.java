@@ -37,13 +37,15 @@ public class UserMapper
         ResultSet rs = statement.executeQuery();
 
         User user = null;
+        int id = 0;
         String name = "";
         String password = "";
         String email = "";
         double balance = 0;
 
         while (rs.next())
-        {
+        {   
+            id = rs.getInt("user_id");
             name = rs.getString("username");
             password = rs.getString("password");
             email = rs.getString("email");
@@ -54,7 +56,7 @@ public class UserMapper
                 return null;
             }
 
-            user = new User(name, password, email, balance);
+            user = new User(id, name, password, email, balance);
         }
 
         return user;
@@ -88,7 +90,7 @@ public class UserMapper
         
         
         
-        
+        int id = 0;
         String userName = "";
         String password = "";
         String email = "";
@@ -99,12 +101,13 @@ public class UserMapper
         
         while(rs.next()){
             
+            id = rs.getInt("user_id");
             userName = rs.getString("username");
             password = rs.getString("password");
             email = rs.getString("email");
             balance = rs.getDouble("balance");
             
-            User user = new User(userName, password, email, balance);
+            User user = new User(id, userName, password, email, balance);
             users.add(user);
             
         }
