@@ -40,7 +40,7 @@ public class NewUserController
         if(userExists(user) == true) return "User already exists!";
         um.newUser(user);
         
-        return "User is now added";
+        return "User is now created";
         
     }
     

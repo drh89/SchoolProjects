@@ -33,10 +33,12 @@ public class FrontCommand extends Command
             out.println("<body>");
             out.println("<h1>Type in username and password</h1>");
             out.println("<body>");
-            out.println("<form method = \"POST\">");
+            out.println("<form method = \"GET\">");
             out.println("Username: <input type =\"text\" name =\"username\" value=\"\"><br>");
             out.println("<br>Password: <input type =\"text\" name =\"password\" value=\"\">");
             out.println("<br><br><input type=\"submit\" value=\"Login\" formaction=\"login\">");
+            out.println("<br><br>Email: <input type =\"text\" name =\"email\" value=\"\">");
+            out.println("<br><br><input type=\"submit\" value=\"Create user\" formaction=\"newuser\">");
             out.println("</form>");
             out.println("</body>");
             out.println("</html>");

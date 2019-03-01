@@ -26,39 +26,52 @@ public class NewUserCommand extends Command
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        try {
+        try
+        {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             String email = request.getParameter("email");
-            
+
             User u = new User(username, password, email);
             NewUserController c = new NewUserController();
-            
+
             String res = c.addUser(u);
-            
+
             HttpSession session = request.getSession();
             session.setAttribute("user", u);
-            
+
             response.setContentType("text/html;charset=UTF-8");
             try (PrintWriter out = response.getWriter())
             {
-                /* TODO output your page here. You may use following sample code. */
                 out.println("<!DOCTYPE html>");
                 out.println("<html>");
                 out.println("<head>");
-                out.println("<title>Servlet NewUser</title>");
+                out.println("<title>Start Page</title>");
+                out.println("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">");
                 out.println("</head>");
                 out.println("<body>");
-                out.println("<h1>" + res + "</h1>");
+                out.println("<h1>Type in username and password</h1>");
+                out.println("<body>");
+                out.println("<form method = \"GET\">");
+                out.println("<i>Welcome " + u.getUserName() + "</i>");
+                out.println("<br><i>" + res + "</i><br><br>");
+                out.println("Username: <input type =\"text\" name =\"username\" value=\"\"><br>");
+                out.println("<br>Password: <input type =\"text\" name =\"password\" value=\"\">");
+                out.println("<br><br><input type=\"submit\" value=\"Login\" formaction=\"login\">");
+                out.println("</form>");
                 out.println("</body>");
                 out.println("</html>");
+
+            } catch (Exception ex)
+            {
+                System.out.println(ex.getMessage());
             }
-            
-        }   catch (Exception ex)
+
+        } catch (Exception ex)
         {
             System.out.println(ex.getMessage());
         }
-    
+
     }
-    
+
 }

@@ -6,6 +6,7 @@
 package logic;
 
 import data.UserMapper;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -35,14 +36,21 @@ public class LoginController
             if (u.getUserName().equals(username))
             {
                 result = u;
-            }
+            }   
         }
-        if (result.getPassword().equals(password))
+        if(result == null) return false;
+        
+        else if (result.getPassword().equals(password))
         {
             return true;
         }
         
         return false;
+    }
+    
+    public User getUser(String username) throws SQLException
+    {
+        return um.getUser(username);
     }
 
 }

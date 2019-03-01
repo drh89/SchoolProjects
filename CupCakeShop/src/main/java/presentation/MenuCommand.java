@@ -7,11 +7,11 @@ package presentation;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.DispatcherType;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import logic.User;
 
 /**
  *
@@ -24,6 +24,7 @@ public class MenuCommand extends Command
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
         
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter())
@@ -36,7 +37,7 @@ public class MenuCommand extends Command
             out.println("<title>JSP Page</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Hej " + session.getAttribute("username") + ", du er nu på userpage!!</h1>");
+            out.println("<h1>Hej " + user.getUserName() + ", du er nu på userpage!!</h1>");
             out.println("</body>");
             out.println("</html>");
 

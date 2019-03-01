@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import logic.LoginController;
+import logic.User;
 
 /**
  *
@@ -29,18 +30,15 @@ public class LoginCommand extends Command
             String password = request.getParameter("password");
 
             LoginController lc = new LoginController();
-
             HttpSession session = request.getSession();
 
             boolean valid = lc.isValid(username, password);
 
             if (valid)
             {
-                
-                session.setAttribute("username", username);
-                
+                User user = lc.getUser(username);
+                session.setAttribute("user", user);       
                 response.sendRedirect("menu");
-
             }
 
             if (!valid)
