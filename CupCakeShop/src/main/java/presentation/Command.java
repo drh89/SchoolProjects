@@ -27,6 +27,10 @@ public abstract class Command
 
         switch (path)
         {
+            case "front":
+                c = new FrontCommand();
+                break;
+                
             case "login":
                 c = new LoginCommand();
                 break;
