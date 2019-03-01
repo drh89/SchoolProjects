@@ -38,6 +38,10 @@ public abstract class Command
             case "newuser":
                 c = new NewUserCommand();
                 break;
+                
+                case "menu":
+                c = new MenuCommand();
+                break;
 
             default:
                 c = new UnknownCommand();
