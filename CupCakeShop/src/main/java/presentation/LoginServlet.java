@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import logic.LoginController;
 
 /**
@@ -41,22 +42,37 @@ public class LoginServlet extends HttpServlet
         String password = request.getParameter("password");
         
         LoginController lc = new LoginController();
+        
+        HttpSession session = request.getSession();
+        
         boolean valid = lc.isValid(username, password);
         
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter())
-        {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Is the user valid: " + valid + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        if(lc.isValid(username, password)){
+            
+            session.setAttribute("username", username);
+            
+            request.getRequestDispatcher("UserPage.jsp").forward(request, response);
+            
         }
+        
+        if(!lc.isValid(username, password)){
+            request.getRequestDispatcher("index.html").forward(request, response);
+        }
+        
+        response.setContentType("text/html;charset=UTF-8");
+//        try (PrintWriter out = response.getWriter())
+//        {
+//            /* TODO output your page here. You may use following sample code. */
+//            out.println("<!DOCTYPE html>");
+//            out.println("<html>");
+//            out.println("<head>");
+//            out.println("<title>Servlet LoginServlet</title>");            
+//            out.println("</head>");
+//            out.println("<body>");
+//            out.println("<h1>Is the user valid: " + valid + "</h1>");
+//            out.println("</body>");
+//            out.println("</html>");
+//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
