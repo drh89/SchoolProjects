@@ -21,7 +21,6 @@ public class User {
     
     public User(int id, String userName, String password, String email, double balance){
         
-        
         this.id = id;
         this.userName = userName;
         this.password = password;
