@@ -38,7 +38,7 @@ public class LoginCommand extends Command
             {
                 User user = lc.getUser(username);
                 session.setAttribute("user", user);       
-                response.sendRedirect("menu");
+                response.sendRedirect("shop");
             }
 
             if (!valid)

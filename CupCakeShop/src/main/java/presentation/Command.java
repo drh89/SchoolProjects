@@ -39,8 +39,8 @@ public abstract class Command
                 c = new NewUserCommand();
                 break;
                 
-                case "menu":
-                c = new MenuCommand();
+                case "shop":
+                c = new ShopCommand();
                 break;
 
             default:
