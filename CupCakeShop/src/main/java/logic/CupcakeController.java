@@ -14,21 +14,60 @@ import java.util.List;
  */
 public class CupcakeController
 {
+
     CupcakeMapper cm = null;
 
     public CupcakeController() throws Exception
     {
         cm = new CupcakeMapper();
     }
-    
+
     public List<Bottom> getCupcakeBottoms() throws Exception
     {
         return cm.getAllBottoms();
     }
-    
-    public List<Topping> getCupcakeToppings() throws Exception 
+
+    public List<Topping> getCupcakeToppings() throws Exception
     {
         return cm.getAllToppings();
+    }
+
+    public Cupcake getCupCake(String bottom, String topping) throws Exception
+    {
+        //String[] bottomsplit = bottom.split(" ",2);
+        //bottomsplit[0] = bottom;
+        System.out.println(bottom);
+        
+        //String[] toppingsplit = topping.split(" ",2);
+        //toppingsplit[0] = topping;
+        System.out.println(topping);
+        
+        Bottom bResult = null;
+        Topping tResult = null;
+
+        List<Bottom> bottoms = getCupcakeBottoms();
+        List<Topping> toppings = getCupcakeToppings();
+
+        for (Bottom b : bottoms)
+        {
+            if (b.getFlavour().equals(bottom))
+            {
+                bResult = b;
+            }
+        }
+
+        for (Topping t : toppings)
+        {
+            if (t.getFlavour().equals(topping))
+            {
+                tResult = t;
+            }
+        }
+
+        Cupcake cupcake = new Cupcake(bResult, tResult);
+
+        return cupcake;
+
     }
 
 }

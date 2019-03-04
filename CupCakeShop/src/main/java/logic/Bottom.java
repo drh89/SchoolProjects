@@ -56,6 +56,6 @@ public class Bottom
     @Override
     public String toString()
     {
-        return " " + flavour + "  " + price + " kr";
+        return flavour + " " + price + " kr";
     }
 }

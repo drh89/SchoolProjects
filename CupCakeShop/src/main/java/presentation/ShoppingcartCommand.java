@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import logic.Bottom;
+import logic.Cupcake;
 import logic.CupcakeController;
 import logic.LineItem;
 import logic.ShoppingCart;
@@ -22,9 +23,9 @@ import logic.User;
 
 /**
  *
- * @author sofieamalielandt
+ * @author aamandajuhl
  */
-public class ShopCommand extends Command
+public class ShoppingcartCommand extends Command
 {
 
     @Override
@@ -32,17 +33,22 @@ public class ShopCommand extends Command
     {
         try
         {
+            System.out.println("Hej");
+            String bottom = request.getParameter("bottom");
+            String topping = request.getParameter("topping");
+            int quantity = Integer.parseInt(request.getParameter("quantity"));
+
             CupcakeController cc = new CupcakeController();
             List<Bottom> bottoms = cc.getCupcakeBottoms();
             List<Topping> toppings = cc.getCupcakeToppings();
+            Cupcake cupcake = cc.getCupCake(bottom, topping);
 
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("user");
+            ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
             
-            List<LineItem> lineitems = new ArrayList<>();
-            ShoppingCart shoppingcart = new ShoppingCart(lineitems, user);
-            session.setAttribute("cart", shoppingcart);
-
+            cart.getLineItems().add(new LineItem(cupcake, quantity));
+            
             response.setContentType("text/html;charset=UTF-8");
             try (PrintWriter out = response.getWriter())
             {
@@ -59,7 +65,7 @@ public class ShopCommand extends Command
                 out.println("</center>");
                 out.println("<div style=\"float:left\"> Welcome " + user.getUserName() + "</div>");
                 out.println("<div style=\"float:right\"> Balance: " + user.getBalance() + " kr.&nbsp;&nbsp </div>");
-                
+
                 out.println("<center>");
                 out.println("<br><br><b>Bottoms</b>");
                 out.println("</form><select name=\"bottom\">");
@@ -83,6 +89,13 @@ public class ShopCommand extends Command
                 out.println("<input type =\"text\" name =\"quantity\" value=\"\"size=\"4\" maxlength=\"3\" required><br>");
                 out.println("<input type=\"submit\" value=\"Add to cart\" formaction=\"shoppingcart\">");
                 out.println("</center>");
+                
+                out.println("<br><br><b>Cupcake          Quantity        Price         Total        Remove</b>");
+                for (LineItem l : cart.getLineItems())
+                {
+                    out.println("<p>" + l + "</p>");
+                }
+                out.println("<b>Total price: " + cart.getTotalPrice() + "</b>");
                 out.println("</body>");
                 out.println("</html>");
 
@@ -95,7 +108,6 @@ public class ShopCommand extends Command
         {
             System.out.println(ex.getMessage());
         }
-        //request.getRequestDispatcher("UserPage.jsp").forward(request, response);
     }
 
 }

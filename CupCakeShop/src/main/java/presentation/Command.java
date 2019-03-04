@@ -30,7 +30,7 @@ public abstract class Command
             case "front":
                 c = new FrontCommand();
                 break;
-                
+
             case "login":
                 c = new LoginCommand();
                 break;
@@ -38,14 +38,17 @@ public abstract class Command
             case "newuser":
                 c = new NewUserCommand();
                 break;
-                
-                case "shop":
+
+            case "shop":
                 c = new ShopCommand();
+                break;
+                
+            case "shoppingcart":
+                c = new ShoppingcartCommand();
                 break;
 
             default:
                 c = new UnknownCommand();
-
         }
 
         return c;

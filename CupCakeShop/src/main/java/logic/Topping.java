@@ -55,6 +55,6 @@ public class Topping
     @Override
     public String toString()
     {
-        return " " + flavour + "  " + price + " kr";
+        return flavour + " " + price + " kr";
     }
 }
