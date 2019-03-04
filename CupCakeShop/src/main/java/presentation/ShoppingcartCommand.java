@@ -68,7 +68,7 @@ public class ShoppingcartCommand extends Command
 
                 out.println("<center>");
                 out.println("<br><br><b>Bottoms</b>");
-                out.println("</form><select name=\"bottom\">");
+                out.println("<select name=\"bottom\">");
                 out.println("<option>Choose bottom</option>");
                 for (Bottom b : bottoms)
                 {
@@ -77,7 +77,7 @@ public class ShoppingcartCommand extends Command
                 out.println("</select>");
                 out.println("&nbsp;&nbsp;");
                 out.println("<b>Toppings</b>");
-                out.println("</form><select name=\"topping\">");
+                out.println("<select name=\"topping\">");
                 out.println("<option>Choose topping</option>");
                 for (Topping t : toppings)
                 {
@@ -86,7 +86,7 @@ public class ShoppingcartCommand extends Command
                 out.println("</select>");
                 out.println("&nbsp;&nbsp;");
                 out.println("<b>Quantity</b>");
-                out.println("<input type =\"text\" name =\"quantity\" value=\"\"size=\"4\" maxlength=\"3\" required><br>");
+                out.println("<input type =\"text\" name =\"quantity\" value=\"\" size=\"4\" maxlength=\"3\" required><br>");
                 out.println("<input type=\"submit\" value=\"Add to cart\" formaction=\"shoppingcart\">");
                 out.println("</center>");
                 

@@ -62,7 +62,7 @@ public class ShopCommand extends Command
                 
                 out.println("<center>");
                 out.println("<br><br><b>Bottoms</b>");
-                out.println("</form><select name=\"bottom\">");
+                out.println("<select name=\"bottom\">");
                 out.println("<option>Choose bottom</option>");
                 for (Bottom b : bottoms)
                 {
@@ -71,7 +71,7 @@ public class ShopCommand extends Command
                 out.println("</select>");
                 out.println("&nbsp;&nbsp;");
                 out.println("<b>Toppings</b>");
-                out.println("</form><select name=\"topping\">");
+                out.println("<select name=\"topping\">");
                 out.println("<option>Choose topping</option>");
                 for (Topping t : toppings)
                 {
