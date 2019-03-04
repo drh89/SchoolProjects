@@ -11,6 +11,7 @@ package logic;
  */
 public class LineItem
 {
+
     private int invoice_id;
     private final Cupcake cupcake;
     private int quantity;
@@ -48,12 +49,16 @@ public class LineItem
         this.invoice_id = invoice_id;
     }
 
+    public void addQuantity(int more)
+    {
+        quantity = quantity + more;
+        price = cupcake.getPrice() * quantity;
+    }
+
     @Override
     public String toString()
     {
-        return cupcake + "  " + quantity + "  " + cupcake.getPrice() + "  "+ price;
+        return cupcake + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + quantity + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + cupcake.getPrice() + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + price;
     }
-    
-    
-    
+
 }

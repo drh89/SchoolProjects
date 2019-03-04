@@ -34,14 +34,14 @@ public class CupcakeController
 
     public Cupcake getCupCake(String bottom, String topping) throws Exception
     {
-        //String[] bottomsplit = bottom.split(" ",2);
-        //bottomsplit[0] = bottom;
+        String[] bottomsplit = bottom.split(" ");
+        bottom = bottomsplit[0];
         System.out.println(bottom);
-        
-        //String[] toppingsplit = topping.split(" ",2);
-        //toppingsplit[0] = topping;
+
+        String[] toppingsplit = topping.split(" ");
+        topping = toppingsplit[0];
         System.out.println(topping);
-        
+
         Bottom bResult = null;
         Topping tResult = null;
 

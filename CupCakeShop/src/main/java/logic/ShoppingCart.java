@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class ShoppingCart
 {
+
     private List<LineItem> lineItems;
     private double totalPrice;
     private User user;
@@ -23,16 +24,16 @@ public class ShoppingCart
         this.totalPrice = calcTotalPrice();
         this.user = user;
     }
-    
+
     private double calcTotalPrice()
     {
         double price = 0;
-        
+
         for (LineItem l : lineItems)
         {
             price += l.getPrice();
         }
-        
+
         return price;
     }
 
@@ -43,14 +44,32 @@ public class ShoppingCart
 
     public double getTotalPrice()
     {
+        totalPrice = calcTotalPrice();
+
         return totalPrice;
     }
-    
-    
 
-   
-    
-    
-    
-    
+    public void addCupcake(LineItem i)
+    {
+        boolean add = true;
+
+        for (LineItem l : lineItems)
+        {
+            System.out.println(l.getCupcake().compareCupcake(i.getCupcake()));
+            if (l.getCupcake().compareCupcake(i.getCupcake()))
+            {
+                add = false;
+                System.out.println(add);
+                l.addQuantity(i.getQuantity());
+
+            }
+        }
+
+        if (add)
+        {
+            System.out.println(add);
+            lineItems.add(i);
+        }
+    }
+
 }

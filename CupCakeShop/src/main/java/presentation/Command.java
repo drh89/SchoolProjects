@@ -44,6 +44,7 @@ public abstract class Command
                 break;
                 
             case "shoppingcart":
+                System.out.println("next");
                 c = new ShoppingcartCommand();
                 break;
 

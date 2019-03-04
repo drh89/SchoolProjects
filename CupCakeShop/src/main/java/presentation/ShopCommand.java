@@ -60,6 +60,7 @@ public class ShopCommand extends Command
                 out.println("<div style=\"float:left\"> Welcome " + user.getUserName() + "</div>");
                 out.println("<div style=\"float:right\"> Balance: " + user.getBalance() + " kr.&nbsp;&nbsp </div>");
                 
+                out.println("<form method = \"GET\">");
                 out.println("<center>");
                 out.println("<br><br><b>Bottoms</b>");
                 out.println("<select name=\"bottom\">");
@@ -81,8 +82,9 @@ public class ShopCommand extends Command
                 out.println("&nbsp;&nbsp;");
                 out.println("<b>Quantity</b>");
                 out.println("<input type =\"text\" name =\"quantity\" value=\"\"size=\"4\" maxlength=\"3\" required><br>");
-                out.println("<input type=\"submit\" value=\"Add to cart\" formaction=\"shoppingcart\">");
+                out.println("<br><input type=\"submit\" value=\"Add to cart\" formaction=\"shoppingcart\">");
                 out.println("</center>");
+                out.println("</form>");
                 out.println("</body>");
                 out.println("</html>");
 

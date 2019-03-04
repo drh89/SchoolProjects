@@ -4,56 +4,70 @@
  * and open the template in the editor.
  */
 package logic;
-
 /**
  *
  * @author Dennis
  */
-public class Cupcake {
-    
+public class Cupcake
+{
+
     private Bottom bottom;
     private Topping topping;
     private double price;
-    
-    public Cupcake(Bottom bottom, Topping topping){
+
+    public Cupcake(Bottom bottom, Topping topping)
+    {
         this.bottom = bottom;
         this.topping = topping;
-        this. price = bottom.getPrice() + topping.getPrice();
+        this.price = bottom.getPrice() + topping.getPrice();
     }
 
     /**
      * @return the bottom
      */
-    public Bottom getBottom() {
+    public Bottom getBottom()
+    {
         return bottom;
     }
 
     /**
      * @param bottom the bottom to set
      */
-    public void setBottom(Bottom bottom) {
+    public void setBottom(Bottom bottom)
+    {
         this.bottom = bottom;
     }
 
     /**
      * @return the topping
      */
-    public Topping getTopping() {
+    public Topping getTopping()
+    {
         return topping;
     }
 
     /**
      * @param topping the topping to set
      */
-    public void setTopping(Topping topping) {
+    public void setTopping(Topping topping)
+    {
         this.topping = topping;
     }
 
     /**
      * @return the price
      */
-    public double getPrice() {
+    public double getPrice()
+    {
         return price;
+    }
+
+    public boolean compareCupcake(Cupcake cupcake)
+    {
+        System.out.println(this.getBottom());
+        System.out.println(cupcake.getBottom());
+        return this.getBottom().getFlavour().equals(cupcake.getBottom().getFlavour()) && this.getTopping().getFlavour().equals(cupcake.getTopping().getFlavour());
+
     }
 
     @Override
@@ -61,6 +75,5 @@ public class Cupcake {
     {
         return bottom.getFlavour() + " with " + topping.getFlavour();
     }
-    
-    
+
 }

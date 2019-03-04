@@ -46,8 +46,8 @@ public class ShoppingcartCommand extends Command
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("user");
             ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
-            
-            cart.getLineItems().add(new LineItem(cupcake, quantity));
+
+            cart.addCupcake(new LineItem(cupcake, quantity));
             
             response.setContentType("text/html;charset=UTF-8");
             try (PrintWriter out = response.getWriter())
@@ -66,6 +66,7 @@ public class ShoppingcartCommand extends Command
                 out.println("<div style=\"float:left\"> Welcome " + user.getUserName() + "</div>");
                 out.println("<div style=\"float:right\"> Balance: " + user.getBalance() + " kr.&nbsp;&nbsp </div>");
 
+                out.println("<form method = \"GET\">");
                 out.println("<center>");
                 out.println("<br><br><b>Bottoms</b>");
                 out.println("<select name=\"bottom\">");
@@ -87,10 +88,12 @@ public class ShoppingcartCommand extends Command
                 out.println("&nbsp;&nbsp;");
                 out.println("<b>Quantity</b>");
                 out.println("<input type =\"text\" name =\"quantity\" value=\"\" size=\"4\" maxlength=\"3\" required><br>");
-                out.println("<input type=\"submit\" value=\"Add to cart\" formaction=\"shoppingcart\">");
+                out.println("<br><input type=\"submit\" value=\"Add to cart\" formaction=\"shoppingcart\">");
+                out.println("</form>");
                 out.println("</center>");
                 
-                out.println("<br><br><b>Cupcake          Quantity        Price         Total        Remove</b>");
+                
+                out.println("<br><br><b>Cupcake&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quantity&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total&nbsp;&nbsp;&nbsp;&nbsp;Remove</b>");
                 for (LineItem l : cart.getLineItems())
                 {
                     out.println("<p>" + l + "</p>");
