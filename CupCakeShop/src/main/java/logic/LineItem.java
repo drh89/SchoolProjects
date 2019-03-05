@@ -17,11 +17,12 @@ public class LineItem
     private int quantity;
     private double price;
 
-    public LineItem(Cupcake cupcake, int quantity)
+    public LineItem(Cupcake cupcake, int quantity, int Invoice_id)
     {
         this.cupcake = cupcake;
         this.quantity = quantity;
         this.price = cupcake.getPrice() * quantity;
+        this.invoice_id = Invoice_id;
     }
 
     public int getInvoice_id()

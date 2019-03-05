@@ -13,7 +13,8 @@ import java.util.List;
  */
 public class ShoppingCart
 {
-
+    static int invoice_count = 0;
+    private int invoice_id;
     private List<LineItem> lineItems;
     private double totalPrice;
     private User user;
@@ -23,6 +24,8 @@ public class ShoppingCart
         this.lineItems = lineitems;
         this.totalPrice = calcTotalPrice();
         this.user = user;
+        ShoppingCart.invoice_count++;
+        this.invoice_id = invoice_count;
     }
 
     private double calcTotalPrice()
@@ -37,6 +40,16 @@ public class ShoppingCart
         return price;
     }
 
+    public int getInvoice_id()
+    {
+        return invoice_id;
+    }
+
+    public User getUser()
+    {
+        return user;
+    }
+  
     public List<LineItem> getLineItems()
     {
         return lineItems;

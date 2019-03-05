@@ -12,13 +12,20 @@ package logic;
 public class Bottom
 {
 
+    private int bottom_id;
     private String flavour;
     private double price;
 
-    public Bottom(String flavour, double price)
+    public Bottom(int bottom_id, String flavour, double price)
     {
+        this.bottom_id = bottom_id;
         this.flavour = flavour;
         this.price = price;
+    }
+
+    public int getBottom_id()
+    {
+        return bottom_id;
     }
 
     /**

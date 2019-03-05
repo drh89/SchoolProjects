@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import logic.User;
 
 /**
@@ -44,7 +45,7 @@ public class UserMapper
         double balance = 0;
 
         while (rs.next())
-        {   
+        {
             id = rs.getInt("user_id");
             name = rs.getString("username");
             password = rs.getString("password");
@@ -80,42 +81,41 @@ public class UserMapper
         statement.executeUpdate();
 
     }
-    
-    public List<User> getAllUsers()throws Exception{
-        
+
+    public List<User> getAllUsers() throws Exception
+    {
+
         List<User> users = new ArrayList();
-               
-        
+
         String query = "SELECT * FROM user";
-        
-        
-        
+
         int id = 0;
         String userName = "";
         String password = "";
         String email = "";
         double balance = 0.0;
-        
+
         PreparedStatement stmt = connector.getConnection().prepareStatement(query);
         ResultSet rs = stmt.executeQuery();
-        
-        while(rs.next()){
-            
+
+        while (rs.next())
+        {
+
             id = rs.getInt("user_id");
             userName = rs.getString("username");
             password = rs.getString("password");
             email = rs.getString("email");
             balance = rs.getDouble("balance");
-            
+
             User user = new User(id, userName, password, email, balance);
             users.add(user);
-            
+
         }
         return users;
     }
-    
-    
-    public static void main(String[] args) throws Exception {
+
+    public static void main(String[] args) throws Exception
+    {
         UserMapper um = new UserMapper();
         System.out.println(um.getAllUsers());
     }

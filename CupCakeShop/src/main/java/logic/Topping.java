@@ -11,13 +11,21 @@ package logic;
  */
 public class Topping
 {
+
+    private int topping_id;
     private String flavour;
     private double price;
 
-    public Topping(String flavour, double price)
+    public Topping(int topping_id, String flavour, double price)
     {
+        this.topping_id = topping_id;
         this.flavour = flavour;
         this.price = price;
+    }
+
+    public int getTopping_id()
+    {
+        return topping_id;
     }
 
     /**

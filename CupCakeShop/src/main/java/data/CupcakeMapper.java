@@ -31,6 +31,7 @@ public class CupcakeMapper
 
         String query = "SELECT * FROM cupcake_Bottoms";
         
+        int bottom_id = 0;
         String flavour = "";
         double price = 0.0;
         
@@ -39,10 +40,11 @@ public class CupcakeMapper
         
         while(rs.next()){
             
+            bottom_id = rs.getInt("bottom_id");
             flavour = rs.getString("bottom_flavour");
             price = rs.getDouble("bottom_price");
             
-            Bottom bottom = new Bottom(flavour, price);
+            Bottom bottom = new Bottom(bottom_id,flavour, price);
             bottoms.add(bottom);
             
         }
@@ -55,6 +57,7 @@ public class CupcakeMapper
 
         String query = "SELECT * FROM cupcake_Toppings";
         
+        int topping_id = 0;
         String flavour = "";
         double price = 0.0;
         
@@ -63,10 +66,11 @@ public class CupcakeMapper
         
         while(rs.next()){
             
+            topping_id = rs.getInt("topping_id");
             flavour = rs.getString("topping_flavour");
             price = rs.getDouble("topping_price");
             
-            Topping topping = new Topping(flavour, price);
+            Topping topping = new Topping(topping_id,flavour, price);
             toppings.add(topping);
             
         }

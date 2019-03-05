@@ -44,10 +44,11 @@ public class ShoppingcartCommand extends Command
             Cupcake cupcake = cc.getCupCake(bottom, topping);
 
             HttpSession session = request.getSession();
-            User user = (User) session.getAttribute("user");
+            //User user = (User) session.getAttribute("user");
             ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
+            User user = cart.getUser();
 
-            cart.addCupcake(new LineItem(cupcake, quantity));
+            cart.addCupcake(new LineItem(cupcake, quantity, cart.getInvoice_id()));
             
             response.setContentType("text/html;charset=UTF-8");
             try (PrintWriter out = response.getWriter())

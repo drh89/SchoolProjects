@@ -9,86 +9,91 @@ package logic;
  *
  * @author Dennis
  */
-public class User {
-    
+public class User
+{
+
     //TEST COMMENT FOR GIT!
-    
     private int id;
     private String userName;
     private String password;
     private String email;
     private double balance;
-    
-    public User(int id, String userName, String password, String email, double balance){
-        
+
+    public User(int id, String userName, String password, String email, double balance)
+    {
+
         this.id = id;
         this.userName = userName;
         this.password = password;
         this.email = email;
         this.balance = balance;
     }
-    public User(String userName, String password, String email){
-        
+
+    public User(String userName, String password, String email)
+    {
+
         this.userName = userName;
         this.password = password;
         this.email = email;
         this.balance = 0.0;
     }
-    
-    /**
-     * @return the userName
-     */
-    public String getUserName() {
-        return userName;
+
+    public int getId()
+    {
+        return id;
     }
 
     /**
-     * @param userName the userName to set
+     * @return the userName
      */
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public String getUserName()
+    {
+        return userName;
     }
 
     /**
      * @return the password
      */
-    public String getPassword() {
+    public String getPassword()
+    {
         return password;
     }
 
     /**
      * @param password the password to set
      */
-    public void setPassword(String password) {
+    public void setPassword(String password)
+    {
         this.password = password;
     }
 
     /**
      * @return the email
      */
-    public String getEmail() {
+    public String getEmail()
+    {
         return email;
     }
 
     /**
      * @param email the email to set
      */
-    public void setEmail(String email) {
+    public void setEmail(String email)
+    {
         this.email = email;
     }
 
     /**
      * @return the balance
      */
-    public double getBalance() {
+    public double getBalance()
+    {
         return balance;
     }
 
-    /**
-     * @param balance the balance to set
-     */
-    public void setBalance(double balance) {
-        this.balance = balance;
+    public void pay(double price)
+    {
+        this.balance = balance - price;
     }
-    
+
 }

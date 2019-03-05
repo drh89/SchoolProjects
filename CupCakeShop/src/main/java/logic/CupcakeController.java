@@ -14,7 +14,6 @@ import java.util.List;
  */
 public class CupcakeController
 {
-
     CupcakeMapper cm = null;
 
     public CupcakeController() throws Exception
