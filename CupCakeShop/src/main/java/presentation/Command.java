@@ -22,15 +22,11 @@ public abstract class Command
     public static Command from(HttpServletRequest request)
     {
         Command c;
-        String path = request.getPathInfo().substring(1);
-        // String path = request.getParameter("path");
+       // String path = request.getPathInfo().substring(1);
+       String path = request.getParameter("command");
 
         switch (path)
         {
-            case "front":
-                c = new FrontCommand();
-                break;
-
             case "login":
                 c = new LoginCommand();
                 break;
@@ -39,14 +35,14 @@ public abstract class Command
                 c = new NewUserCommand();
                 break;
 
-            case "shop":
-                c = new ShopCommand();
-                break;
-                
-            case "shoppingcart":
-                System.out.println("next");
-                c = new ShoppingcartCommand();
-                break;
+//            case "shop":
+//                c = new ShopCommand();
+//                break;
+//                
+//            case "shoppingcart":
+//                System.out.println("next");
+//                c = new ShoppingcartCommand();
+//                break;
 
             default:
                 c = new UnknownCommand();

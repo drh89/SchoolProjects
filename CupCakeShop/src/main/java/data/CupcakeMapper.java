@@ -7,6 +7,7 @@ package data;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import logic.Bottom;
@@ -18,24 +19,27 @@ import logic.Topping;
  */
 public class CupcakeMapper
 {
-    private DBConnector connector = null;
+    private DatabaseConnector dbc = new DatabaseConnector();
+    // private DBConnector connector = null;
 
     public CupcakeMapper() throws Exception
     {
-        this.connector = new DBConnector();
+        DataSourceMysql dataSourceMysql = new DataSourceMysql();
+        dbc.setDataSource(dataSourceMysql.getDataSource());
+        //this.connector = new DBConnector();
     }
     
     public List<Bottom> getAllBottoms()throws Exception{
         
         List<Bottom> bottoms = new ArrayList();
-
+        dbc.open();
         String query = "SELECT * FROM cupcake_Bottoms";
         
         int bottom_id = 0;
         String flavour = "";
         double price = 0.0;
         
-        PreparedStatement stmt = connector.getConnection().prepareStatement(query);
+        PreparedStatement stmt = dbc.preparedStatement(query, Statement.RETURN_GENERATED_KEYS);
         ResultSet rs = stmt.executeQuery();
         
         while(rs.next()){
@@ -48,20 +52,21 @@ public class CupcakeMapper
             bottoms.add(bottom);
             
         }
+        dbc.close();
         return bottoms;
     }
     
      public List<Topping> getAllToppings()throws Exception{
         
         List<Topping> toppings = new ArrayList();
-
+        dbc.open();
         String query = "SELECT * FROM cupcake_Toppings";
         
         int topping_id = 0;
         String flavour = "";
         double price = 0.0;
         
-        PreparedStatement stmt = connector.getConnection().prepareStatement(query);
+        PreparedStatement stmt = dbc.preparedStatement(query, Statement.RETURN_GENERATED_KEYS);
         ResultSet rs = stmt.executeQuery();
         
         while(rs.next()){
@@ -74,6 +79,7 @@ public class CupcakeMapper
             toppings.add(topping);
             
         }
+        dbc.close();
         return toppings;
     }
 }

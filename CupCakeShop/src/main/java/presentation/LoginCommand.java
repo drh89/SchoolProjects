@@ -6,7 +6,6 @@
 package presentation;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,24 +25,30 @@ public class LoginCommand extends Command
     {
         try
         {
+            HttpSession session = request.getSession();
+            
             String username = request.getParameter("username");
             String password = request.getParameter("password");
 
             LoginController lc = new LoginController();
-            HttpSession session = request.getSession();
 
             boolean valid = lc.isValid(username, password);
 
-            if (valid)
-            {
-                User user = lc.getUser(username);
-                session.setAttribute("user", user);       
-                response.sendRedirect("shop");
-            }
-
             if (!valid)
             {
-                response.setContentType("text/html;charset=UTF-8");
+                System.out.println("HELLO");
+                request.getRequestDispatcher("/defaultLogin.jsp").forward(request, response); 
+              
+            } 
+            if(valid)
+            {
+                User user = lc.getUser(username);
+                session.setAttribute("user", user);
+                request.getRequestDispatcher("/shop.jsp").forward(request, response);
+                //response.sendRedirect("shop");
+                
+
+                /*response.setContentType("text/html;charset=UTF-8");
                 try (PrintWriter out = response.getWriter())
                 {
                     out.println("<!DOCTYPE html>");
@@ -74,6 +79,11 @@ public class LoginCommand extends Command
             }
 
             response.setContentType("text/html;charset=UTF-8");
+        } catch (Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }*/
+            }
         } catch (Exception ex)
         {
             System.out.println(ex.getMessage());

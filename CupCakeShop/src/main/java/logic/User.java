@@ -95,5 +95,11 @@ public class User
     {
         this.balance = balance - price;
     }
+    
+    @Override
+    public String toString()
+    {
+        return "User: " + id + ", " + userName + " password: " + password + " email: " + email + " balance: " + balance;
+    }
 
 }

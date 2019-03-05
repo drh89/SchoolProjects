@@ -21,9 +21,7 @@ public class NewUserController
     {
         um = new UserMapper();
     }
-    
-    
-    
+ 
     public boolean userExists(User user) throws Exception
     {
         List<User> users = um.getAllUsers();
