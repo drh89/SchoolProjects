@@ -5,6 +5,7 @@
  */
 package logic;
 
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -13,11 +14,13 @@ import java.util.List;
  */
 public class ShoppingCart
 {
+
     static int invoice_count = 0;
     private int invoice_id;
     private List<LineItem> lineItems;
     private double totalPrice;
     private User user;
+    private Date date;
 
     public ShoppingCart(List<LineItem> lineitems, User user)
     {
@@ -26,6 +29,15 @@ public class ShoppingCart
         this.user = user;
         ShoppingCart.invoice_count++;
         this.invoice_id = invoice_count;
+    }
+
+    public ShoppingCart(List<LineItem> lineitems, User user, int invoice_id, Date date)
+    {
+        this.lineItems = lineitems;
+        this.totalPrice = calcTotalPrice();
+        this.user = user;
+        this.invoice_id = invoice_id;
+        this.date = date;
     }
 
     private double calcTotalPrice()
@@ -49,7 +61,7 @@ public class ShoppingCart
     {
         return user;
     }
-  
+
     public List<LineItem> getLineItems()
     {
         return lineItems;
@@ -60,6 +72,11 @@ public class ShoppingCart
         totalPrice = calcTotalPrice();
 
         return totalPrice;
+    }
+
+    public Date getDate()
+    {
+        return date;
     }
 
     public void addCupcake(LineItem i)
@@ -84,5 +101,13 @@ public class ShoppingCart
             lineItems.add(i);
         }
     }
+
+    @Override
+    public String toString()
+    {
+        return "ordernumber: " + invoice_id + ", totalPrice: " + totalPrice + ", date: " + date;
+    }
+    
+    
 
 }

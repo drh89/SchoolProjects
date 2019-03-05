@@ -66,6 +66,43 @@ public class UserMapper
         dbc.close();
         return user;
     }
+    
+    public User getUser(int user_id) throws SQLException
+    {
+        dbc.open();
+        String query
+                = "SELECT * "
+                + "FROM Cupcakes.user "
+                + "WHERE user_id = '" + user_id + "';";
+
+        PreparedStatement statement = dbc.preparedStatement(query, Statement.RETURN_GENERATED_KEYS);
+        ResultSet rs = statement.executeQuery();
+
+        User user = null;
+        int id = 0;
+        String name = "";
+        String password = "";
+        String email = "";
+        double balance = 0;
+
+        while (rs.next())
+        {
+            id = rs.getInt("user_id");
+            name = rs.getString("username");
+            password = rs.getString("password");
+            email = rs.getString("email");
+            balance = rs.getDouble("balance");
+
+            if (rs.getString("username") == null)
+            {
+                return null;
+            }
+
+            user = new User(id, name, password, email, balance);
+        }
+        dbc.close();
+        return user;
+    }
 
     public void newUser(User newUser) throws SQLException
     {

@@ -5,8 +5,11 @@
  */
 package data;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import logic.Bottom;
@@ -23,15 +26,89 @@ import logic.User;
 public class InvoiceMapper
 {
 
-    private DBConnector connector = null;
+    private DatabaseConnector dbc = new DatabaseConnector();
+    // private DBConnector connector = null;
 
     public InvoiceMapper() throws Exception
     {
-        this.connector = new DBConnector();
+        DataSourceMysql dataSourceMysql = new DataSourceMysql();
+        dbc.setDataSource(dataSourceMysql.getDataSource());
+        //this.connector = new DBConnector();
+    }
+
+    public List<ShoppingCart> getInvoices(String username) throws Exception
+    {
+        UserMapper um = new UserMapper();
+        List<ShoppingCart> invoices = new ArrayList();
+
+        dbc.open();
+        String query = "SELECT invoice_id, total_price, order_date FROM Cupcakes.user join invoice on (user.user_id = invoice.user_id)"
+                + "WHERE username = '" + username + "';";
+
+        int invoice_id = 0;
+        List<LineItem> lineItems = null;
+        User user = null;
+        Date date;
+
+        PreparedStatement stmt = dbc.preparedStatement(query, Statement.RETURN_GENERATED_KEYS);
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next())
+        {
+
+            invoice_id = rs.getInt("invoice_id");
+            date = rs.getDate("order_date");
+            lineItems = getLineItems(invoice_id);
+            user = um.getUser(username);
+
+            ShoppingCart cart = new ShoppingCart(lineItems, user, invoice_id, date);
+            invoices.add(cart);
+
+        }
+        dbc.close();
+        return invoices;
+    }
+
+    public List<LineItem> getLineItems(int invoice_id) throws Exception
+    {
+        CupcakeMapper cm = new CupcakeMapper();
+        List<LineItem> lineitems = new ArrayList();
+
+        dbc.open();
+        String query = "SELECT * FROM invoice_has_items"
+                + "WHERE invoice_id = " + invoice_id + ";";
+
+        int id = 0;
+        int topping_id = 0;
+        int bottom_id = 0;
+        int quantity = 0;
+
+        PreparedStatement stmt = dbc.preparedStatement(query, Statement.RETURN_GENERATED_KEYS);
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next())
+        {
+            id = rs.getInt("invoice_id");
+            topping_id = rs.getInt("topping_id");
+            bottom_id = rs.getInt("bottom_id");
+            quantity = rs.getInt("quantity");
+
+            Topping topping = cm.getTopping(topping_id);
+            Bottom bottom = cm.getBottom(bottom_id);
+            Cupcake cupcake = new Cupcake(bottom, topping);
+
+            LineItem i = new LineItem(cupcake, quantity, id);
+            lineitems.add(i);
+
+        }
+        dbc.close();
+        return lineitems;
     }
 
     public void newInvoice(ShoppingCart cart) throws SQLException
     {
+        dbc.open();
+
         String query = "INSERT INTO Cupcakes.invoice"
                 + "(`invoice_id`, `user_id`, `total_price`)"
                 + "VALUES (?,?,?);";
@@ -40,7 +117,7 @@ public class InvoiceMapper
         int user_id = cart.getUser().getId();
         double totalprice = cart.getTotalPrice();
 
-        PreparedStatement statement = connector.getConnection().prepareStatement(query);
+        PreparedStatement statement = dbc.preparedStatement(query, Statement.RETURN_GENERATED_KEYS);
 
         statement.setInt(1, invoice_id);
         statement.setInt(2, user_id);
@@ -52,15 +129,18 @@ public class InvoiceMapper
             addItem(i);
         }
 
+        dbc.close();
+
     }
 
     private void addItem(LineItem i) throws SQLException
     {
+        dbc.open();
         String query = "INSERT INTO Cupcakes.invoice_has_items"
                 + "(`invoice_id`, `topping_id`, `bottom_id`, `quantity`, `price`)"
                 + "VALUES (?,?,?,?,?);";
 
-        PreparedStatement statement = connector.getConnection().prepareStatement(query);
+        PreparedStatement statement = dbc.preparedStatement(query, Statement.RETURN_GENERATED_KEYS);
 
         int invoice = i.getInvoice_id();
         System.out.println(invoice);
@@ -75,6 +155,8 @@ public class InvoiceMapper
         statement.setInt(4, quantity);
         statement.setDouble(5, price);
         statement.executeUpdate();
+
+        dbc.close();
     }
 
     public static void main(String[] args) throws Exception
@@ -95,11 +177,18 @@ public class InvoiceMapper
 
         LineItem i = new LineItem(cupcake, 2, cart.getInvoice_id());
         LineItem i2 = new LineItem(cupcake2, 1, cart.getInvoice_id());
-        
+
         cart.addCupcake(i);
         cart.addCupcake(i2);
 
         InvoiceMapper m = new InvoiceMapper();
-        m.newInvoice(cart);
+        //m.newInvoice(cart);
+
+        List<ShoppingCart> invoices = m.getInvoices(user.getUserName());
+        for (ShoppingCart invoice : invoices)
+        {
+            System.out.println(invoice);
+        }
+
     }
 }
