@@ -34,6 +34,39 @@ public class InvoiceMapper
         dbc.setDataSource(dataSourceMysql.getDataSource());
         //this.connector = new DBConnector();
     }
+    
+    public ShoppingCart getInvoice(int invoice_id) throws SQLException, Exception
+    {
+        UserMapper um = new UserMapper();
+        ShoppingCart invoice = null;
+        
+        dbc.open();
+        String query = "SELECT * FROM invoice"
+                + " WHERE invoice_id = " + invoice_id + ";";
+
+        int id = 0;
+        int user_id = 0;
+        List<LineItem> lineItems;
+        User user = null;
+        String date;
+
+        PreparedStatement stmt = dbc.preparedStatement(query, Statement.RETURN_GENERATED_KEYS);
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next())
+        {
+            id = rs.getInt("invoice_id");
+            user_id = rs.getInt("user_id");
+            user = um.getUser(user_id);
+            date = rs.getString("order_date");
+            lineItems = getLineItems(id);
+
+            invoice = new ShoppingCart(lineItems, user, id, date);
+        }
+        
+        dbc.close();
+        return invoice;
+    }
 
     public List<ShoppingCart> getInvoices(String username) throws Exception
     {
@@ -181,11 +214,14 @@ public class InvoiceMapper
         InvoiceMapper m = new InvoiceMapper();
         //m.newInvoice(cart);
 
-        List<ShoppingCart> invoices = m.getInvoices(user.getUserName());
-        for (ShoppingCart invoice : invoices)
-        {
-            System.out.println(invoice);
-        }
+        //List<ShoppingCart> invoices = m.getInvoices(user.getUserName());
+        //for (ShoppingCart invoice : invoices)
+        //{
+           // System.out.println(invoice);
+        //}
+        
+        ShoppingCart invoice = m.getInvoice(cart.getInvoice_id());
+        System.out.println(invoice);
 
     }
 }
