@@ -4,6 +4,9 @@
     Author     : aamandajuhl
 --%>
 
+<%@page import="logic.ShoppingCart"%>
+<%@page import="logic.LineItem"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="logic.Topping"%>
 <%@page import="logic.User"%>
 <%@page import="java.util.List"%>
@@ -22,16 +25,21 @@
     </center>
     <%
         User user = (User) session.getAttribute("user");
+        List<LineItem> lineitems = new ArrayList<>();
+        ShoppingCart shoppingCart = new ShoppingCart(lineitems, user);
+        session.setAttribute("cart", shoppingCart);
+
+        CupcakeController cc = new CupcakeController();
+
         out.println("<div style=\"float:left\"> Welcome " + user.getUserName() + "</div>");
         out.println("<div style=\"float:right\"> Balance: " + user.getBalance() + " kr.&nbsp;&nbsp </div>");
     %>
-    <form method = \"GET\">
+    <form method = "POST">
         <center>
             <br><br><b>Bottoms</b>
             <select name="bottom">
                 <option>Choose bottom</option>
                 <%
-                    CupcakeController cc = new CupcakeController();
                     List<Bottom> bottoms = cc.getCupcakeBottoms();
                     for (Bottom b : bottoms)
                     {
@@ -41,21 +49,20 @@
             </select>
             &nbsp;&nbsp;
             <b>Toppings</b>
-            <select name=\"topping\">
+            <select name="topping">
                 <option>Choose topping</option>
                 <%
-                List<Topping> toppings = cc.getCupcakeToppings();
-                    
-                for (Topping t : toppings)
-                {
-                out.println("<option>" + t.toString() + "</option>");
-                }
+                    List<Topping> toppings = cc.getCupcakeToppings();
+                    for (Topping t : toppings)
+                    {
+                        out.println("<option>" + t.toString() + "</option>");
+                    }
                 %>
             </select>
             &nbsp;&nbsp;
             <b>Quantity</b>
             <input type ="text" name ="quantity" value=""size="4" maxlength="3" required><br>
-            <br><input type="submit" value="Add to cart" formaction= "CommandController?command=shoppingcart">
+            <br><input type="submit" value="Add to cart" formaction= "shoppingcart.jsp">
         </center>
     </form>
 </body>

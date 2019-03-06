@@ -16,14 +16,12 @@ import javax.servlet.http.HttpServletResponse;
  */
 public abstract class Command
 {
-
     public abstract void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 
     public static Command from(HttpServletRequest request)
     {
         Command c;
-       // String path = request.getPathInfo().substring(1);
-       String path = request.getParameter("command");
+        String path = request.getParameter("command");
 
         switch (path)
         {
@@ -34,15 +32,6 @@ public abstract class Command
             case "newuser":
                 c = new NewUserCommand();
                 break;
-
-//            case "shop":
-//                c = new ShopCommand();
-//                break;
-//                
-//            case "shoppingcart":
-//                System.out.println("next");
-//                c = new ShoppingcartCommand();
-//                break;
 
             default:
                 c = new UnknownCommand();

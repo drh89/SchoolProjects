@@ -64,10 +64,7 @@ public class Cupcake
 
     public boolean compareCupcake(Cupcake cupcake)
     {
-        System.out.println(this.getBottom());
-        System.out.println(cupcake.getBottom());
         return this.getBottom().getFlavour().equals(cupcake.getBottom().getFlavour()) && this.getTopping().getFlavour().equals(cupcake.getTopping().getFlavour());
-
     }
 
     @Override

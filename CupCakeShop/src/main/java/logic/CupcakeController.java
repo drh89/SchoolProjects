@@ -14,6 +14,7 @@ import java.util.List;
  */
 public class CupcakeController
 {
+
     CupcakeMapper cm = null;
 
     public CupcakeController() throws Exception
@@ -35,11 +36,16 @@ public class CupcakeController
     {
         String[] bottomsplit = bottom.split(" ");
         bottom = bottomsplit[0];
-        System.out.println(bottom);
 
         String[] toppingsplit = topping.split(" ");
-        topping = toppingsplit[0];
-        System.out.println(topping);
+        if (toppingsplit.length != 4)
+        {
+            topping = toppingsplit[0];
+
+        } else
+        {
+            topping = toppingsplit[0] + " " + toppingsplit[1];
+        }
 
         Bottom bResult = null;
         Topping tResult = null;

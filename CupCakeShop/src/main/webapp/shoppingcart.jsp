@@ -4,6 +4,7 @@
     Author     : aamandajuhl
 --%>
 
+<%@page import="logic.Cupcake"%>
 <%@page import="logic.ShoppingCart"%>
 <%@page import="logic.LineItem"%>
 <%@page import="logic.Topping"%>
@@ -23,17 +24,26 @@
         <h1 style="color:Violet;">THE SWEET CUPCAKE SHOP</h1>
     </center>
     <%
+        String bottom = request.getParameter("bottom");
+        String topping = request.getParameter("topping");
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        CupcakeController cc = new CupcakeController();
+
+        Cupcake cupcake = cc.getCupCake(bottom, topping);
+
         ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
         User user = cart.getUser();
+
+        cart.addCupcake(new LineItem(cupcake, quantity, cart.getInvoice_id()));
         out.println("<div style=\"float:left\"> Welcome " + user.getUserName() + "</div>");
         out.println("<div style=\"float:right\"> Balance: " + user.getBalance() + " kr.&nbsp;&nbsp </div>");
     %>
-    <form method = \"GET\">
+    <form method = "GET">
         <center>
             <br><br><b>Bottoms</b>
-            <select name=\"bottom\">
+            <select name="bottom">
+                <option>Choose bottom</option>
                 <%
-                    CupcakeController cc = new CupcakeController();
                     List<Bottom> bottoms = cc.getCupcakeBottoms();
                     for (Bottom b : bottoms)
                     {
@@ -43,7 +53,7 @@
             </select>
             &nbsp;&nbsp;
             <b>Toppings</b>
-            <select name=\"topping\">
+            <select name="topping">
                 <option>Choose topping</option>
                 <%
                     List<Topping> toppings = cc.getCupcakeToppings();
@@ -57,7 +67,7 @@
             &nbsp;&nbsp;
             <b>Quantity</b>
             <input type ="text" name ="quantity" value="" size="4" maxlength="3" required><br>
-            <br><input type="submit" value="Add to cart" formaction= "CommandController?command=shoppingcart">
+            <br><input type="submit" value="Add to cart" formaction= "shoppingcart.jsp">
         </center>
     </form>
     <br><br><b>Cupcake&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quantity&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total&nbsp;&nbsp;&nbsp;&nbsp;Remove</b>    

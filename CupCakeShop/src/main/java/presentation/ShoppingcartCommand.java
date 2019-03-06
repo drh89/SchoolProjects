@@ -21,7 +21,7 @@ public class ShoppingcartCommand extends Command
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-         request.getRequestDispatcher("/shoppingcart.jsp").forward(request, response);
+         //request.getRequestDispatcher("shoppingcart.jsp").forward(request, response);
     }
 
 }

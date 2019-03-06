@@ -35,9 +35,12 @@ public class NewUserController
     
     public String addUser(User user) throws Exception
     {
-        if(userExists(user) == true) return "User already exists!";
-        um.newUser(user);
+        if(user.getUserName().isEmpty() || user.getUserName() == null) return "Please enter valid username";
+        if(user.getPassword().isEmpty() || user.getPassword()== null) return "Please enter valid password";
+        if(user.getEmail().isEmpty() || user.getEmail()== null) return "Please enter valid e-mail";
+        else if(userExists(user) == true) return "User already exists!";
         
+        um.newUser(user);
         return "User is now created";
         
     }
