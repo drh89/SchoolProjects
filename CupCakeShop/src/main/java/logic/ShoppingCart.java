@@ -14,7 +14,6 @@ import java.util.List;
 public class ShoppingCart
 {
 
-    static int invoice_count = 0;
     private int invoice_id;
     private List<LineItem> lineItems;
     private double totalPrice;
@@ -26,8 +25,7 @@ public class ShoppingCart
         this.lineItems = lineitems;
         this.totalPrice = calcTotalPrice();
         this.user = user;
-        ShoppingCart.invoice_count++;
-        this.invoice_id = invoice_count;
+        this.invoice_id = invoice_id;
     }
 
     public ShoppingCart(List<LineItem> lineitems, User user, int invoice_id, String date)
@@ -55,6 +53,12 @@ public class ShoppingCart
     {
         return invoice_id;
     }
+
+    public void setInvoice_id(int invoice_id)
+    {
+        this.invoice_id = invoice_id;
+    }
+    
 
     public User getUser()
     {
@@ -104,7 +108,7 @@ public class ShoppingCart
     @Override
     public String toString()
     {
-        return "ordernumber: " + invoice_id + ", totalPrice: " + totalPrice + ", date: " + date;
+        return "Ordernumber: " + invoice_id + " " + date;
     }
     
     

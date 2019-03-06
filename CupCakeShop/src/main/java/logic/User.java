@@ -91,6 +91,11 @@ public class User
         return balance;
     }
 
+    public void setBalance(double money)
+    {
+        this.balance = balance + money;
+    }
+
     public void pay(double price)
     {
         this.balance = balance - price;

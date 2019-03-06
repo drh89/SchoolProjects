@@ -34,11 +34,11 @@
         ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
         User user = cart.getUser();
 
-        cart.addCupcake(new LineItem(cupcake, quantity, cart.getInvoice_id()));
-        out.println("<div style=\"float:left\"> Welcome " + user.getUserName() + "</div>");
+        cart.addCupcake(new LineItem(cupcake, quantity));
+        out.println("<div style=\"float:left\"> Welcome <a href=userpage.jsp>" + user.getUserName() + "</a></div>");
         out.println("<div style=\"float:right\"> Balance: " + user.getBalance() + " kr.&nbsp;&nbsp </div>");
     %>
-    <form method = "GET">
+    <form method = "POST">
         <center>
             <br><br><b>Bottoms</b>
             <select name="bottom">
@@ -69,15 +69,22 @@
             <input type ="text" name ="quantity" value="" size="4" maxlength="3" required><br>
             <br><input type="submit" value="Add to cart" formaction= "shoppingcart.jsp">
         </center>
+        <br><br><b>Cupcake&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quantity&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total&nbsp;&nbsp;&nbsp;&nbsp;Remove</b>    
+        <%
+            for (LineItem l : cart.getLineItems())
+            {
+                out.println("<p>" + l + "</p>");
+            }
+            out.println("<b>Total price: " + cart.getTotalPrice() + "</b>");
+        %>
+
     </form>
-    <br><br><b>Cupcake&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quantity&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total&nbsp;&nbsp;&nbsp;&nbsp;Remove</b>    
-    <%
-        for (LineItem l : cart.getLineItems())
-        {
-            out.println("<p>" + l + "</p>");
-        }
-        out.println("<b>Total price: " + cart.getTotalPrice() + "</b>");
-    %>
+    <form method = "POST">
+        <br><br><input type="submit" value="Checkout" formaction= "checkout.jsp">
+
+    </form>
+
+
 </body>
 </html>
 

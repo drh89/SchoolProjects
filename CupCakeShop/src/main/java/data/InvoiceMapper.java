@@ -34,12 +34,12 @@ public class InvoiceMapper
         dbc.setDataSource(dataSourceMysql.getDataSource());
         //this.connector = new DBConnector();
     }
-    
+
     public ShoppingCart getInvoice(int invoice_id) throws SQLException, Exception
     {
         UserMapper um = new UserMapper();
         ShoppingCart invoice = null;
-        
+
         dbc.open();
         String query = "SELECT * FROM invoice"
                 + " WHERE invoice_id = " + invoice_id + ";";
@@ -63,7 +63,7 @@ public class InvoiceMapper
 
             invoice = new ShoppingCart(lineItems, user, id, date);
         }
-        
+
         dbc.close();
         return invoice;
     }
@@ -94,9 +94,8 @@ public class InvoiceMapper
             ShoppingCart cart = new ShoppingCart(lineItems, user, invoice_id, date);
             invoices.add(cart);
         }
-        
+
         dbc.close();
-        System.out.println("hej");
         return invoices;
     }
 
@@ -128,7 +127,7 @@ public class InvoiceMapper
             Bottom bottom = cm.getBottom(bottom_id);
             Cupcake cupcake = new Cupcake(bottom, topping);
 
-            LineItem i = new LineItem(cupcake, quantity, id);
+            LineItem i = new LineItem(cupcake, quantity, invoice_id);
             lineitems.add(i);
 
         }
@@ -141,21 +140,30 @@ public class InvoiceMapper
         dbc.open();
 
         String query = "INSERT INTO Cupcakes.invoice"
-                + "(`invoice_id`, `user_id`, `total_price`)"
-                + "VALUES (?,?,?);";
+                + "( `user_id`, `total_price`)"
+                + "VALUES (?,?);";
 
-        int invoice_id = cart.getInvoice_id();
         int user_id = cart.getUser().getId();
         double totalprice = cart.getTotalPrice();
+        int invoice_id = 0;
 
         PreparedStatement statement = dbc.preparedStatement(query, Statement.RETURN_GENERATED_KEYS);
-        statement.setInt(1, invoice_id);
-        statement.setInt(2, user_id);
-        statement.setDouble(3, totalprice);
+        
+
+        statement.setInt(1, user_id);
+        statement.setDouble(2, totalprice);
         statement.executeUpdate();
         
+        ResultSet rs = statement.getGeneratedKeys();
+        if (rs.next())
+        {
+            invoice_id = rs.getInt(1);
+            cart.setInvoice_id(invoice_id);
+        }
+
         for (LineItem i : cart.getLineItems())
         {
+            i.setInvoice_id(invoice_id);
             addItem(i);
         }
 
@@ -165,7 +173,7 @@ public class InvoiceMapper
 
     private void addItem(LineItem i) throws SQLException
     {
-        dbc.open();
+        //dbc.open();
         String query = "INSERT INTO Cupcakes.invoice_has_items"
                 + "(`invoice_id`, `topping_id`, `bottom_id`, `quantity`, `price`)"
                 + "VALUES (?,?,?,?,?);";
@@ -186,14 +194,13 @@ public class InvoiceMapper
         statement.setDouble(5, price);
         statement.executeUpdate();
 
-        dbc.close();
+        //dbc.close();
     }
 
     public static void main(String[] args) throws Exception
     {
         UserMapper um = new UserMapper();
         CupcakeMapper cm = new CupcakeMapper();
-        
 
         User user = um.getUser("amalie");
 
@@ -218,9 +225,8 @@ public class InvoiceMapper
         //List<ShoppingCart> invoices = m.getInvoices(user.getUserName());
         //for (ShoppingCart invoice : invoices)
         //{
-           // System.out.println(invoice);
+        // System.out.println(invoice);
         //}
-        
         ShoppingCart invoice = m.getInvoice(cart.getInvoice_id());
         System.out.println(invoice);
 
