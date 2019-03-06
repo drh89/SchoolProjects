@@ -19,6 +19,7 @@ import logic.User;
  */
 public class UserMapper
 {
+
     private DatabaseConnector dbc = new DatabaseConnector();
 
     //private DBConnector connector = null;
@@ -65,7 +66,7 @@ public class UserMapper
         dbc.close();
         return user;
     }
-    
+
     public User getUser(int user_id) throws SQLException
     {
         dbc.open();
@@ -103,6 +104,23 @@ public class UserMapper
         return user;
     }
 
+    public void updateBalance(int user_id, double balance) throws SQLException
+    {
+        dbc.open();
+
+        String query = "UPDATE `Cupcakes`.`user`"
+                + "SET `balance` = ? WHERE (`user_id` = '" + user_id + "');";
+        
+        double newBalance = balance;
+        
+        PreparedStatement statement = dbc.preparedStatement(query, Statement.RETURN_GENERATED_KEYS);
+
+        statement.setDouble(1, newBalance);
+        statement.executeUpdate();
+        
+        dbc.close();
+    }
+    
     public void newUser(User newUser) throws SQLException
     {
         dbc.open();

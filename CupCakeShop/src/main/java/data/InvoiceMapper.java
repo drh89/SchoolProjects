@@ -193,6 +193,7 @@ public class InvoiceMapper
     {
         UserMapper um = new UserMapper();
         CupcakeMapper cm = new CupcakeMapper();
+        
 
         User user = um.getUser("amalie");
 
