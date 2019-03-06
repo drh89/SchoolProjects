@@ -5,6 +5,8 @@
  */
 package logic;
 
+import data.UserMapper;
+
 /**
  *
  * @author Dennis
@@ -91,9 +93,11 @@ public class User
         return balance;
     }
 
-    public void setBalance(double money)
+    public void setBalance(double money) throws Exception
     {
+        UserMapper um = new UserMapper();
         this.balance = balance + money;
+        um.updateBalance(id, balance);
     }
 
     public void pay(double price)
