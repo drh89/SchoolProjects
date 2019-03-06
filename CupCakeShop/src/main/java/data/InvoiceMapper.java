@@ -5,7 +5,6 @@
  */
 package data;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -43,40 +42,39 @@ public class InvoiceMapper
 
         dbc.open();
         String query = "SELECT invoice_id, total_price, order_date FROM Cupcakes.user join invoice on (user.user_id = invoice.user_id)"
-                + "WHERE username = '" + username + "';";
+                + " WHERE username = '" + username + "';";
 
         int invoice_id = 0;
-        List<LineItem> lineItems = null;
-        User user = null;
-        Date date;
+        List<LineItem> lineItems;
+        User user = um.getUser(username);
+        String date;
 
         PreparedStatement stmt = dbc.preparedStatement(query, Statement.RETURN_GENERATED_KEYS);
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next())
         {
-
             invoice_id = rs.getInt("invoice_id");
-            date = rs.getDate("order_date");
+            date = rs.getString("order_date");
             lineItems = getLineItems(invoice_id);
-            user = um.getUser(username);
 
             ShoppingCart cart = new ShoppingCart(lineItems, user, invoice_id, date);
             invoices.add(cart);
-
         }
+        
         dbc.close();
+        System.out.println("hej");
         return invoices;
     }
 
-    public List<LineItem> getLineItems(int invoice_id) throws Exception
+    private List<LineItem> getLineItems(int invoice_id) throws Exception
     {
         CupcakeMapper cm = new CupcakeMapper();
         List<LineItem> lineitems = new ArrayList();
 
         dbc.open();
         String query = "SELECT * FROM invoice_has_items"
-                + "WHERE invoice_id = " + invoice_id + ";";
+                + " WHERE invoice_id = " + invoice_id + ";";
 
         int id = 0;
         int topping_id = 0;
@@ -101,7 +99,7 @@ public class InvoiceMapper
             lineitems.add(i);
 
         }
-        dbc.close();
+        //dbc.close();
         return lineitems;
     }
 
@@ -118,12 +116,11 @@ public class InvoiceMapper
         double totalprice = cart.getTotalPrice();
 
         PreparedStatement statement = dbc.preparedStatement(query, Statement.RETURN_GENERATED_KEYS);
-
         statement.setInt(1, invoice_id);
         statement.setInt(2, user_id);
         statement.setDouble(3, totalprice);
         statement.executeUpdate();
-
+        
         for (LineItem i : cart.getLineItems())
         {
             addItem(i);

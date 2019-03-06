@@ -6,6 +6,7 @@
 package logic;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ public class ShoppingCart
     private List<LineItem> lineItems;
     private double totalPrice;
     private User user;
-    private Date date;
+    private String date;
 
     public ShoppingCart(List<LineItem> lineitems, User user)
     {
@@ -31,7 +32,7 @@ public class ShoppingCart
         this.invoice_id = invoice_count;
     }
 
-    public ShoppingCart(List<LineItem> lineitems, User user, int invoice_id, Date date)
+    public ShoppingCart(List<LineItem> lineitems, User user, int invoice_id, String date)
     {
         this.lineItems = lineitems;
         this.totalPrice = calcTotalPrice();
@@ -74,7 +75,7 @@ public class ShoppingCart
         return totalPrice;
     }
 
-    public Date getDate()
+    public String getDate()
     {
         return date;
     }

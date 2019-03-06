@@ -93,7 +93,7 @@ public class CupcakeMapper
 
         dbc.open();
         String query = "SELECT * FROM cupcake_Toppings"
-                + "WHERE topping_id = '" + topping_id + "';";
+                + " WHERE topping_id = " + topping_id + ";";
 
         Topping topping = null;
 
@@ -123,7 +123,7 @@ public class CupcakeMapper
 
         dbc.open();
         String query = "SELECT * FROM cupcake_Bottoms"
-                + "WHERE bottom_id = '" + bottom_id + "';";
+                + " WHERE bottom_id = " + bottom_id + ";";
 
         Bottom bottom = null;
 
@@ -137,9 +137,9 @@ public class CupcakeMapper
         while (rs.next())
         {
 
-            id = rs.getInt("topping_id");
-            flavour = rs.getString("topping_flavour");
-            price = rs.getDouble("topping_price");
+            id = rs.getInt("bottom_id");
+            flavour = rs.getString("bottom_flavour");
+            price = rs.getDouble("bottom_price");
 
             bottom = new Bottom(id, flavour, price);
 
