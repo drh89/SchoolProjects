@@ -26,18 +26,22 @@ public class InvoiceMapper
 {
 
     private DatabaseConnector dbc = new DatabaseConnector();
+    private UserMapper um = null;
+    private CupcakeMapper cm = null;
     // private DBConnector connector = null;
 
     public InvoiceMapper() throws Exception
     {
         DataSourceMysql dataSourceMysql = new DataSourceMysql();
         dbc.setDataSource(dataSourceMysql.getDataSource());
+
+        um = new UserMapper();
+        cm = new CupcakeMapper();
         //this.connector = new DBConnector();
     }
 
     public ShoppingCart getInvoice(int invoice_id) throws SQLException, Exception
     {
-        UserMapper um = new UserMapper();
         ShoppingCart invoice = null;
 
         dbc.open();
@@ -70,7 +74,6 @@ public class InvoiceMapper
 
     public List<ShoppingCart> getInvoices(String username) throws Exception
     {
-        UserMapper um = new UserMapper();
         List<ShoppingCart> invoices = new ArrayList();
 
         dbc.open();
@@ -99,9 +102,40 @@ public class InvoiceMapper
         return invoices;
     }
 
+    public List<ShoppingCart> getAllInvoices() throws Exception
+    {
+        List<ShoppingCart> invoices = new ArrayList();
+
+        dbc.open();
+        String query = "SELECT * "
+                + " FROM Cupcakes.invoice;";
+
+        int invoice_id = 0;
+        int user_id = 0;
+        List<LineItem> lineItems;
+        String date;
+
+        PreparedStatement stmt = dbc.preparedStatement(query, Statement.RETURN_GENERATED_KEYS);
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next())
+        {
+            invoice_id = rs.getInt("invoice_id");
+            lineItems = getLineItems(invoice_id);
+            user_id = rs.getInt("user_id");
+            User user = um.getUser(user_id);
+            date = rs.getString("order_date");
+
+            ShoppingCart cart = new ShoppingCart(lineItems, user, invoice_id, date);
+            invoices.add(cart);
+        }
+
+        dbc.close();
+        return invoices;
+    }
+
     private List<LineItem> getLineItems(int invoice_id) throws Exception
     {
-        CupcakeMapper cm = new CupcakeMapper();
         List<LineItem> lineitems = new ArrayList();
 
         dbc.open();
@@ -148,12 +182,11 @@ public class InvoiceMapper
         int invoice_id = 0;
 
         PreparedStatement statement = dbc.preparedStatement(query, Statement.RETURN_GENERATED_KEYS);
-        
 
         statement.setInt(1, user_id);
         statement.setDouble(2, totalprice);
         statement.executeUpdate();
-        
+
         ResultSet rs = statement.getGeneratedKeys();
         if (rs.next())
         {
@@ -173,7 +206,6 @@ public class InvoiceMapper
 
     private void addItem(LineItem i) throws SQLException
     {
-        //dbc.open();
         String query = "INSERT INTO Cupcakes.invoice_has_items"
                 + "(`invoice_id`, `topping_id`, `bottom_id`, `quantity`, `price`)"
                 + "VALUES (?,?,?,?,?);";
@@ -193,8 +225,6 @@ public class InvoiceMapper
         statement.setInt(4, quantity);
         statement.setDouble(5, price);
         statement.executeUpdate();
-
-        //dbc.close();
     }
 
     public static void main(String[] args) throws Exception
@@ -202,33 +232,36 @@ public class InvoiceMapper
         UserMapper um = new UserMapper();
         CupcakeMapper cm = new CupcakeMapper();
 
-        User user = um.getUser("amalie");
-
-        List<LineItem> list = new ArrayList<>();
-
-        ShoppingCart cart = new ShoppingCart(list, user);
-
-        List<Bottom> bottoms = cm.getAllBottoms();
-        List<Topping> toppings = cm.getAllToppings();
-        Cupcake cupcake = new Cupcake(bottoms.get(0), toppings.get(0));
-        Cupcake cupcake2 = new Cupcake(bottoms.get(2), toppings.get(3));
-
-        LineItem i = new LineItem(cupcake, 2, cart.getInvoice_id());
-        LineItem i2 = new LineItem(cupcake2, 1, cart.getInvoice_id());
-
-        cart.addCupcake(i);
-        cart.addCupcake(i2);
-
+//        User user = um.getUser("amalie");
+//
+//        List<LineItem> list = new ArrayList<>();
+//
+//         ShoppingCart cart = new ShoppingCart(list, user);
+//
+//        List<Bottom> bottoms = cm.getAllBottoms();
+//        List<Topping> toppings = cm.getAllToppings();
+//        Cupcake cupcake = new Cupcake(bottoms.get(0), toppings.get(0));
+//        Cupcake cupcake2 = new Cupcake(bottoms.get(2), toppings.get(3));
+//
+//        LineItem i = new LineItem(cupcake, 2, cart.getInvoice_id());
+//        LineItem i2 = new LineItem(cupcake2, 1, cart.getInvoice_id());
+//
+//        cart.addCupcake(i);
+//        cart.addCupcake(i2);
         InvoiceMapper m = new InvoiceMapper();
         //m.newInvoice(cart);
 
-        //List<ShoppingCart> invoices = m.getInvoices(user.getUserName());
+        List<ShoppingCart> invoices = m.getAllInvoices();
+        for (ShoppingCart invoice : invoices)
+        {
+            System.out.println(invoice);
+        }
+
         //for (ShoppingCart invoice : invoices)
         //{
         // System.out.println(invoice);
         //}
-        ShoppingCart invoice = m.getInvoice(cart.getInvoice_id());
-        System.out.println(invoice);
-
+//        ShoppingCart invoice = m.getInvoice(cart.getInvoice_id());
+//        System.out.println(invoice);
     }
 }

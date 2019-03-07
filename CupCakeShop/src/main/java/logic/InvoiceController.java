@@ -47,4 +47,11 @@ public class InvoiceController
     {
         return im.getInvoices(username);
     }
+    
+    public List<ShoppingCart> getAllInvoices() throws Exception
+    {
+        return im.getAllInvoices();
+    }
+    
+    
 }
