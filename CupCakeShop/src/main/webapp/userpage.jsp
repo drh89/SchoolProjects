@@ -19,14 +19,17 @@
         <form method ="POST">
 
             <%
+                Double amount = Double.parseDouble(request.getParameter("amount"));
                 User user = (User) session.getAttribute("user");
+                user.setBalance(amount);
                 out.println("<div style=\"float:left\"><h1>" + user.getUserName() + "</h1></div>");
                 out.println("<div style=\"float:right\"><h1> Balance: " + user.getBalance() + " kr.&nbsp;&nbsp </h1></div>");
                 out.println("<br><br><br><br><p>Email: " + user.getEmail() + "</p>");
             %>
             <br>
+            <input type ="text" name ="amount" value="Enter amount" maxlength="3" required>
+            <input type="submit" value="Add money to account" formaction="userpage.jsp">
             <%
-                
                 InvoiceController ic = new InvoiceController();
                 List<ShoppingCart> invoices = ic.getInvoices(user.getUserName());
                 for (ShoppingCart invoice : invoices)
