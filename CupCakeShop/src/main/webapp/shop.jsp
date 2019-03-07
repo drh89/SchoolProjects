@@ -32,13 +32,16 @@
         CupcakeController cc = new CupcakeController();
 
         out.println("<div style=\"float:left\"> Welcome <a href=userpage.jsp>" + user.getUserName() + "</a></div>");
+    %>
+    <form method = "POST">&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Logout" formaction="index.jsp"></form>
+    <%
         out.println("<div style=\"float:right\"> Balance: " + user.getBalance() + " kr.&nbsp;&nbsp </div>");
     %>
     <form method = "POST">
         <center>
             <br><br><b>Bottoms</b>
             <select name="bottom">
-                <option>Choose bottom</option>
+                <option disabled selected>Choose bottom</option>
                 <%
                     List<Bottom> bottoms = cc.getCupcakeBottoms();
                     for (Bottom b : bottoms)
@@ -50,7 +53,7 @@
             &nbsp;&nbsp;
             <b>Toppings</b>
             <select name="topping">
-                <option>Choose topping</option>
+                <option disabled selected>Choose topping</option>
                 <%
                     List<Topping> toppings = cc.getCupcakeToppings();
                     for (Topping t : toppings)
@@ -61,7 +64,7 @@
             </select>
             &nbsp;&nbsp;
             <b>Quantity</b>
-            <input type ="text" name ="quantity" value=""size="4" maxlength="3" required><br>
+            <input type ="number" name ="quantity" value="1" size="2" maxlength="3" required><br>
             <br><input type="submit" value="Add to cart" formaction= "shoppingcart.jsp">
         </center>
     </form>

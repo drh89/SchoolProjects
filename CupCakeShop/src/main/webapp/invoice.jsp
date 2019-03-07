@@ -12,7 +12,7 @@
         <title>Invoice detail</title>
     </head>
     <body>
-        <h1>Invoice detail</h1>
+        <h1 style="color:Violet">Invoice detail</h1>
         <%
             String invoice = request.getParameter("selected");
             out.println("<p>" + invoice + "</p>");

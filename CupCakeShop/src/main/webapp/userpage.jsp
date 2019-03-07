@@ -16,19 +16,27 @@
         <title>User page</title>
     </head>
     <body>
+
         <form method ="POST">
 
             <%
-                Double amount = Double.parseDouble(request.getParameter("amount"));
                 User user = (User) session.getAttribute("user");
-                user.setBalance(amount);
-                out.println("<div style=\"float:left\"><h1>" + user.getUserName() + "</h1></div>");
-                out.println("<div style=\"float:right\"><h1> Balance: " + user.getBalance() + " kr.&nbsp;&nbsp </h1></div>");
-                out.println("<br><br><br><br><p>Email: " + user.getEmail() + "</p>");
+                out.println("<div style=\"color:Violet; float:left\"><h1>" + user.getUserName() + "</h1></div>");
+            %>
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Logout" formaction="index.jsp">
+            <%
+                out.println("<div style=\" color:Violet; float:right\"><h1> Balance: " + user.getBalance() + " kr.&nbsp;&nbsp </h1></div>");
+                out.println("<br><br><br><br><br><div style=\"float:left\"><p>Email: " + user.getEmail() + "</p></div>");
             %>
             <br>
-            <input type ="text" name ="amount" value="Enter amount" maxlength="3" required>
-            <input type="submit" value="Add money to account" formaction="userpage.jsp">
+            <div style=float:right><input type ="text" name ="amount" placeholder="Enter amount" size="11" maxlength="3" required>
+                <input type="submit" value="Add money to account" formaction="CommandController?command=moneytransfer"></div>
+        </form>
+        <form method="POST">
+            <br><br><div style=float:right><input type="submit" value="Go to shop" formaction="shop.jsp"></div>
+        </form>
+        <form method ="POST"> 
+            <br><br><b> Your invoices:</b>
             <%
                 InvoiceController ic = new InvoiceController();
                 List<ShoppingCart> invoices = ic.getInvoices(user.getUserName());
@@ -38,5 +46,6 @@
                 }
             %>
         </form>
+
     </body>
 </html>

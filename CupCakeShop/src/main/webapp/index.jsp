@@ -6,7 +6,7 @@
     </head>
     <body>
     <center>
-        <h1>Type in username and password</h1>
+        <h1 style="color:Violet">Type in username and password</h1>
         <form method = "POST">
             Username: <input type ="text" name ="username" value="" minlength="4" required>
             <br><br>

@@ -32,6 +32,10 @@ public abstract class Command
             case "newuser":
                 c = new NewUserCommand();
                 break;
+                
+            case "moneytransfer":
+                c = new MoneyTransferCommand();
+                break;
 
             default:
                 c = new UnknownCommand();

@@ -15,7 +15,7 @@
     </head>
     <body>
     <center>
-        <h1>Type in username and password</h1>
+        <h1 tyle="color:Violet">Type in username and password</h1>
         <form method = "POST">
             <%
                 String username = request.getParameter("username");

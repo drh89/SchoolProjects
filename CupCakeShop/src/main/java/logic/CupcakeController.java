@@ -34,7 +34,7 @@ public class CupcakeController
 
     public Cupcake getCupCake(String bottom, String topping) throws Exception
     {
-        if (bottom.equals("Choose bottom") || topping.equals("Choose topping")) return null;
+        if (bottom == null || topping == null || bottom.equals("Choose bottom") || topping.equals("Choose topping")) return null;
         
         String[] bottomsplit = bottom.split(" ");
         bottom = bottomsplit[0];

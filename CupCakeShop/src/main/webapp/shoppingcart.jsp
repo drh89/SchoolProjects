@@ -29,20 +29,22 @@
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         CupcakeController cc = new CupcakeController();
 
-        Cupcake cupcake = cc.getCupCake(bottom, topping);
-
         ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
         User user = cart.getUser();
 
-        cart.addCupcake(new LineItem(cupcake, quantity));
+        Cupcake cupcake = cc.getCupCake(bottom, topping);
+
         out.println("<div style=\"float:left\"> Welcome <a href=userpage.jsp>" + user.getUserName() + "</a></div>");
+    %>
+    <form method = "POST">&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Logout" formaction="index.jsp"></form>
+    <%
         out.println("<div style=\"float:right\"> Balance: " + user.getBalance() + " kr.&nbsp;&nbsp </div>");
     %>
     <form method = "POST">
         <center>
             <br><br><b>Bottoms</b>
-            <select name="bottom">
-                <option>Choose bottom</option>
+            <select name="bottom">  
+                <option disabled selected>Choose bottom</option>
                 <%
                     List<Bottom> bottoms = cc.getCupcakeBottoms();
                     for (Bottom b : bottoms)
@@ -53,8 +55,8 @@
             </select>
             &nbsp;&nbsp;
             <b>Toppings</b>
-            <select name="topping">
-                <option>Choose topping</option>
+            <select name="topping"> 
+                <option disabled selected>Choose topping</option>
                 <%
                     List<Topping> toppings = cc.getCupcakeToppings();
 
@@ -66,8 +68,17 @@
             </select>
             &nbsp;&nbsp;
             <b>Quantity</b>
-            <input type ="text" name ="quantity" value="" size="4" maxlength="3" required><br>
+            <input type ="number" name ="quantity" value="1" size="2" maxlength="3" required><br>
             <br><input type="submit" value="Add to cart" formaction= "shoppingcart.jsp">
+            <%
+                if (cupcake == null)
+                {
+                    out.println("<br><br><i>Please choose a bottom and a topping for your cupcake</i>");
+                } else
+                {
+                    cart.addCupcake(new LineItem(cupcake, quantity));
+                }
+            %>
         </center>
         <br><br><b>Cupcake&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quantity&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total&nbsp;&nbsp;&nbsp;&nbsp;Remove</b>    
         <%
@@ -75,16 +86,12 @@
             {
                 out.println("<p>" + l + "</p>");
             }
-            out.println("<b>Total price: " + cart.getTotalPrice() + "</b>");
+            out.println("<br><br><b>Total price: " + cart.getTotalPrice() + "</b>");
         %>
-
     </form>
     <form method = "POST">
         <br><br><input type="submit" value="Checkout" formaction= "checkout.jsp">
-
     </form>
-
-
 </body>
 </html>
 

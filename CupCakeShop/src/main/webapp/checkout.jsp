@@ -39,8 +39,11 @@
         CupcakeController cc = new CupcakeController();
 
         out.println("<div style=\"float:left\"> Welcome <a href=userpage.jsp>" + user.getUserName() + "</a></div>");
-        out.println("<div style=\"float:right\"> Balance: " + user.getBalance() + " kr.&nbsp;&nbsp </div>");
     %>
+    <form method = "POST">&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Logout" formaction="index.jsp"></form>
+        <%
+            out.println("<div style=\"float:right\"> Balance: " + user.getBalance() + " kr.&nbsp;&nbsp </div>");
+        %>
     <form method = "POST">
         <center>
             <%
