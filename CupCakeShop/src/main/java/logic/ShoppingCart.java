@@ -101,6 +101,11 @@ public class ShoppingCart
             lineItems.add(i);
         }
     }
+    
+    public void removeCupcake(LineItem i)
+    {
+        lineItems.remove(i);
+    }
 
     @Override
     public String toString()
