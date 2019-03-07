@@ -10,7 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import logic.LoginController;
+import logic.LoginConnector;
 import logic.User;
 
 /**
@@ -26,7 +26,7 @@ public class LoginCommand extends Command
         try
         {
             HttpSession session = request.getSession();
-            LoginController lc = new LoginController();
+            LoginConnector lc = new LoginConnector();
 
             String username = request.getParameter("username");
             String password = request.getParameter("password");

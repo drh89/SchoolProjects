@@ -12,12 +12,12 @@ import java.util.List;
  *
  * @author aamandajuhl
  */
-public class NewUserController
+public class NewUserConnector
 {
     
     private UserMapper um = null;
 
-    public NewUserController() throws Exception
+    public NewUserConnector() throws Exception
     {
         um = new UserMapper();
     }

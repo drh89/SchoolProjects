@@ -13,12 +13,12 @@ import java.util.List;
  *
  * @author aamandajuhl
  */
-public class LoginController
+public class LoginConnector
 {
 
     UserMapper um = null;
 
-    public LoginController() throws Exception
+    public LoginConnector() throws Exception
     {
         um = new UserMapper();
     }

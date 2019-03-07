@@ -6,7 +6,7 @@
 
 <%@page import="logic.ShoppingCart"%>
 <%@page import="java.util.List"%>
-<%@page import="logic.InvoiceController"%>
+<%@page import="logic.InvoiceConnector"%>
 <%@page import="logic.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -29,7 +29,7 @@
                 out.println("<br><br><br><br><br><div style=\"float:left\"><p>Email: " + user.getEmail() + "</p></div>");
             %>
             <br>
-            <div style=float:right><input type ="text" name ="amount" placeholder="Enter amount" size="11" maxlength="3" required>
+            <div style=float:right><input type ="number" name ="amount" placeholder="Enter amount" size="11" min="1" max="1000" required>
                 <input type="submit" value="Add money to account" formaction="CommandController?command=moneytransfer"></div>
         </form>
         <form method="POST">
@@ -39,7 +39,7 @@
             <center>
                 <br><br><b> All invoices:</b>
                 <%
-                    InvoiceController ic = new InvoiceController();
+                    InvoiceConnector ic = new InvoiceConnector();
                     List<ShoppingCart> invoices = ic.getAllInvoices();
                     for (ShoppingCart invoice : invoices)
                     {

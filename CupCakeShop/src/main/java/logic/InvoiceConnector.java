@@ -14,12 +14,12 @@ import java.util.List;
  *
  * @author sofieamalielandt
  */
-public class InvoiceController
+public class InvoiceConnector
 {
     InvoiceMapper im = null;
     UserMapper um = null;
 
-    public InvoiceController() throws Exception
+    public InvoiceConnector() throws Exception
     {
         im = new InvoiceMapper();
         um = new UserMapper();

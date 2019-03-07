@@ -88,11 +88,9 @@ public class ShoppingCart
 
         for (LineItem l : lineItems)
         {
-            System.out.println(l.getCupcake().compareCupcake(i.getCupcake()));
             if (l.getCupcake().compareCupcake(i.getCupcake()))
             {
                 add = false;
-                System.out.println(add);
                 l.addQuantity(i.getQuantity());
 
             }
@@ -100,7 +98,6 @@ public class ShoppingCart
 
         if (add)
         {
-            System.out.println(add);
             lineItems.add(i);
         }
     }

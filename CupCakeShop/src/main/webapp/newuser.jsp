@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="logic.User"%>
-<%@page import="logic.NewUserController"%>
+<%@page import="logic.NewUserConnector"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,7 +23,7 @@
                 String email = request.getParameter("email");
 
                 User u = new User(username, password, email);
-                NewUserController c = new NewUserController();
+                NewUserConnector c = new NewUserConnector();
                 String res = c.addUser(u);
                 out.println("<br><i>" + res + "</i><br><br>");
             %>

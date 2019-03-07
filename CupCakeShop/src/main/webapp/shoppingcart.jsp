@@ -10,7 +10,7 @@
 <%@page import="logic.Topping"%>
 <%@page import="logic.Bottom"%>
 <%@page import="java.util.List"%>
-<%@page import="logic.CupcakeController"%>
+<%@page import="logic.CupcakeConnector"%>
 <%@page import="logic.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -27,7 +27,7 @@
         String bottom = request.getParameter("bottom");
         String topping = request.getParameter("topping");
         int quantity = Integer.parseInt(request.getParameter("quantity"));
-        CupcakeController cc = new CupcakeController();
+        CupcakeConnector cc = new CupcakeConnector();
 
         ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
         User user = cart.getUser();
@@ -69,7 +69,7 @@
             </select>
             &nbsp;&nbsp;
             <b>Quantity</b>
-            <input type ="number" name ="quantity" value="1" size="2" maxlength="3" required><br>
+            <input type ="number" name ="quantity" value="1" size="2" min="1" max="100" required><br>
             <br><input type="submit" value="Add to cart" formaction= "shoppingcart.jsp">
             <%
                 if (cupcake == null)

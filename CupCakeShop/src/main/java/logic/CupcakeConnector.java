@@ -12,12 +12,12 @@ import java.util.List;
  *
  * @author aamandajuhl
  */
-public class CupcakeController
+public class CupcakeConnector
 {
 
     CupcakeMapper cm = null;
 
-    public CupcakeController() throws Exception
+    public CupcakeConnector() throws Exception
     {
         cm = new CupcakeMapper();
     }

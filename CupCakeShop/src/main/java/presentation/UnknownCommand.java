@@ -21,7 +21,6 @@ public class UnknownCommand extends Command
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        System.out.println("hej");
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter())
         {
