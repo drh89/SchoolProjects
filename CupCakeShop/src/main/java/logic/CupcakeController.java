@@ -69,6 +69,8 @@ public class CupcakeController
             }
         }
 
+        if (bResult == null || tResult == null) return null;
+     
         Cupcake cupcake = new Cupcake(bResult, tResult);
 
         return cupcake;
