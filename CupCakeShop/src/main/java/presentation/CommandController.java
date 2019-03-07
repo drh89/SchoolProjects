@@ -47,10 +47,11 @@ public class CommandController extends HttpServlet
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CommandController</title>");
+            out.println("<title>Error</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CommandController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Error</h1>");
+            out.println("<p>Unknown Command</p>");
             out.println("</body>");
             out.println("</html>");
         }
