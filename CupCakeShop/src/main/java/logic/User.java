@@ -13,15 +13,15 @@ import data.UserMapper;
  */
 public class User
 {
-
     //TEST COMMENT FOR GIT!
     private int id;
     private String userName;
     private String password;
     private String email;
     private double balance;
+    private String type;
 
-    public User(int id, String userName, String password, String email, double balance)
+    public User(int id, String userName, String password, String email, double balance, String type)
     {
 
         this.id = id;
@@ -29,6 +29,7 @@ public class User
         this.password = password;
         this.email = email;
         this.balance = balance;
+        this.type = type;
     }
 
     public User(String userName, String password, String email)
@@ -38,8 +39,14 @@ public class User
         this.password = password;
         this.email = email;
         this.balance = 0.0;
+        this.type = "customer";
     }
 
+    public String getType()
+    {
+        return type;
+    }
+    
     public int getId()
     {
         return id;

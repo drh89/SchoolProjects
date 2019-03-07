@@ -47,6 +47,7 @@ public class UserMapper
         String password = "";
         String email = "";
         double balance = 0;
+        String type = "";
 
         while (rs.next())
         {
@@ -55,13 +56,14 @@ public class UserMapper
             password = rs.getString("password");
             email = rs.getString("email");
             balance = rs.getDouble("balance");
+            type = rs.getString("type");
 
             if (rs.getString("username") == null)
             {
                 return null;
             }
 
-            user = new User(id, name, password, email, balance);
+            user = new User(id, name, password, email, balance, type);
         }
         dbc.close();
         return user;
@@ -84,6 +86,7 @@ public class UserMapper
         String password = "";
         String email = "";
         double balance = 0;
+        String type = "";
 
         while (rs.next())
         {
@@ -92,13 +95,14 @@ public class UserMapper
             password = rs.getString("password");
             email = rs.getString("email");
             balance = rs.getDouble("balance");
+            type = rs.getString("type");
 
             if (rs.getString("username") == null)
             {
                 return null;
             }
 
-            user = new User(id, name, password, email, balance);
+            user = new User(id, name, password, email, balance, type);
         }
         dbc.close();
         return user;
@@ -125,18 +129,20 @@ public class UserMapper
     {
         dbc.open();
         String query = "INSERT INTO Cupcakes.user"
-                + "(`username`, `password`, `email`)"
-                + "VALUES (?,?,?);";
+                + "(`username`, `password`, `email`,`type`)"
+                + "VALUES (?,?,?,?);";
 
         String username = newUser.getUserName();
         String password = newUser.getPassword();
         String email = newUser.getEmail();
+        String type = newUser.getType();
 
         PreparedStatement statement = dbc.preparedStatement(query, Statement.RETURN_GENERATED_KEYS);
 
         statement.setString(1, username);
         statement.setString(2, password);
         statement.setString(3, email);
+        statement.setString(4, type);
         statement.executeUpdate();
         dbc.close();
     }
@@ -153,6 +159,7 @@ public class UserMapper
         String password = "";
         String email = "";
         double balance = 0.0;
+        String type = "";
 
         PreparedStatement statement = dbc.preparedStatement(query, Statement.RETURN_GENERATED_KEYS);
         ResultSet rs = statement.executeQuery();
@@ -165,8 +172,9 @@ public class UserMapper
             password = rs.getString("password");
             email = rs.getString("email");
             balance = rs.getDouble("balance");
+            type = rs.getString("type");
 
-            User user = new User(id, userName, password, email, balance);
+            User user = new User(id, userName, password, email, balance, type);
             users.add(user);
 
         }
