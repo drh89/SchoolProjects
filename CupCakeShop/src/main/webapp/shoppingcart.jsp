@@ -33,13 +33,14 @@
         User user = cart.getUser();
 
         Cupcake cupcake = cc.getCupCake(bottom, topping);
+        String ref = "userpage.jsp";
+        if (user.getType().equals("admin")) ref = "adminpage.jsp";
+        out.println("<div style=\"float:left\"> Welcome <a href=" + ref + ">" + user.getUserName() + "</a></div>");
 
-        out.println("<div style=\"float:left\"> Welcome <a href=userpage.jsp>" + user.getUserName() + "</a></div>");
     %>
     <form method = "POST">&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Logout" formaction="index.jsp"></form>
-    <%
-        out.println("<div style=\"float:right\"> Balance: " + user.getBalance() + " kr.&nbsp;&nbsp </div>");
-    %>
+        <%        out.println("<div style=\"float:right\"> Balance: " + user.getBalance() + " kr.&nbsp;&nbsp </div>");
+        %>
     <form method = "POST">
         <center>
             <br><br><b>Bottoms</b>

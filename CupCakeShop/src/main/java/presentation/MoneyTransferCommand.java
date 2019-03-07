@@ -30,9 +30,15 @@ public class MoneyTransferCommand extends Command
             Double amount = Double.parseDouble(request.getParameter("amount"));
             User user = (User) session.getAttribute("user");
             user.setBalance(amount);
-            
-            request.getRequestDispatcher("/userpage.jsp").forward(request, response);
-            
+
+            String ref = "/userpage.jsp";
+            if (user.getType().equals("admin"))
+            {
+                ref = "/adminpage.jsp";
+            }
+
+            request.getRequestDispatcher(ref).forward(request, response);
+
         } catch (Exception ex)
         {
             System.out.println(ex.getMessage());
