@@ -16,12 +16,20 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>SWEET RETREAT</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>THE SWEET CUPCAKE SHOP</title>
+        <style>
+        body{
+            background-image: url("");
+            background-size: cover;
+        }
+        </style>
+        
+        
     </head>
     <body>
     <center>
-        <h1 style="color:Violet;">THE SWEET CUPCAKE SHOP</h1>
+        <h1 style="color:Violet;">SWEET RETREAT</h1>
     </center>
     <%
         User user = (User) session.getAttribute("user");
