@@ -15,62 +15,42 @@
 <%@page import="logic.Cupcake"%>
 <%@page import="logic.CupcakeConnector"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>THE SWEET CUPCAKE SHOP</title>
-    </head>
-    <body>
+<%@include file = "header.jsp" %>
+
+<%        ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
+    InvoiceConnector ic = new InvoiceConnector();
+    String checkout = ic.checkout(cart);
+    ShoppingCart invoice = null;
+
+    if (checkout.equals("Thank you for your order"))
+    {
+        invoice = ic.getInvoice(cart.getInvoice_id());
+
+    }
+    CupcakeConnector cc = new CupcakeConnector();
+
+
+%>
+<form method = "POST">
     <center>
-        <h1 style="color:Violet;">THE SWEET CUPCAKE SHOP</h1>
-    </center>
-    <%
-        ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
-        InvoiceConnector ic = new InvoiceConnector();
-        String checkout = ic.checkout(cart);
-        User user = cart.getUser();
-        ShoppingCart invoice = null;
+        <%                if (checkout.equals("Thank you for your order"))
+            {
+                for (LineItem l : invoice.getLineItems())
+                {
+                    out.println("<p>" + l + "</p>");
+                }
+                out.println("<b>Total price: " + invoice.getTotalPrice() + "</b><br>");
+            }
+            out.println("<br><i>" + checkout + "</i>");
 
-        if (checkout.equals("Thank you for your order"))
-        {
-            invoice = ic.getInvoice(cart.getInvoice_id());
-
-        }
-        CupcakeConnector cc = new CupcakeConnector();
-
-        String ref = "userpage.jsp";
-        if (user.getType().equals("admin"))
-        {
-            ref = "adminpage.jsp";
-        }
-        out.println("<div style=\"float:left\"> Welcome <a href=" + ref + ">" + user.getUserName() + "</a></div>");
-    %>
-    <form method = "POST">&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Logout" formaction="index.jsp"></form>
-        <%
-            out.println("<div style=\"float:right\"> Balance: " + user.getBalance() + " kr.&nbsp;&nbsp </div>");
+            if (checkout.equals("Your balance is to low, to place the order"))
+            {
+                out.println("<br><br><input type=\"submit\" value=\"Add money to your account\" formaction= \"" + ref + "\">");
+            }
         %>
-    <form method = "POST">
-        <center>
-            <%
-                if (checkout.equals("Thank you for your order"))
-                {
-                    for (LineItem l : invoice.getLineItems())
-                    {
-                        out.println("<p>" + l + "</p>");
-                    }
-                    out.println("<b>Total price: " + invoice.getTotalPrice() + "</b><br>");
-                }
-                out.println("<br><i>" + checkout + "</i>");
-                
-                if (checkout.equals("Your balance is to low, to place the order"))
-                {
-                    out.println("<br><br><input type=\"submit\" value=\"Add money to your account\" formaction= \"" + ref + "\">");
-                }
-            %>
-            <br><br><input type="submit" value="Keep shopping" formaction= "shop.jsp">
-        </center>
-    </form>
+        <br><br><input type="submit" value="Keep shopping" formaction= "shop.jsp">
+    </center>
+</form>
 
 
 </body>

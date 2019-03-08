@@ -1,22 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Login</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<%@include file = "loginheader.jsp" %>
         <style>
-            div{
-                border-style: solid;
-                border-color: #ffe8ff;
-                border-top-right-radius: 25px;
-                border-top-left-radius: 25px;
-                border-bottom-right-radius: 25px;
-                border-bottom-left-radius: 25px;
-                padding: 25px;
-                box-sizing: border-box;
-                width: 300px;
-                height: 230px;
-
-            }
+            
             body{
                 background-image: url("https://media.altphotos.com/cache/images/2017/04/04/05/1504/baked-cake-turquoise.jpg");
                 background-position: 70% 30%;
@@ -25,12 +9,8 @@
             
         </style>
 
-    </head>
-    <body>
-    <center>
-        <h1 style="color:#ffe8ff"> <img src="Images/cupcake.png" width="5%" height="5%">  WELCOME TO SWEET RETREAT <img src="Images/cupcake.png" width="5%" height="5%"></h1>
+    <center id="index">
         
-        <h3 style="color:#ffe8ff">Type in username and password</h3> 
         <div>       
             <form method = "POST">
                 Username: <input type ="text" name ="username" value="" minlength="4" required>

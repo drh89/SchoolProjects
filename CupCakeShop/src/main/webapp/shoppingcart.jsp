@@ -13,46 +13,18 @@
 <%@page import="logic.CupcakeConnector"%>
 <%@page import="logic.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>SWEET RETREAT</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <style>
-            body{
-                background-image: url("https://media.altphotos.com/cache/images/2017/03/12/09/1504/cupcakes.jpg");
-                background-size: cover;
-            }
-        </style>
+<%@include file = "header.jsp" %>
 
-    </head>
-    <body>
-    <center>
-        <h1 style="color:Violet;">SWEET RETREAT</h1>
-    </center>
-    <%
-        String bottom = request.getParameter("bottom");
-        String topping = request.getParameter("topping");
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
-        CupcakeConnector cc = new CupcakeConnector();
+<%    String bottom = request.getParameter("bottom");
+    String topping = request.getParameter("topping");
+    int quantity = Integer.parseInt(request.getParameter("quantity"));
+    CupcakeConnector cc = new CupcakeConnector();
 
-        ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
-        User user = cart.getUser();
-
-        Cupcake cupcake = cc.getCupCake(bottom, topping);
-        String ref = "userpage.jsp";
-        if (user.getType().equals("admin"))
-        {
-            ref = "adminpage.jsp";
-        }
-        out.println("<div style=\"float:left\"> Welcome <a href=" + ref + ">" + user.getUserName() + "</a></div>");
-
-    %>
-    <form method = "POST">&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Logout" formaction="index.jsp"></form>
-        <%        out.println("<div style=\"float:right\"> Balance: " + user.getBalance() + " kr.&nbsp;&nbsp </div>");
-        %>
-    <form method = "POST">
-        <center>
+    ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
+%>
+<form method = "POST">
+    <center id="shop">
+        <div>
             <br><br><b>Bottoms</b>
             <select name="bottom">  
                 <option disabled selected>Choose bottom</option>
@@ -90,19 +62,40 @@
                     cart.addCupcake(new LineItem(cupcake, quantity));
                 }
             %>
-        </center>
-        <br><br><b>Cupcake&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quantity&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total&nbsp;&nbsp;&nbsp;&nbsp;Remove</b>    
-        <%
-            for (LineItem l : cart.getLineItems())
-            {
-                out.println("<p>" + l + "</p>");
-            }
-            out.println("<br><br><b>Total price: " + cart.getTotalPrice() + "</b>");
-        %>
-    </form>
-    <form method = "POST">
-        <br><br><input type="submit" value="Checkout" formaction= "checkout.jsp">
-    </form>
+        </div>
+    </center>
+    <br><br><br><br>
+    <center id="shoppingcart">
+        <div>
+            <table id="shoppingcart"> 
+                <tr>
+                    <th><b>Cupcake</b></th>
+                    <th><b>Quantity</b></th>
+                    <th><b>Price</b></th>
+                    <th><b>Total</b></th>
+                </tr>
+                <%
+                    for (LineItem l : cart.getLineItems())
+                    {
+                        out.println("<tr>");
+                        out.println("<td>" + l.getCupcake() + "</td>");
+                        out.println("<td>" + l.getQuantity() + "</td>");
+                        out.println("<td>" + l.getCupcake().getPrice() + "</td>");
+                        out.println("<td>" + l.getPrice() + "</td>");
+                        out.println("</tr>");
+                    }
+                %>
+            </table>
+            <%
+                out.println("<br><br><b>Total price: " + cart.getTotalPrice() + "</b>");
+            %>
+
+            </form>
+            <form method = "POST">
+                <br><br><input type="submit" value="Checkout" formaction= "checkout.jsp">
+            </form>
+        </div>
+    </center>
 </body>
 </html>
 

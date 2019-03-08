@@ -8,15 +8,10 @@
 <%@page import="logic.ShoppingCart"%>
 <%@page import="logic.InvoiceConnector"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Invoice</title>
-    </head>
-    <body>
-        <center>
-        <h1 style="color:Violet">Invoice detail</h1>
+<%@include file = "header.jsp" %>
+
+        <center id="index">
+        <h1>Invoice detail</h1>
         <%
             int invoice_id = Integer.parseInt(request.getParameter("selected"));
             InvoiceConnector ic = new InvoiceConnector();
