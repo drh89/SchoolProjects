@@ -20,7 +20,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <style>
             body{
-                background-image: url("https://c8.alamy.com/comp/JMWACT/pink-cupcake-background-on-white-JMWACT.jpg");
+                background-image: url("https://media.altphotos.com/cache/images/2017/03/12/09/1504/cupcakes.jpg");
                 background-size: cover;
             }
         </style>

@@ -29,7 +29,7 @@
     <body>
     <center>
         <h1 style="color:#ffe8ff"> WELCOME TO SWEET RETREAT</h1>
-        <img scr='/Images/Cupcake.jpg.png'>
+        <img scr="Images/Cupcake.jpg.png">
         <h3 style="color:#ffe8ff">Type in username and password</h3> 
         <div>       
             <form method = "POST">
