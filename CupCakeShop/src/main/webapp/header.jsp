@@ -25,10 +25,15 @@
             {
                 ref = "adminpage.jsp";
             }
-            out.println("<div style=\"float:left\"> Welcome <a href=" + ref + ">" + user.getUserName() + "</a></div>");
         %>
-        <form method = "POST">&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Logout" formaction="index.jsp"></form>
-            <%
-                out.println("<div> Balance: " + user.getBalance() + " kr.&nbsp;&nbsp </div>");
-            %>
+        <form method = "POST">
+            <div id="menu">
+                <%
+                    out.println("Welcome <a href=" + ref + ">" + user.getUserName() + "</a>");
+                %>
+                &nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Logout" formaction="index.jsp">
+            </div>
+        </form>
+        <%
+            out.println("<div id=\"balance\"> Balance: " + user.getBalance() + " kr.&nbsp;&nbsp </div>");
         %>

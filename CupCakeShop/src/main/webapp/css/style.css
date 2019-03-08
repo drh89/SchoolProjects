@@ -55,6 +55,14 @@ and open the template in the editor.
     text-align: center;
 }
 
+#menu div{
+    text-align: left;
+}
+
+#balance div{
+    text-align: right;
+}
+
 #index h1{
     color: #ffe8ff;
 }
