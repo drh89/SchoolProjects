@@ -13,10 +13,10 @@
         <title>SWEET RETREAT</title>
     </head>
     <body>
-        <center id="index">
+    <center id="index">
+        <br><br>
+        <h1> <img src="Images/cupcake.png" width="10%" height="10%">&nbsp;&nbsp;  Welcome to Sweet Retreat &nbsp;&nbsp;<img src="Images/cupcake.png" width="10%" height="10%"></h1>
 
-        <h1> <img src="Images/cupcake.png" width="10%" height="10%">&nbsp;&nbsp;  WELCOME TO SWEET RETREAT &nbsp;&nbsp;<img src="Images/cupcake.png" width="10%" height="10%"></h1>
-
-        <h3>Type in username and password</h3> 
-        </center>
+        <p>Type in username and password</p> 
+    </center>
 

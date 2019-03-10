@@ -19,7 +19,7 @@
                 List<ShoppingCart> invoices = ic.getInvoices(user.getUserName());
                 for (ShoppingCart invoice : invoices)
                 {
-                    out.println("<li><b><a href=invoice.jsp?selected=" + invoice.getInvoice_id() + ">" + invoice + "</a></b></li>");
+                    out.println("<li><a href=invoice.jsp?selected=" + invoice.getInvoice_id() + ">" + invoice + "</a></li>");
                 }
             %>
         </ul>

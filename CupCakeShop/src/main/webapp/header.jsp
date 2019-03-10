@@ -22,7 +22,9 @@
                 background-color: #f0d1e0;
                 position: fixed;
                 top: 0;
-                width: 100%;   
+                width: 100%;  
+                height: 80px;
+                font-family: HelveticaNeue-Thin;
             }
 
             #menu li p 
@@ -31,8 +33,9 @@
                 display: block;
                 color: white;
                 text-align: center;
-                padding: 14px 16px;
+                padding: 15px 16px;
                 text-decoration: none;
+                height: 80px;
 
             }
 
@@ -44,9 +47,10 @@
                 align-items: center;
                 background-color: #f0d1e0;
                 text-decoration: none;
-                padding: 30px 20px;
+                padding: 0px 20px;
                 color: white;
                 border: none;
+                height: 80px;
 
             }
 
@@ -62,6 +66,7 @@
                 color: white;
                 border: none;
                 font-size: 10px;
+                height: 80px;
 
             }
 
@@ -70,8 +75,24 @@
                 display: block;
                 color: white;
                 text-align: center;
-                padding: 30px 16px;
-                text-decoration: none;   
+                padding: 0px 16px;
+                text-decoration: none;  
+                height: 80px;
+                display: -webkit-flex;
+                -webkit-align-items: center; 
+            }
+
+            #menu li a img{
+                display: block;
+                text-align: center;
+                color: black;
+                padding: 0px 0px;
+                width: 40px;
+                height: 50px;
+                text-decoration: none;  
+                display: -webkit-flex;
+                -webkit-align-items: center; 
+
             }
 
             #menu li a:hover, li button:hover{
@@ -88,6 +109,7 @@
                 border-top-left-radius: 25px;
                 border-bottom-right-radius: 25px;
                 border-bottom-left-radius: 25px;
+                font-family: HelveticaNeue-Thin;
             }
 
             #invoice li h1 
@@ -130,19 +152,19 @@
         <form method = "POST">
             <center id="menu">
                 <ul>
-                    <li> <a class="active" href="shop.jsp"><b> &nbsp;&nbsp; SWEET RETREAT</b></a></li>
+                    <li> <a class="active" href="shop.jsp"><img src="Images/cupcake.png" width="5%" height="5%"></a></li>
 
                     <li>
                         <%
-                            out.println("<a href=" + ref + "><b>" + user.getUserName() + "</b></a>");
+                            out.println("<a href=" + ref + ">" + user.getUserName() + "</a>");
                         %>
                     </li>
-                    <li><a class="active" href="index.jsp"><b>Logout</b></a></li>
-                    <li><p><b>
-                                <%
-                                    out.println("Balance: " + user.getBalance() + " kr.&nbsp;&nbsp");
-                                %>
-                            </b> </p></li>
+                    <li><a class="active" href="index.jsp">Logout</a></li>
+                    <li><p>
+                            <%
+                                out.println("Balance: " + user.getBalance() + " kr.&nbsp;&nbsp");
+                            %>
+                        </p></li>
                     <li>
                         <button type="submit" formaction="CommandController?command=moneytransfer">Add money to account</button>          
                         <input type ="number" name ="amount" placeholder="Enter amount" min="1" max="1000" required>

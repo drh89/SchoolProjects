@@ -9,9 +9,8 @@ and open the template in the editor.
 */
 
 #index div{
-    color: black;
     border-style: solid;
-    border-color: rgba(239, 116, 172, 1.0);
+    border-color: #f0d1e0;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
     border-bottom-right-radius: 25px;
@@ -19,9 +18,9 @@ and open the template in the editor.
     padding: 25px;
     box-sizing: border-box;
     width: 300px;
-    height: 230px;
-    background-color: rgba(239, 116, 172, 0.3);
+    background-color: rgba(232, 206, 223, 0.60);
     text-align: center;
+    font-family: HelveticaNeue-Thin;
 
 }
 
@@ -35,8 +34,8 @@ and open the template in the editor.
     padding: 25px;
     box-sizing: border-box;
     width: 700px;
-    background-color: rgba(232, 206, 223, 0.75);
-
+    background-color: rgba(232, 206, 223, 0.80);
+    font-family: HelveticaNeue-Thin;
 }
 
 
@@ -50,7 +49,8 @@ and open the template in the editor.
     padding: 25px;
     box-sizing: border-box;
     width: 700px;
-    background-color: rgba(232, 206, 223, 0.75);
+    background-color: rgba(232, 206, 223, 0.80);
+    font-family: HelveticaNeue-Thin;
 
 }
 
@@ -64,34 +64,39 @@ and open the template in the editor.
     padding: 25px;
     box-sizing: border-box;
     width: 700px;
-    background-color: rgba(232, 206, 223, 0.75);
+    background-color: rgba(232, 206, 223, 0.80);
+    font-family: HelveticaNeue-Thin;
 }
 
 #shoppingcart td, #shoppingcart th{
     padding: 8px;
     text-align: center;
+    font-family: HelveticaNeue-Thin;
 }
 
 #index h1{
     color: rgba(239, 116, 172, 1.0);
     display: -webkit-flex;
     -webkit-align-items: center; 
-    position: static; width: 700px; margin: 0 auto; 
+    position: static; width: 580px; margin: 0 auto; 
+    font-family: HelveticaNeue-Thin;
 
 }
 
 #shoppingcart p{
     text-align: left;
+    font-family: HelveticaNeue-Thin;
 }
 
 #shoppingcart b{
     text-align: left;
+    font-family: HelveticaNeue-Thin;
 }
 
 
-#index h3{
-
+#index p{
     color:  rgba(239, 116, 172, 1.0);
+    font-family: HelveticaNeue-Thin;
 }
 
 body{
