@@ -35,7 +35,7 @@ public class MoneyTransferCommand extends Command
                 ref = "/adminpage.jsp";
             }
 
-            request.getRequestDispatcher(ref).forward(request, response);
+            request.getRequestDispatcher("/shop.jsp").forward(request, response);
 
         } catch (Exception ex)
         {

@@ -10,24 +10,43 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file = "header.jsp" %>
 
-        <center id="index">
-        <h1>Invoice detail</h1>
-        <%
-            int invoice_id = Integer.parseInt(request.getParameter("selected"));
-            InvoiceConnector ic = new InvoiceConnector();
-            ShoppingCart invoice = ic.getInvoice(invoice_id);
-            out.println("<b>Ordernumber: " + invoice.getInvoice_id() + " Orderdate: " + invoice.getDate() + "</b>");
-            out.println("<br><br><i>Username: " + invoice.getUser().getUserName() + " - id: " + invoice.getUser().getId() + "</i>");
-            out.println("<br><i>Email: " + invoice.getUser().getEmail() + "</i>");
-        %>
-        <br><br><br><b>Cupcake&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quantity&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total&nbsp;&nbsp;&nbsp;&nbsp;Remove</b>    
-        <%
-            for (LineItem l : invoice.getLineItems())
-            {
-                out.println("<p>" + l + "</p>");
-            }
-            out.println("<br><br><b>Total order price: " + invoice.getTotalPrice() + "</b>");
-        %>
+<%    int invoice_id = Integer.parseInt(request.getParameter("selected"));
+    InvoiceConnector ic = new InvoiceConnector();
+    ShoppingCart invoice = ic.getInvoice(invoice_id);
+%>
+<form method="POST">
+    <center id="shoppingcart">
+        <div>
+            <%out.println("<b>Ordernumber: " + invoice.getInvoice_id() + "&nbsp;&nbsp;&nbsp;&nbsp;Orderdate: " + invoice.getDate() + "</b>");
+                out.println("<br><br><i>Username: " + invoice.getUser().getUserName() + " - id: " + invoice.getUser().getId() + "</i>");
+                out.println("<br><i>Email: " + invoice.getUser().getEmail() + "</i><br><br>");
+            %>
+            <table id="shoppingcart"> 
+                <tr>
+                    <th><b>Cupcake</b></th>
+                    <th><b>Quantity</b></th>
+                    <th><b>Price</b></th>
+                    <th><b>Total</b></th>
+                </tr>
+                <%
+                    for (LineItem l : invoice.getLineItems())
+                    {
+                        out.println("<tr>");
+                        out.println("<td>" + l.getCupcake() + "</td>");
+                        out.println("<td>" + l.getQuantity() + "</td>");
+                        out.println("<td>" + l.getCupcake().getPrice() + "</td>");
+                        out.println("<td>" + l.getPrice() + "</td>");
+                        out.println("</tr>");
+                    }
+                %>
+            </table>
+            <%
+                out.println("<br><br><b>Total price: " + invoice.getTotalPrice() + "</b>");
+            %>
+
+        </div>
     </center>
-    </body>
+</form>
+
+</body>
 </html>

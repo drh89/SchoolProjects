@@ -9,8 +9,9 @@ and open the template in the editor.
 */
 
 #index div{
+    color: black;
     border-style: solid;
-    border-color: #ffe8ff;
+    border-color: rgba(239, 116, 172, 1.0);
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
     border-bottom-right-radius: 25px;
@@ -19,7 +20,8 @@ and open the template in the editor.
     box-sizing: border-box;
     width: 300px;
     height: 230px;
-    background-color: rgba(247, 228, 247, 0.5);
+    background-color: rgba(239, 116, 172, 0.3);
+    text-align: center;
 
 }
 
@@ -33,8 +35,23 @@ and open the template in the editor.
     padding: 25px;
     box-sizing: border-box;
     width: 700px;
-    height: 150px;
     background-color: rgba(232, 206, 223, 0.75);
+
+}
+
+
+#invoice div{
+    border-style: solid;
+    border-color: #f0d1e0;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    padding: 25px;
+    box-sizing: border-box;
+    width: 700px;
+    background-color: rgba(232, 206, 223, 0.75);
+
 }
 
 #shoppingcart div{
@@ -55,22 +72,12 @@ and open the template in the editor.
     text-align: center;
 }
 
-#menu div{
-    text-align: left;
-}
-
-#balance div{
-    text-align: right;
-}
-
 #index h1{
-    color: #ffe8ff;
-}
-
-#shop h1{
-    color: #C6FFFD;
+    color: rgba(239, 116, 172, 1.0);
     display: -webkit-flex;
-    -webkit-align-items: center;
+    -webkit-align-items: center; 
+    position: static; width: 700px; margin: 0 auto; 
+
 }
 
 #shoppingcart p{
@@ -84,10 +91,11 @@ and open the template in the editor.
 
 #index h3{
 
-    color: #ffe8ff;
+    color:  rgba(239, 116, 172, 1.0);
 }
 
 body{
     background-image: url("https://media.altphotos.com/cache/images/2017/03/12/09/1504/cupcakes.jpg");
     background-size: cover;
 }
+

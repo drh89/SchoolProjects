@@ -14,7 +14,8 @@
     </head>
     <body>
         <center id="index">
-        <h1> <img src="Images/cupcake.png" width="5%" height="5%">  WELCOME TO SWEET RETREAT <img src="Images/cupcake.png" width="5%" height="5%"></h1>
+
+        <h1> <img src="Images/cupcake.png" width="10%" height="10%">&nbsp;&nbsp;  WELCOME TO SWEET RETREAT &nbsp;&nbsp;<img src="Images/cupcake.png" width="10%" height="10%"></h1>
 
         <h3>Type in username and password</h3> 
         </center>

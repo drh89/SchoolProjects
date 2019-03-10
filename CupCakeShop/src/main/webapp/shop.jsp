@@ -16,8 +16,7 @@
 <%@include file = "header.jsp" %>
 
 
-<%    
-    List<LineItem> lineitems = new ArrayList<>();
+<%    List<LineItem> lineitems = new ArrayList<>();
     ShoppingCart shoppingCart = new ShoppingCart(lineitems, user);
     session.setAttribute("cart", shoppingCart);
 

@@ -15,10 +15,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file = "header.jsp" %>
 
-<%    String bottom = request.getParameter("bottom");
+<%  String bottom = request.getParameter("bottom");
     String topping = request.getParameter("topping");
     int quantity = Integer.parseInt(request.getParameter("quantity"));
     CupcakeConnector cc = new CupcakeConnector();
+    Cupcake cupcake = cc.getCupCake(bottom, topping);
 
     ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
 %>

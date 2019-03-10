@@ -17,7 +17,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file = "header.jsp" %>
 
-<%        ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
+
+<%    ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
     InvoiceConnector ic = new InvoiceConnector();
     String checkout = ic.checkout(cart);
     ShoppingCart invoice = null;
@@ -31,24 +32,42 @@
 
 
 %>
-<form method = "POST">
-    <center>
-        <%                if (checkout.equals("Thank you for your order"))
-            {
-                for (LineItem l : invoice.getLineItems())
-                {
-                    out.println("<p>" + l + "</p>");
-                }
-                out.println("<b>Total price: " + invoice.getTotalPrice() + "</b><br>");
-            }
-            out.println("<br><i>" + checkout + "</i>");
 
-            if (checkout.equals("Your balance is to low, to place the order"))
+<form method = "POST">
+    <center id="shoppingcart">
+        <%        if (checkout.equals("Thank you for your order"))
             {
-                out.println("<br><br><input type=\"submit\" value=\"Add money to your account\" formaction= \"" + ref + "\">");
-            }
         %>
-        <br><br><input type="submit" value="Keep shopping" formaction= "shop.jsp">
+        <div>
+            <table id="shoppingcart"> 
+                <tr>
+                    <th><b>Cupcake</b></th>
+                    <th><b>Quantity</b></th>
+                    <th><b>Price</b></th>
+                    <th><b>Total</b></th>
+                </tr>
+                <%
+                    for (LineItem l : cart.getLineItems())
+                    {
+                        out.println("<tr>");
+                        out.println("<td>" + l.getCupcake() + "</td>");
+                        out.println("<td>" + l.getQuantity() + "</td>");
+                        out.println("<td>" + l.getCupcake().getPrice() + "</td>");
+                        out.println("<td>" + l.getPrice() + "</td>");
+                        out.println("</tr>");
+                    }
+
+                %>
+            </table>
+            <%                
+                out.println("<br><br><b>Total price: " + cart.getTotalPrice() + "</b>");
+                }
+
+                out.println("<br><br><i>" + checkout + "</i>");
+            %>
+            <br><br><input type="submit" value="Keep shopping" formaction= "shop.jsp">
+
+        </div>
     </center>
 </form>
 
