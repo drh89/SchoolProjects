@@ -1,7 +1,7 @@
 <%-- 
     Document   : shoppingcart
     Created on : 05-03-2019, 14:24:14
-    Author     : aamandajuhl
+    Author     : aamandajuhl and sofieamalielandt
 --%>
 
 <%@page import="logic.Cupcake"%>
@@ -15,18 +15,19 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file = "header.jsp" %>
 
-<%  String bottom = request.getParameter("bottom");
+<%    
+    String bottom = request.getParameter("bottom");
     String topping = request.getParameter("topping");
     int quantity = Integer.parseInt(request.getParameter("quantity"));
+
     CupcakeConnector cc = new CupcakeConnector();
     Cupcake cupcake = cc.getCupCake(bottom, topping);
-
     ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
 %>
 <form method = "POST">
     <center id="shop">
         <div>
-            <br><br><b>Bottoms</b>
+            <br><br>Bottoms
             <select name="bottom">  
                 <option disabled selected>Choose bottom</option>
                 <%
@@ -38,7 +39,8 @@
                 %>
             </select>
             &nbsp;&nbsp;
-            <b>Toppings</b>
+
+            Toppings
             <select name="topping"> 
                 <option disabled selected>Choose topping</option>
                 <%
@@ -51,7 +53,8 @@
                 %>
             </select>
             &nbsp;&nbsp;
-            <b>Quantity</b>
+
+            Quantity
             <input type ="number" name ="quantity" value="1" size="2" min="1" max="100" required><br>
             <br><input type="submit" value="Add to cart" formaction= "shoppingcart.jsp">
             <%
@@ -65,38 +68,37 @@
             %>
         </div>
     </center>
-    <br><br><br><br>
-    <center id="shoppingcart">
-        <div>
-            <table id="shoppingcart"> 
-                <tr>
-                    <th><b>Cupcake</b></th>
-                    <th><b>Quantity</b></th>
-                    <th><b>Price</b></th>
-                    <th><b>Total</b></th>
-                </tr>
-                <%
-                    for (LineItem l : cart.getLineItems())
-                    {
-                        out.println("<tr>");
-                        out.println("<td>" + l.getCupcake() + "</td>");
-                        out.println("<td>" + l.getQuantity() + "</td>");
-                        out.println("<td>" + l.getCupcake().getPrice() + "</td>");
-                        out.println("<td>" + l.getPrice() + "</td>");
-                        out.println("</tr>");
-                    }
-                %>
-            </table>
+</form>
+<br><br><br><br>
+<center id="shoppingcart">
+    <div>
+        <table id="shoppingcart"> 
+            <tr>
+                <th><b>Cupcake</b></th>
+                <th><b>Quantity</b></th>
+                <th><b>Price</b></th>
+                <th><b>Total</b></th>
+            </tr>
             <%
-                out.println("<br><br><b>Total price: " + cart.getTotalPrice() + "</b>");
+                for (LineItem l : cart.getLineItems())
+                {
+                    out.println("<tr>");
+                    out.println("<td>" + l.getCupcake() + "</td>");
+                    out.println("<td>" + l.getQuantity() + "</td>");
+                    out.println("<td>" + l.getCupcake().getPrice() + "</td>");
+                    out.println("<td>" + l.getPrice() + "</td>");
+                    out.println("</tr>");
+                }
             %>
-
-            </form>
-            <form method = "POST">
-                <br><br><input type="submit" value="Checkout" formaction= "checkout.jsp">
-            </form>
-        </div>
-    </center>
+        </table>
+        <%
+            out.println("<br><br><b>Total price: " + cart.getTotalPrice() + "</b>");
+        %>
+        <form method = "POST">
+            <br><br><input type="submit" value="Checkout" formaction= "checkout.jsp">
+        </form>
+    </div>
+</center>
 </body>
 </html>
 

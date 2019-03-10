@@ -15,7 +15,6 @@
     <center id="invoice">
         <ul>
             <li><p><h1> All invoices</h1></p></li>
-
             <%            
                 InvoiceConnector ic = new InvoiceConnector();
                 List<ShoppingCart> invoices = ic.getAllInvoices();

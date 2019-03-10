@@ -1,7 +1,7 @@
 <%-- 
     Document   : shop
     Created on : 05-03-2019, 13:39:32
-    Author     : aamandajuhl
+    Author     : aamandajuhl and sofieamalielandt
 --%>
 
 <%@page import="logic.ShoppingCart"%>
@@ -15,12 +15,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file = "header.jsp" %>
 
-
-<%    List<LineItem> lineitems = new ArrayList<>();
+<%  
+    CupcakeConnector cc = new CupcakeConnector();
+    List<LineItem> lineitems = new ArrayList<>();
     ShoppingCart shoppingCart = new ShoppingCart(lineitems, user);
     session.setAttribute("cart", shoppingCart);
-
-    CupcakeConnector cc = new CupcakeConnector();
 %>
 <form method = "POST">
     <center id="shop">

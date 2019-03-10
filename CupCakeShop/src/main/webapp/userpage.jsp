@@ -10,12 +10,12 @@
 <%@page import="logic.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file = "header.jsp" %>
-
 <form method ="POST"> 
     <center id="invoice">
         <ul>
             <li><p><h1>Your invoices</h1></p></li>
-            <%            InvoiceConnector ic = new InvoiceConnector();
+            <%            
+                InvoiceConnector ic = new InvoiceConnector();
                 List<ShoppingCart> invoices = ic.getInvoices(user.getUserName());
                 for (ShoppingCart invoice : invoices)
                 {
@@ -25,6 +25,5 @@
         </ul>
     </center>
 </form>
-
 </body>
 </html>

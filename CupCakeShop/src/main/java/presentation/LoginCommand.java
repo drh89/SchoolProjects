@@ -35,7 +35,6 @@ public class LoginCommand extends Command
             if (!valid)
             {
                 request.getRequestDispatcher("/defaultLogin.jsp").forward(request, response);
-
             }
             if (valid)
             {

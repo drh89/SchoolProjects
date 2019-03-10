@@ -15,8 +15,9 @@
     <body>
     <center id="index">
         <br><br>
-        <h1> <img src="Images/cupcake.png" width="10%" height="10%">&nbsp;&nbsp;  Welcome to Sweet Retreat &nbsp;&nbsp;<img src="Images/cupcake.png" width="10%" height="10%"></h1>
-
+        <h1> <img src="Images/cupcake.png" width="10%" height="10%">
+            &nbsp;&nbsp;  Welcome to Sweet Retreat &nbsp;&nbsp;
+            <img src="Images/cupcake.png" width="10%" height="10%"></h1>
         <p>Type in username and password</p> 
     </center>
 

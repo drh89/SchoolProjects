@@ -1,9 +1,8 @@
 <%-- 
     Document   : checkout
     Created on : 06-03-2019, 12:21:52
-    Author     : aamandajuhl
+    Author     : aamandajuhl and sofieamalielandt
 --%>
-
 <%@page import="logic.InvoiceConnector"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="logic.Topping"%>
@@ -13,12 +12,11 @@
 <%@page import="logic.User"%>
 <%@page import="logic.ShoppingCart"%>
 <%@page import="logic.Cupcake"%>
-<%@page import="logic.CupcakeConnector"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file = "header.jsp" %>
 
-
-<%    ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
+<%    
+    ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
     InvoiceConnector ic = new InvoiceConnector();
     String checkout = ic.checkout(cart);
     ShoppingCart invoice = null;
@@ -28,11 +26,7 @@
         invoice = ic.getInvoice(cart.getInvoice_id());
 
     }
-    CupcakeConnector cc = new CupcakeConnector();
-
-
 %>
-
 <form method = "POST">
     <center id="shoppingcart">
         <%        if (checkout.equals("Thank you for your order"))
@@ -66,11 +60,8 @@
                 out.println("<br><br><i>" + checkout + "</i>");
             %>
             <br><br><input type="submit" value="Keep shopping" formaction= "shop.jsp">
-
         </div>
     </center>
 </form>
-
-
 </body>
 </html>

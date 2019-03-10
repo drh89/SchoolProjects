@@ -1,16 +1,16 @@
 <%-- 
     Document   : invoice
     Created on : 06-03-2019, 14:56:33
-    Author     : aamandajuhl
+    Author     : aamandajuhl and sofieamalielandt
 --%>
-
 <%@page import="logic.LineItem"%>
 <%@page import="logic.ShoppingCart"%>
 <%@page import="logic.InvoiceConnector"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file = "header.jsp" %>
 
-<%            int invoice_id = Integer.parseInt(request.getParameter("selected"));
+<%           
+    int invoice_id = Integer.parseInt(request.getParameter("selected"));
     InvoiceConnector ic = new InvoiceConnector();
     ShoppingCart invoice = ic.getInvoice(invoice_id);
 %>
@@ -40,7 +40,6 @@
             <%
                 out.println("<br><br><b>Total price: " + invoice.getTotalPrice() + "</b>");
             %>
-
         </div>
     </center>
 </form>

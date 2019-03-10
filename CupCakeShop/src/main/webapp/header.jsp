@@ -1,7 +1,7 @@
 <%-- 
     Document   : Header
     Created on : 08-03-2019, 12:25:08
-    Author     : aamandajuhl
+    Author     : aamandajuhl and sofieamalielandt
 --%>
 
 <%@page import="logic.User"%>
@@ -11,7 +11,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="css/style.css">
-
         <title>SWEET RETREAT</title>
         <style>
             #menu ul {
@@ -26,9 +25,7 @@
                 height: 80px;
                 font-family: HelveticaNeue-Thin;
             }
-
-            #menu li p 
-            {
+            #menu li p {
                 float: right;
                 display: block;
                 color: white;
@@ -36,11 +33,8 @@
                 padding: 15px 16px;
                 text-decoration: none;
                 height: 80px;
-
             }
-
-            #menu li input 
-            {
+            #menu li input {
                 float: right;
                 position: static; width: 100px; 
                 display: inline-block;
@@ -51,11 +45,8 @@
                 color: white;
                 border: none;
                 height: 80px;
-
             }
-
-            #menu li button
-            {
+            #menu li button {
                 float: right;
                 display: inline-block;
                 text-align: center;
@@ -67,10 +58,8 @@
                 border: none;
                 font-size: 10px;
                 height: 80px;
-
             }
-
-            #menu li a{
+            #menu li a {
                 float: left;
                 display: block;
                 color: white;
@@ -81,8 +70,7 @@
                 display: -webkit-flex;
                 -webkit-align-items: center; 
             }
-
-            #menu li a img{
+            #menu li a img {
                 display: block;
                 text-align: center;
                 color: black;
@@ -92,13 +80,10 @@
                 text-decoration: none;  
                 display: -webkit-flex;
                 -webkit-align-items: center; 
-
             }
-
-            #menu li a:hover, li button:hover{
+            #menu li a:hover, li button:hover {
                 background-color: rgba(239, 116, 172, 1.0);
             }
-
             #invoice ul {
                 list-style-type: none;
                 margin: 0;
@@ -111,25 +96,21 @@
                 border-bottom-left-radius: 25px;
                 font-family: HelveticaNeue-Thin;
             }
-
-            #invoice li h1 
-            {
+            #invoice li h1 {
                 display: block;
                 color: black;
                 text-align: center;
                 padding: 20px 5px;
                 text-decoration: none;
             }
-
-            #invoice li a{
+            #invoice li a {
                 display: block;
                 text-align: center;
                 color: black;
                 padding: 20px 16px;
                 text-decoration: none;   
             }
-
-            #invoice li a:hover{
+            #invoice li a:hover {
                 background-color: rgba(239, 116, 172, 0.8);
                 color: white;
                 border-top-right-radius: 25px;
@@ -138,7 +119,6 @@
                 border-bottom-left-radius: 25px;
             }
         </style>
-
     </head>
     <body>
         <%
@@ -153,7 +133,6 @@
             <center id="menu">
                 <ul>
                     <li> <a class="active" href="shop.jsp"><img src="Images/cupcake.png" width="5%" height="5%"></a></li>
-
                     <li>
                         <%
                             out.println("<a href=" + ref + ">" + user.getUserName() + "</a>");
@@ -164,13 +143,12 @@
                             <%
                                 out.println("Balance: " + user.getBalance() + " kr.&nbsp;&nbsp");
                             %>
-                        </p></li>
+                        </p>
+                    </li>
                     <li>
                         <button type="submit" formaction="CommandController?command=moneytransfer">Add money to account</button>          
                         <input type ="number" name ="amount" placeholder="Enter amount" min="1" max="1000" required>
-
                     </li>
-
                 </ul>
                 <br><br><br><br><br><br>    
                 <img src="Images/cupcake.png" width="10%" height="10%">

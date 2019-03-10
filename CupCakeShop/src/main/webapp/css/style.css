@@ -5,10 +5,10 @@ and open the template in the editor.
 */
 /* 
     Created on : 08-03-2019, 12:30:24
-    Author     : aamandajuhl
+    Author     : aamandajuhl and sofieamalielandt
 */
 
-#index div{
+#index div {
     border-style: solid;
     border-color: #f0d1e0;
     border-top-right-radius: 25px;
@@ -21,10 +21,23 @@ and open the template in the editor.
     background-color: rgba(232, 206, 223, 0.60);
     text-align: center;
     font-family: HelveticaNeue-Thin;
-
 }
 
-#shop div{
+#index h1 {
+    color: rgba(239, 116, 172, 1.0);
+    display: -webkit-flex;
+    -webkit-align-items: center; 
+    position: static; width: 580px; margin: 0 auto; 
+    font-family: HelveticaNeue-Thin;
+}
+
+#index p {
+    color:  rgba(239, 116, 172, 1.0);
+    font-family: HelveticaNeue-Thin;
+}
+
+
+#shop div {
     border-style: solid;
     border-color: #f0d1e0;
     border-top-right-radius: 25px;
@@ -51,7 +64,6 @@ and open the template in the editor.
     width: 700px;
     background-color: rgba(232, 206, 223, 0.80);
     font-family: HelveticaNeue-Thin;
-
 }
 
 #shoppingcart div{
@@ -68,34 +80,19 @@ and open the template in the editor.
     font-family: HelveticaNeue-Thin;
 }
 
-#shoppingcart td, #shoppingcart th{
+#shoppingcart td, #shoppingcart th {
     padding: 8px;
     text-align: center;
     font-family: HelveticaNeue-Thin;
 }
 
-#index h1{
-    color: rgba(239, 116, 172, 1.0);
-    display: -webkit-flex;
-    -webkit-align-items: center; 
-    position: static; width: 580px; margin: 0 auto; 
-    font-family: HelveticaNeue-Thin;
-
-}
-
-#shoppingcart p{
+#shoppingcart p {
     text-align: left;
     font-family: HelveticaNeue-Thin;
 }
 
-#shoppingcart b{
+#shoppingcart b {
     text-align: left;
-    font-family: HelveticaNeue-Thin;
-}
-
-
-#index p{
-    color:  rgba(239, 116, 172, 1.0);
     font-family: HelveticaNeue-Thin;
 }
 

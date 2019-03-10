@@ -1,7 +1,7 @@
 <%-- 
     Document   : adminInvoice
     Created on : 07-03-2019, 13:42:38
-    Author     : aamandajuhl
+    Author     : aamandajuhl and sofieamalielandt
 --%>
 
 <%@page import="logic.LineItem"%>
@@ -10,14 +10,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file = "header.jsp" %>
 
-<%    int invoice_id = Integer.parseInt(request.getParameter("selected"));
+<%    
+    int invoice_id = Integer.parseInt(request.getParameter("selected"));
     InvoiceConnector ic = new InvoiceConnector();
     ShoppingCart invoice = ic.getInvoice(invoice_id);
 %>
 <form method="POST">
     <center id="shoppingcart">
         <div>
-            <%out.println("<b>Ordernumber: " + invoice.getInvoice_id() + "&nbsp;&nbsp;&nbsp;&nbsp;Orderdate: " + invoice.getDate() + "</b>");
+            <%
+                out.println("<b>Ordernumber: " + invoice.getInvoice_id() + "&nbsp;&nbsp;&nbsp;&nbsp;Orderdate: " + invoice.getDate() + "</b>");
                 out.println("<br><br><i>Username: " + invoice.getUser().getUserName() + " - id: " + invoice.getUser().getId() + "</i>");
                 out.println("<br><i>Email: " + invoice.getUser().getEmail() + "</i><br><br>");
             %>
@@ -43,7 +45,6 @@
             <%
                 out.println("<br><br><b>Total price: " + invoice.getTotalPrice() + "</b>");
             %>
-
         </div>
     </center>
 </form>

@@ -16,7 +16,7 @@
 
 <h2>Error</h2>
 
-<p>Error message: <%= errormessage %></p>
+<p>Error message: <% out.println(errormessage);%></p>
 
 
 
