@@ -86,7 +86,7 @@ and open the template in the editor.
 }
 
 body{
-    background-image: url("https://media.altphotos.com/cache/images/2017/03/12/09/1504/cupcakes.jpg");
+    background-image: url("../Images/cupcakes.png");
     background-size: cover;
     font-family: HelveticaNeue-Thin;
 }

@@ -1,7 +1,7 @@
 <%@include file = "loginheader.jsp" %>
 <style>          
     body{
-        background-image: url("https://media.altphotos.com/cache/images/2017/04/04/05/1504/baked-cake-turquoise.jpg");
+        background-image: url("Images/index_cupcake.jpg");
         background-position: 70% 30%;
     }         
 </style>
