@@ -60,4 +60,51 @@ public class LoginConnector
         return um.getUser(username);
     }
 
+    public String updateUser(User user, String username, String email, String newpassword, String oldpassword) throws SQLException, Exception
+    {
+        boolean notInUse = true;
+        boolean valid = false;
+        List<User> users = um.getAllUsers();
+
+        for (User u : users)
+        {
+            if (u.getUserName().equals(username))
+            {
+                if (u.getId() != user.getId())
+                {
+                    notInUse = false;
+                }
+            }
+
+            if (u.getId() == user.getId())
+            {
+                if (u.getPassword().equals(oldpassword) && newpassword.equals(u.getPassword()))
+                {
+                    valid = true;
+                } else if (u.getPassword().equals(oldpassword))
+                {
+                    user.setPassword(newpassword);
+                    valid = true;
+                }
+            }
+        }
+
+        if (notInUse && valid)
+        {
+            user.setUserName(username);
+            user.setEmail(email);
+            System.out.println(user.getUserName());
+            um.updateUser(user);
+            return "Information saved";
+        } else if (notInUse && !valid)
+        {
+            um.updateUser(user);
+            return "Wrong password";
+        }
+
+        System.out.println(user.getUserName());
+
+        return "Username already in use";
+    }
+
 }

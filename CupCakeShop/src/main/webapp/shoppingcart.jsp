@@ -14,7 +14,6 @@
 <%@page import="logic.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file = "header.jsp" %>
-
 <%    
     session.removeAttribute("reply");
     ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");

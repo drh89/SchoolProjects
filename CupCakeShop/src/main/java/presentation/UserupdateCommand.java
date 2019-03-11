@@ -10,34 +10,36 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import logic.NewUserConnector;
+import logic.LoginConnector;
 import logic.User;
 
 /**
  *
- * @author aamandajuhl and sofieamalielandt
+ * @author sofieamalielandt
  */
-public class NewUserCommand extends Command
+public class UserupdateCommand extends Command
 {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-
         try
         {
             HttpSession session = request.getSession();
+            LoginConnector lc = new LoginConnector();
+
             String username = request.getParameter("username");
-            String password = request.getParameter("password");
+            String oldpassword = request.getParameter("oldpassword");
+            String newpassword = request.getParameter("newpassword");
             String email = request.getParameter("email");
-            
-            User u = new User(username, password, email);
-            NewUserConnector c = new NewUserConnector();
-            String res = c.addUser(u);
-            session.setAttribute("res", res);
-            
-            request.getRequestDispatcher("/newuser.jsp").forward(request, response);
-            
+            User user = (User) session.getAttribute("user");
+
+            String update = lc.updateUser(user, username, email, newpassword, oldpassword);
+            session.setAttribute("update", update);
+            session.setAttribute("user ", user);
+
+            request.getRequestDispatcher("/CommandController?command=userinformation").forward(request, response);
+
         } catch (Exception ex)
         {
             System.out.println(ex.getMessage());

@@ -81,22 +81,35 @@
                 display: -webkit-flex;
                 -webkit-align-items: center; 
             }
-            
+
+            #menu li a:hover, li button:hover, .dropdown:hover {
+                background-color: rgba(239, 116, 172, 1.0);
+            }
+
+            .dropdown-content {
+                display: none;
+                position: relative;
+                min-width: 100px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 5;
+            }
+
+            .dropdown:hover .dropdown-content {
+                display: list-item;
+            }
+
             #cart li a img {
                 display: block;
                 text-align: center;
                 color: black;
                 padding: 0px 0px;
-                width: 35px;
+                width: 36px;
                 height: 30px;
                 text-decoration: none;  
                 display: -webkit-flex;
                 -webkit-align-items: center; 
             }
-            
-            #menu li a:hover, li button:hover {
-                background-color: rgba(239, 116, 172, 1.0);
-            }
+
             #invoice ul {
                 list-style-type: none;
                 margin: 0;
@@ -146,14 +159,19 @@
             <center id="menu">
                 <ul>
                     <li> <a class="active" href="CommandController?command=shop"><img src="Images/cupcake.png"></a></li>
-                    <li>
+                    <li class="dropdown">
                         <%
-                            out.println("<a href=" + ref + ">" + user.getUserName() + "</a>");
+                            out.println("<a href=\"javascript:void(0)\">" + user.getUserName() + "</a>");
                         %>
+                        <div class="dropdown-content">
+                            <a href="CommandController?command=userinformation">Information</a>
+                            <%out.println("<a href=" + ref + ">Invoices</a>");%>
+
+                        </div>
                     </li>
                     <li><a class="active" href="index.jsp">Logout</a></li>
                     <center id="cart">
-                    <li><a class="active" href="shoppingcart.jsp"><img src="Images/shoppingcart.png" width="5%" height="5%"></a></li>
+                        <li><a class="active" href="shoppingcart.jsp"><img src="Images/shoppingcart.png" width="5%" height="5%"></a></li>
                     </center>
                     <li><p>
                             <%

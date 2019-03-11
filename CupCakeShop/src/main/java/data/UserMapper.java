@@ -124,6 +124,27 @@ public class UserMapper
 
         dbc.close();
     }
+    
+    public void updateUser(User user) throws SQLException
+    {
+        dbc.open();
+
+        String query = "UPDATE `Cupcakes`.`user`"
+                + "SET `username` = ?,`password` = ?,`email` = ? WHERE (`user_id` = '" + user.getId() + "');";
+
+        String username = user.getUserName();
+        String password = user.getPassword();
+        String email = user.getEmail();
+
+        PreparedStatement statement = dbc.preparedStatement(query, Statement.RETURN_GENERATED_KEYS);
+
+        statement.setString(1, username);
+        statement.setString(2, password);
+        statement.setString(3, email);
+        statement.executeUpdate();
+
+        dbc.close();
+    }
 
     public void newUser(User newUser) throws SQLException
     {
@@ -185,8 +206,10 @@ public class UserMapper
     public static void main(String[] args) throws Exception
     {
         UserMapper userMapper = new UserMapper();
-        User user = new User("sveske", "1234", "sveskemås@hotsveske.com");
-        userMapper.newUser(user);
+        User user = new User(37,"Essa", "1234", "sveskemås@hotsveske.com", 0, "customer");
+        //userMapper.newUser(user);
+        userMapper.updateUser(user);
         System.out.println(userMapper.getAllUsers());
+        
     }
 }

@@ -29,7 +29,7 @@
             <br><br>
             <input type="submit" value="Login" formaction="CommandController?command=login">
             <br><br>
-            Email <input type ="text" name ="email" value="">
+            Email <input type ="text" name ="email" value="" minlength="6" required>
             <br><br>
             <input type="submit" value="Create user" formaction="CommandController?command=newuser">
 

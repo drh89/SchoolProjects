@@ -51,12 +51,20 @@ public abstract class Command
                 break;
 
             case "removeItem":
-                
+
                 c = new RemoveItemCommand();
                 break;
-                
+
             case "user":
                 c = new UserCommand();
+                break;
+
+            case "userinformation":
+                c = new UserinfoCommand();
+                break;
+                
+            case "update":
+                c = new UserupdateCommand();
                 break;
 
             case "admin":
