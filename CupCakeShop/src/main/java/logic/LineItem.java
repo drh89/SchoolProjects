@@ -24,7 +24,7 @@ public class LineItem
         this.price = cupcake.getPrice() * quantity;
         this.invoice_id = invoice_id;
     }
-    
+
     public LineItem(Cupcake cupcake, int quantity, int invoice_id)
     {
         this.cupcake = cupcake;

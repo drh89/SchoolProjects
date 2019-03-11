@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author aamandajuhl
+ * @author aamandajuhl and sofieamalielandt
  */
 public class LoginConnector
 {
@@ -28,26 +28,33 @@ public class LoginConnector
         List<User> users = um.getAllUsers();
         User result = null;
 
-        if (username == null || username.isEmpty()) return false;
-        if (password == null || password.isEmpty()) return false;
+        if (username == null || username.isEmpty())
+        {
+            return false;
+        }
+        if (password == null || password.isEmpty())
+        {
+            return false;
+        }
 
         for (User u : users)
         {
             if (u.getUserName().equals(username))
             {
                 result = u;
-            }   
+            }
         }
-        if(result == null) return false;
-        
-        else if (result.getPassword().equals(password))
+        if (result == null)
+        {
+            return false;
+        } else if (result.getPassword().equals(password))
         {
             return true;
         }
-        
+
         return false;
     }
-    
+
     public User getUser(String username) throws SQLException
     {
         return um.getUser(username);

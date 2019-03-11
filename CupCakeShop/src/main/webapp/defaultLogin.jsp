@@ -14,7 +14,7 @@
             Password <input type ="password" name ="password" value="">
             <br><br>
             <input type="submit" value="Login" formaction="CommandController?command=login">
-            <br><br><i>Wrong username or password</i>
+            <br><br>Wrong username or password
         </div>
     </form>
 </body>

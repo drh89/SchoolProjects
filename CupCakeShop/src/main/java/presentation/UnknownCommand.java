@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author aamandajuhl
+ * @author aamandajuhl and sofieamalielandt
  */
 public class UnknownCommand extends Command
 {

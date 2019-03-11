@@ -11,10 +11,11 @@ import java.util.Properties;
 
 /**
  *
- * @author aamandajuhl
+ * @author aamandajuhl and sofieamalielandt
  */
 public class DBConnector
 {
+
     private Connection connection = null;
 
     //Constants

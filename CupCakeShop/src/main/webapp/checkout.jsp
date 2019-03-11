@@ -15,8 +15,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file = "header.jsp" %>
 
-<%    
-    ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
+<%    ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
     InvoiceConnector ic = new InvoiceConnector();
     String checkout = ic.checkout(cart);
     ShoppingCart invoice = null;
@@ -53,13 +52,18 @@
 
                 %>
             </table>
-            <%                
-                out.println("<br><br><b>Total price: " + cart.getTotalPrice() + "</b>");
-                }
-
-                out.println("<br><br><i>" + checkout + "</i>");
+            <%                    out.println("<br><br><b>Total price: " + cart.getTotalPrice() + "</b>");
+                out.println("<br><br>" + checkout);
+            } else
+            {
             %>
-            <br><br><input type="submit" value="Keep shopping" formaction= "shop.jsp">
+            <div>
+                <%
+                        out.println("<br><br>" + checkout);
+                    }
+                %>
+                <br><br><input type="submit" value="Keep shopping" formaction= "shop.jsp">
+            </div>
         </div>
     </center>
 </form>

@@ -15,13 +15,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file = "header.jsp" %>
 
-<%    
-    String bottom = request.getParameter("bottom");
-    String topping = request.getParameter("topping");
-    int quantity = Integer.parseInt(request.getParameter("quantity"));
-
-    CupcakeConnector cc = new CupcakeConnector();
-    Cupcake cupcake = cc.getCupCake(bottom, topping);
+<%    Cupcake cupcake = (Cupcake) session.getAttribute("cupcake");
     ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
 %>
 <form method = "POST">
@@ -31,7 +25,7 @@
             <select name="bottom">  
                 <option disabled selected>Choose bottom</option>
                 <%
-                    List<Bottom> bottoms = cc.getCupcakeBottoms();
+                    List<Bottom> bottoms = (List<Bottom>) session.getAttribute("bottoms");
                     for (Bottom b : bottoms)
                     {
                         out.println("<option>" + b.toString() + "</option>");
@@ -44,7 +38,7 @@
             <select name="topping"> 
                 <option disabled selected>Choose topping</option>
                 <%
-                    List<Topping> toppings = cc.getCupcakeToppings();
+                    List<Topping> toppings = (List<Topping>) session.getAttribute("toppings");
 
                     for (Topping t : toppings)
                     {
@@ -60,10 +54,7 @@
             <%
                 if (cupcake == null)
                 {
-                    out.println("<br><br><i>Please choose a bottom and a topping for your cupcake</i>");
-                } else
-                {
-                    cart.addCupcake(new LineItem(cupcake, quantity));
+                    out.println("<br><br>Please choose a bottom and a topping for your cupcake");
                 }
             %>
         </div>

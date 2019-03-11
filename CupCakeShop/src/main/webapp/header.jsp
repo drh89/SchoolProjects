@@ -132,7 +132,7 @@
         <form method = "POST">
             <center id="menu">
                 <ul>
-                    <li> <a class="active" href="shop.jsp"><img src="Images/cupcake.png" width="5%" height="5%"></a></li>
+                    <li> <a class="active" href="CommandController?command=shop"><img src="Images/cupcake.png" width="5%" height="5%"></a></li>
                     <li>
                         <%
                             out.println("<a href=" + ref + ">" + user.getUserName() + "</a>");

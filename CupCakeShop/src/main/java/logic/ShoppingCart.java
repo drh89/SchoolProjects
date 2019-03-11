@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author aamandajuhl
+ * @author aamandajuhl and sofieamalielandt
  */
 public class ShoppingCart
 {
@@ -58,7 +58,6 @@ public class ShoppingCart
     {
         this.invoice_id = invoice_id;
     }
-    
 
     public User getUser()
     {
@@ -101,7 +100,7 @@ public class ShoppingCart
             lineItems.add(i);
         }
     }
-    
+
     public void removeCupcake(LineItem i)
     {
         lineItems.remove(i);
@@ -112,7 +111,5 @@ public class ShoppingCart
     {
         return "Ordernumber: " + invoice_id + " " + date;
     }
-    
-    
 
 }

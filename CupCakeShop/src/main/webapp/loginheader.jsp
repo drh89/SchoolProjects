@@ -1,7 +1,7 @@
 <%-- 
     Document   : loginheader
     Created on : 08-03-2019, 12:29:25
-    Author     : aamandajuhl
+    Author     : aamandajuhl and sofieamalielandt
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

@@ -6,17 +6,24 @@
 package presentation;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import logic.Bottom;
+import logic.CupcakeConnector;
+import logic.LineItem;
+import logic.ShoppingCart;
+import logic.Topping;
 import logic.User;
 
 /**
  *
- * @author aamandajuhl and sofieamalielandt
+ * @author sofieamalielandt
  */
-public class MoneyTransferCommand extends Command
+public class ShopCommand extends Command
 {
 
     @Override
@@ -25,23 +32,23 @@ public class MoneyTransferCommand extends Command
         try
         {
             HttpSession session = request.getSession();
-            Double amount = Double.parseDouble(request.getParameter("amount"));
+            CupcakeConnector cc = new CupcakeConnector();
+            List<LineItem> lineitems = new ArrayList<>();
             User user = (User) session.getAttribute("user");
-            user.setBalance(amount);
-
-            String ref = "/userpage.jsp";
-            if (user.getType().equals("admin"))
-            {
-                ref = "/adminpage.jsp";
-            }
-
+            ShoppingCart shoppingCart = new ShoppingCart(lineitems, user);
+            session.setAttribute("cart", shoppingCart);
+            
+             List<Bottom> bottoms = cc.getCupcakeBottoms();
+             session.setAttribute("bottoms", bottoms);
+             List<Topping> toppings = cc.getCupcakeToppings();
+             session.setAttribute("toppings", toppings);
+             
             request.getRequestDispatcher("/shop.jsp").forward(request, response);
-
+            
         } catch (Exception ex)
         {
             System.out.println(ex.getMessage());
         }
-
     }
 
 }

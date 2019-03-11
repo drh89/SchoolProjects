@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 package logic;
+
 /**
  *
- * @author Dennis
+ * @author aamandajuhl and sofieamalielandt
  */
 public class Cupcake
 {

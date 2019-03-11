@@ -7,7 +7,7 @@ package logic;
 
 /**
  *
- * @author Dennis
+ * @author aamandajuhl and sofieamalielandt
  */
 public class Bottom
 {

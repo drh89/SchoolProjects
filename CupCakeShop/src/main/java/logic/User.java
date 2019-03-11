@@ -9,11 +9,11 @@ import data.UserMapper;
 
 /**
  *
- * @author Dennis
+ * @author aamandajuhl and sofieamalielandt
  */
 public class User
 {
-    //TEST COMMENT FOR GIT!
+
     private int id;
     private String userName;
     private String password;
@@ -23,7 +23,6 @@ public class User
 
     public User(int id, String userName, String password, String email, double balance, String type)
     {
-
         this.id = id;
         this.userName = userName;
         this.password = password;
@@ -34,7 +33,6 @@ public class User
 
     public User(String userName, String password, String email)
     {
-
         this.userName = userName;
         this.password = password;
         this.email = email;
@@ -46,7 +44,7 @@ public class User
     {
         return type;
     }
-    
+
     public int getId()
     {
         return id;
@@ -111,7 +109,7 @@ public class User
     {
         this.balance = balance - price;
     }
-    
+
     @Override
     public String toString()
     {

@@ -1,7 +1,7 @@
 <%-- 
     Document   : adminpage
     Created on : 07-03-2019, 12:55:04
-    Author     : aamandajuhl
+    Author     : aamandajuhl and sofieamalielandt
 --%>
 
 <%@page import="logic.ShoppingCart"%>

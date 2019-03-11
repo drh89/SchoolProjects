@@ -15,12 +15,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file = "header.jsp" %>
 
-<%  
-    CupcakeConnector cc = new CupcakeConnector();
-    List<LineItem> lineitems = new ArrayList<>();
-    ShoppingCart shoppingCart = new ShoppingCart(lineitems, user);
-    session.setAttribute("cart", shoppingCart);
-%>
 <form method = "POST">
     <center id="shop">
         <div>
@@ -28,7 +22,7 @@
             <select name="bottom">
                 <option disabled selected>Choose bottom</option>
                 <%
-                    List<Bottom> bottoms = cc.getCupcakeBottoms();
+                    List<Bottom> bottoms = (List<Bottom>) session.getAttribute("bottoms");
                     for (Bottom b : bottoms)
                     {
                         out.println("<option>" + b.toString() + "</option>");
@@ -40,7 +34,7 @@
             <select name="topping">
                 <option disabled selected>Choose topping</option>
                 <%
-                    List<Topping> toppings = cc.getCupcakeToppings();
+                    List<Topping> toppings =  (List<Topping>) session.getAttribute("toppings");;
                     for (Topping t : toppings)
                     {
                         out.println("<option>" + t.toString() + "</option>");
@@ -50,7 +44,7 @@
             &nbsp;&nbsp;
             Quantity
             <input type ="number" name ="quantity" value="1" size="2" min="1" max="100" required><br>
-            <br><input type="submit" value="Add to cart" formaction= "shoppingcart.jsp">
+            <br><input type="submit" value="Add to cart" formaction= "CommandController?command=shoppingcart">
         </div>
     </center>
 </form>

@@ -12,10 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author sofieamalielandt
+ * @author aamandajuhl and sofieamalielandt
  */
 public abstract class Command
 {
+
     public abstract void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 
     public static Command from(HttpServletRequest request)
@@ -33,6 +34,14 @@ public abstract class Command
                 c = new NewUserCommand();
                 break;
                 
+            case "shop":
+                c = new ShopCommand();
+                break;
+            
+            case "shoppingcart":
+                c = new ShoppingcartCommand();
+                break;
+
             case "moneytransfer":
                 c = new MoneyTransferCommand();
                 break;

@@ -1,7 +1,7 @@
 <%-- 
     Document   : error
     Created on : 05-03-2019, 20:48:55
-    Author     : aamandajuhl
+    Author     : aamandajuhl and sofieamalielandt
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

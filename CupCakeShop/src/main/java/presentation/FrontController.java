@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author sofieamalielandt
+ * @author aamandajuhl and sofieamalielandt
  */
 @WebServlet(name = "FrontController", urlPatterns =
 {

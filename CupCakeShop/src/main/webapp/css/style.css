@@ -19,8 +19,7 @@ and open the template in the editor.
     box-sizing: border-box;
     width: 300px;
     background-color: rgba(232, 206, 223, 0.60);
-    text-align: center;
-    
+    text-align: center;  
 }
 
 #index h1 {
@@ -34,7 +33,6 @@ and open the template in the editor.
     color:  rgba(239, 116, 172, 1.0);
 }
 
-
 #shop div {
     border-style: solid;
     border-color: #f0d1e0;
@@ -47,7 +45,6 @@ and open the template in the editor.
     width: 700px;
     background-color: rgba(232, 206, 223, 0.80);
 }
-
 
 #invoice div{
     border-style: solid;

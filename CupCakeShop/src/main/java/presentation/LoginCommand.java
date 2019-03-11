@@ -15,7 +15,7 @@ import logic.User;
 
 /**
  *
- * @author sofieamalielandt
+ * @author aamandajuhl and sofieamalielandt
  */
 public class LoginCommand extends Command
 {
@@ -40,7 +40,9 @@ public class LoginCommand extends Command
             {
                 User user = lc.getUser(username);
                 session.setAttribute("user", user);
-                request.getRequestDispatcher("/shop.jsp").forward(request, response);
+                System.out.println("valid");
+                
+                request.getRequestDispatcher("/CommandController?command=shop").forward(request, response);
             }
 
         } catch (Exception ex)

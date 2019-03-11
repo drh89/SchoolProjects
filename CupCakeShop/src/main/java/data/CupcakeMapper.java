@@ -15,7 +15,7 @@ import logic.Topping;
 
 /**
  *
- * @author sofieamalielandt
+ * @author aamandajuhl and sofieamalielandt
  */
 public class CupcakeMapper
 {

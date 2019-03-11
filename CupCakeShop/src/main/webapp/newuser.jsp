@@ -17,15 +17,8 @@
 <center id="index">
     <form method = "POST">   
         <%
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-            String email = request.getParameter("email");
-
-            User u = new User(username, password, email);
-            NewUserConnector c = new NewUserConnector();
-            String res = c.addUser(u);
-            out.println("<br><i>" + res + "</i><br><br>");
-        %>
+            String res = (String) session.getAttribute("res");
+        %>  
         <div>
             Username <input type ="text" name ="username" value="" minlength="4" required>
             <br><br>
@@ -36,6 +29,9 @@
             Email <input type ="text" name ="email" value="">
             <br><br>
             <input type="submit" value="Create user" formaction="CommandController?command=newuser">
+            <%
+                out.println("<br><br>" + res + "<br>");
+            %>
         </div>
     </form>
 </center>

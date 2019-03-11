@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author aamandajuhl
+ * @author aamandajuhl and sofieamalielandt
  */
 @WebServlet(name = "CommandController", urlPatterns =
 {
@@ -40,8 +40,7 @@ public class CommandController extends HttpServlet
         c.execute(request, response);
 
         response.setContentType("text/html;charset=UTF-8");
-        
-        
+
 //        try (PrintWriter out = response.getWriter())
 //        {
 //            /* TODO output your page here. You may use following sample code. */

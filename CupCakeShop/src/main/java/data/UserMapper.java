@@ -114,17 +114,17 @@ public class UserMapper
 
         String query = "UPDATE `Cupcakes`.`user`"
                 + "SET `balance` = ? WHERE (`user_id` = '" + user_id + "');";
-        
+
         double newBalance = balance;
-        
+
         PreparedStatement statement = dbc.preparedStatement(query, Statement.RETURN_GENERATED_KEYS);
 
         statement.setDouble(1, newBalance);
         statement.executeUpdate();
-        
+
         dbc.close();
     }
-    
+
     public void newUser(User newUser) throws SQLException
     {
         dbc.open();
