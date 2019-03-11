@@ -20,7 +20,7 @@ and open the template in the editor.
     width: 300px;
     background-color: rgba(232, 206, 223, 0.60);
     text-align: center;
-    font-family: HelveticaNeue-Thin;
+    
 }
 
 #index h1 {
@@ -28,12 +28,10 @@ and open the template in the editor.
     display: -webkit-flex;
     -webkit-align-items: center; 
     position: static; width: 580px; margin: 0 auto; 
-    font-family: HelveticaNeue-Thin;
 }
 
 #index p {
     color:  rgba(239, 116, 172, 1.0);
-    font-family: HelveticaNeue-Thin;
 }
 
 
@@ -48,7 +46,6 @@ and open the template in the editor.
     box-sizing: border-box;
     width: 700px;
     background-color: rgba(232, 206, 223, 0.80);
-    font-family: HelveticaNeue-Thin;
 }
 
 
@@ -63,7 +60,6 @@ and open the template in the editor.
     box-sizing: border-box;
     width: 700px;
     background-color: rgba(232, 206, 223, 0.80);
-    font-family: HelveticaNeue-Thin;
 }
 
 #shoppingcart div{
@@ -77,27 +73,24 @@ and open the template in the editor.
     box-sizing: border-box;
     width: 700px;
     background-color: rgba(232, 206, 223, 0.80);
-    font-family: HelveticaNeue-Thin;
 }
 
 #shoppingcart td, #shoppingcart th {
     padding: 8px;
     text-align: center;
-    font-family: HelveticaNeue-Thin;
 }
 
 #shoppingcart p {
     text-align: left;
-    font-family: HelveticaNeue-Thin;
 }
 
 #shoppingcart b {
-    text-align: left;
-    font-family: HelveticaNeue-Thin;
+    text-align: left; 
 }
 
 body{
     background-image: url("https://media.altphotos.com/cache/images/2017/03/12/09/1504/cupcakes.jpg");
     background-size: cover;
+    font-family: HelveticaNeue-Thin;
 }
 
