@@ -50,6 +50,11 @@ public abstract class Command
                 c = new MoneyTransferCommand();
                 break;
 
+            case "removeItem":
+                
+                c = new RemoveItemCommand();
+                break;
+                
             case "user":
                 c = new UserCommand();
                 break;
@@ -65,7 +70,7 @@ public abstract class Command
             case "admininvoice":
                 c = new AdminnvoiceCommand();
                 break;
-                
+
             default:
                 c = new UnknownCommand();
         }

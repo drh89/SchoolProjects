@@ -63,28 +63,33 @@
 <br><br><br><br>
 <center id="shoppingcart">
     <div>
-        <table id="shoppingcart"> 
-            <tr>
-                <th><b>Cupcake</b></th>
-                <th><b>Quantity</b></th>
-                <th><b>Price</b></th>
-                <th><b>Total</b></th>
-            </tr>
+        <form method = "POST">
+            <table id="shoppingcart"> 
+                <tr>
+                    <th><b>Cupcake</b></th>
+                    <th><b>Quantity</b></th>
+                    <th><b>Price</b></th>
+                    <th><b>Total</b></th>
+                    <th><b>Remove</b></th>
+                </tr>
+                <%
+                    for (LineItem l : cart.getLineItems())
+                    {
+                        out.println("<tr>");
+                        out.println("<td>" + l.getCupcake() + "</td>");
+                        out.println("<td>" + l.getQuantity() + "</td>");
+                        out.println("<td>" + l.getCupcake().getPrice() + "</td>");
+                        out.println("<td>" + l.getPrice() + "</td>");
+                        out.println("<td> <button type=\"submit\"formaction=\"CommandController?command=removeItem&topping=" + l.getCupcake().getTopping().getTopping_id() + "&bottom=" + l.getCupcake().getBottom().getBottom_id() + "\">Remove</button> </td>");
+                        out.println("</tr>");
+
+                    }
+                %>
+            </table>
             <%
-                for (LineItem l : cart.getLineItems())
-                {
-                    out.println("<tr>");
-                    out.println("<td>" + l.getCupcake() + "</td>");
-                    out.println("<td>" + l.getQuantity() + "</td>");
-                    out.println("<td>" + l.getCupcake().getPrice() + "</td>");
-                    out.println("<td>" + l.getPrice() + "</td>");
-                    out.println("</tr>");
-                }
+                out.println("<br><br><b>Total price: " + cart.getTotalPrice() + "</b>");
             %>
-        </table>
-        <%
-            out.println("<br><br><b>Total price: " + cart.getTotalPrice() + "</b>");
-        %>
+        </form>
         <form method = "POST">
             <br><br><input type="submit" value="Checkout" formaction= "CommandController?command=checkout">
         </form>

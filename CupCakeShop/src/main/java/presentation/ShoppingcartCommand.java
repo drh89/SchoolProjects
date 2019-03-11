@@ -28,23 +28,27 @@ public class ShoppingcartCommand extends Command
 
         try
         {
+
             HttpSession session = request.getSession();
             String bottom = request.getParameter("bottom");
             String topping = request.getParameter("topping");
             int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-            CupcakeConnector cc = new CupcakeConnector();
-            Cupcake cupcake = cc.getCupCake(bottom, topping);
-            session.setAttribute("cupcake", cupcake);
-            ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
-
-            if (cupcake != null)
+            if (bottom != null || topping != null)
             {
-                cart.addCupcake(new LineItem(cupcake, quantity));
+                CupcakeConnector cc = new CupcakeConnector();
+                Cupcake cupcake = cc.getCupCake(bottom, topping);
+                session.setAttribute("cupcake", cupcake);
+                ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
+
+                if (cupcake != null)
+                {
+                    cart.addCupcake(new LineItem(cupcake, quantity));
+                }
             }
-            
+
             request.getRequestDispatcher("/shoppingcart.jsp").forward(request, response);
-            
+
         } catch (Exception ex)
         {
             System.out.println(ex.getMessage());
