@@ -81,6 +81,19 @@
                 display: -webkit-flex;
                 -webkit-align-items: center; 
             }
+            
+            #cart li a img {
+                display: block;
+                text-align: center;
+                color: black;
+                padding: 0px 0px;
+                width: 35px;
+                height: 30px;
+                text-decoration: none;  
+                display: -webkit-flex;
+                -webkit-align-items: center; 
+            }
+            
             #menu li a:hover, li button:hover {
                 background-color: rgba(239, 116, 172, 1.0);
             }
@@ -132,13 +145,16 @@
         <form method = "POST">
             <center id="menu">
                 <ul>
-                    <li> <a class="active" href="CommandController?command=shop"><img src="Images/cupcake.png" width="5%" height="5%"></a></li>
+                    <li> <a class="active" href="CommandController?command=shop"><img src="Images/cupcake.png"></a></li>
                     <li>
                         <%
                             out.println("<a href=" + ref + ">" + user.getUserName() + "</a>");
                         %>
                     </li>
                     <li><a class="active" href="index.jsp">Logout</a></li>
+                    <center id="cart">
+                    <li><a class="active" href="shoppingcart.jsp"><img src="Images/shoppingcart.png" width="5%" height="5%"></a></li>
+                    </center>
                     <li><p>
                             <%
                                 out.println("Balance: " + user.getBalance() + " kr.&nbsp;&nbsp");

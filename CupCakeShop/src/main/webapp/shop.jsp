@@ -21,7 +21,7 @@
             <br><br>Bottoms
             <select name="bottom">
                 <option disabled selected>Choose bottom</option>
-                <%
+                <%                    
                     List<Bottom> bottoms = (List<Bottom>) session.getAttribute("bottoms");
                     for (Bottom b : bottoms)
                     {
@@ -34,7 +34,7 @@
             <select name="topping">
                 <option disabled selected>Choose topping</option>
                 <%
-                    List<Topping> toppings =  (List<Topping>) session.getAttribute("toppings");;
+                    List<Topping> toppings = (List<Topping>) session.getAttribute("toppings");;
                     for (Topping t : toppings)
                     {
                         out.println("<option>" + t.toString() + "</option>");
@@ -45,6 +45,14 @@
             Quantity
             <input type ="number" name ="quantity" value="1" size="2" min="1" max="100" required><br>
             <br><input type="submit" value="Add to cart" formaction= "CommandController?command=shoppingcart">
+            <%
+                String reply = (String) session.getAttribute("reply");
+
+                if (reply != null)
+                {
+                    out.println("<br><br>" + reply);
+                }
+            %>
         </div>
     </center>
 </form>

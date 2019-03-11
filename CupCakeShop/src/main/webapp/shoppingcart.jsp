@@ -15,7 +15,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file = "header.jsp" %>
 
-<%    Cupcake cupcake = (Cupcake) session.getAttribute("cupcake");
+<%    
+    session.removeAttribute("reply");
     ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
 %>
 <form method = "POST">
@@ -51,12 +52,6 @@
             Quantity
             <input type ="number" name ="quantity" value="1" size="2" min="1" max="100" required><br>
             <br><input type="submit" value="Add to cart" formaction= "CommandController?command=shoppingcart">
-            <%
-                if (cupcake == null)
-                {
-                    out.println("<br><br>Please choose a bottom and a topping for your cupcake");
-                }
-            %>
         </div>
     </center>
 </form>

@@ -28,6 +28,7 @@ public class LoginCommand extends Command
             HttpSession session = request.getSession();
             LoginConnector lc = new LoginConnector();
 
+            session.removeAttribute("cart");
             String username = request.getParameter("username");
             String password = request.getParameter("password");
 

@@ -36,7 +36,10 @@ public class ShopCommand extends Command
             List<LineItem> lineitems = new ArrayList<>();
             User user = (User) session.getAttribute("user");
             ShoppingCart shoppingCart = new ShoppingCart(lineitems, user);
-            session.setAttribute("cart", shoppingCart);
+            if(session.getAttribute("cart") == null)
+            {
+                session.setAttribute("cart", shoppingCart);
+            }
             
              List<Bottom> bottoms = cc.getCupcakeBottoms();
              session.setAttribute("bottoms", bottoms);

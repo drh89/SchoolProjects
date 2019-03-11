@@ -34,7 +34,7 @@ public class ShoppingcartCommand extends Command
             String topping = request.getParameter("topping");
             int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-            if (bottom != null || topping != null)
+            if (bottom != null && topping != null)
             {
                 CupcakeConnector cc = new CupcakeConnector();
                 Cupcake cupcake = cc.getCupCake(bottom, topping);
@@ -44,10 +44,22 @@ public class ShoppingcartCommand extends Command
                 if (cupcake != null)
                 {
                     cart.addCupcake(new LineItem(cupcake, quantity));
-                }
-            }
+                    session.removeAttribute("cupcake");
+                    request.getRequestDispatcher("/shoppingcart.jsp").forward(request, response);
+                } 
 
-            request.getRequestDispatcher("/shoppingcart.jsp").forward(request, response);
+            }
+            
+            else if (bottom == null && topping == null)
+                {
+                    String reply = "Please choose a bottom and a topping for your cupcake";
+                    session.setAttribute("reply", reply);
+                    request.getRequestDispatcher("/shop.jsp").forward(request, response);
+                }
+            else
+            {
+                request.getRequestDispatcher("/shoppingcart.jsp").forward(request, response);
+            }
 
         } catch (Exception ex)
         {
