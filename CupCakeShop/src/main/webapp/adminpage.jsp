@@ -16,11 +16,10 @@
         <ul>
             <li><p><h1> All invoices</h1></p></li>
             <%            
-                InvoiceConnector ic = new InvoiceConnector();
-                List<ShoppingCart> invoices = ic.getAllInvoices();
+                List<ShoppingCart> invoices = (List<ShoppingCart>) session.getAttribute("allinvoices");
                 for (ShoppingCart invoice : invoices)
                 {
-                    out.println("<li><a href=adminInvoice.jsp?selected=" + invoice.getInvoice_id() + ">" + invoice + "</a></li>");
+                    out.println("<li><a href=\"CommandController?command=admininvoice&selected=" + invoice.getInvoice_id() + "\">" + invoice + "</a></li>");
                 }
             %>
         </ul>

@@ -10,9 +10,7 @@
 <%@include file = "header.jsp" %>
 
 <%           
-    int invoice_id = Integer.parseInt(request.getParameter("selected"));
-    InvoiceConnector ic = new InvoiceConnector();
-    ShoppingCart invoice = ic.getInvoice(invoice_id);
+    ShoppingCart invoice = (ShoppingCart) session.getAttribute("invoice");
 %>
 <form method="POST">
     <center id="shoppingcart">

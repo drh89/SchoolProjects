@@ -15,20 +15,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file = "header.jsp" %>
 
-<%    ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
-    InvoiceConnector ic = new InvoiceConnector();
-    String checkout = ic.checkout(cart);
-    ShoppingCart invoice = null;
-
-    if (checkout.equals("Thank you for your order"))
-    {
-        invoice = ic.getInvoice(cart.getInvoice_id());
-
-    }
+<%    
+    String checkout = (String) session.getAttribute("checkout");
+    ShoppingCart invoice = (ShoppingCart) session.getAttribute("invoice");
 %>
 <form method = "POST">
     <center id="shoppingcart">
-        <%        if (checkout.equals("Thank you for your order"))
+        <%
+            if (checkout.equals("Thank you for your order"))
             {
         %>
         <div>
@@ -39,8 +33,8 @@
                     <th><b>Price</b></th>
                     <th><b>Total</b></th>
                 </tr>
-                <%
-                    for (LineItem l : cart.getLineItems())
+                <%                    
+                    for (LineItem l : invoice.getLineItems())
                     {
                         out.println("<tr>");
                         out.println("<td>" + l.getCupcake() + "</td>");
@@ -52,17 +46,17 @@
 
                 %>
             </table>
-            <%                    out.println("<br><br><b>Total price: " + cart.getTotalPrice() + "</b>");
+            <%                out.println("<br><br><b>Total price: " + invoice.getTotalPrice() + "</b>");
                 out.println("<br><br>" + checkout);
-            } else
-            {
+                } else
+               {
             %>
             <div>
                 <%
-                        out.println("<br><br>" + checkout);
+                    out.println("<br><br>" + checkout);
                     }
-                %>
-                <br><br><input type="submit" value="Keep shopping" formaction= "shop.jsp">
+%>
+                <br><br><input type="submit" value="Keep shopping" formaction= "CommandController?command=shop">
             </div>
         </div>
     </center>

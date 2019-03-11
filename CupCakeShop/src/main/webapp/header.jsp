@@ -123,10 +123,10 @@
     <body>
         <%
             User user = (User) session.getAttribute("user");
-            String ref = "userpage.jsp";
+            String ref = "CommandController?command=user";
             if (user.getType().equals("admin"))
             {
-                ref = "adminpage.jsp";
+                ref = "CommandController?command=admin";
             }
         %>
         <form method = "POST">

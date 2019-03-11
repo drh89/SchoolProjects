@@ -11,17 +11,15 @@
 <%@include file = "header.jsp" %>
 
 <%    
-    int invoice_id = Integer.parseInt(request.getParameter("selected"));
-    InvoiceConnector ic = new InvoiceConnector();
-    ShoppingCart invoice = ic.getInvoice(invoice_id);
+    ShoppingCart invoice = (ShoppingCart) session.getAttribute("invoice");
 %>
 <form method="POST">
     <center id="shoppingcart">
         <div>
             <%
                 out.println("<b>Ordernumber: " + invoice.getInvoice_id() + "&nbsp;&nbsp;&nbsp;&nbsp;Orderdate: " + invoice.getDate() + "</b>");
-                out.println("<br><br><i>Username: " + invoice.getUser().getUserName() + " - id: " + invoice.getUser().getId() + "</i>");
-                out.println("<br><i>Email: " + invoice.getUser().getEmail() + "</i><br><br>");
+                out.println("<br><br>Username: " + invoice.getUser().getUserName() + " - id: " + invoice.getUser().getId());
+                out.println("<br>Email: " + invoice.getUser().getEmail() + "<br><br>");
             %>
             <table id="shoppingcart"> 
                 <tr>

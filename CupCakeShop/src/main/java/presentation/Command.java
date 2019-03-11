@@ -33,19 +33,39 @@ public abstract class Command
             case "newuser":
                 c = new NewUserCommand();
                 break;
-                
+
             case "shop":
                 c = new ShopCommand();
                 break;
-            
+
             case "shoppingcart":
                 c = new ShoppingcartCommand();
+                break;
+
+            case "checkout":
+                c = new CheckoutCommand();
                 break;
 
             case "moneytransfer":
                 c = new MoneyTransferCommand();
                 break;
 
+            case "user":
+                c = new UserCommand();
+                break;
+
+            case "admin":
+                c = new AdminCommand();
+                break;
+
+            case "invoice":
+                c = new InvoiceCommand();
+                break;
+
+            case "admininvoice":
+                c = new AdminnvoiceCommand();
+                break;
+                
             default:
                 c = new UnknownCommand();
         }

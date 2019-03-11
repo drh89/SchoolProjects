@@ -14,12 +14,11 @@
     <center id="invoice">
         <ul>
             <li><p><h1>Your invoices</h1></p></li>
-            <%            
-                InvoiceConnector ic = new InvoiceConnector();
-                List<ShoppingCart> invoices = ic.getInvoices(user.getUserName());
+            <% 
+                List<ShoppingCart> invoices = (List<ShoppingCart>) session.getAttribute("invoices");
                 for (ShoppingCart invoice : invoices)
                 {
-                    out.println("<li><a href=invoice.jsp?selected=" + invoice.getInvoice_id() + ">" + invoice + "</a></li>");
+                    out.println("<li><a href=\"CommandController?command=invoice&selected=" + invoice.getInvoice_id() + "\">" + invoice + "</a></li>");
                 }
             %>
         </ul>

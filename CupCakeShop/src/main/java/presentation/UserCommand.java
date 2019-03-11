@@ -6,36 +6,40 @@
 package presentation;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import logic.InvoiceConnector;
+import logic.ShoppingCart;
 import logic.User;
 
 /**
  *
- * @author aamandajuhl and sofieamalielandt
+ * @author sofieamalielandt
  */
-public class MoneyTransferCommand extends Command
+public class UserCommand extends Command
 {
-
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         try
         {
             HttpSession session = request.getSession();
-            Double amount = Double.parseDouble(request.getParameter("amount"));
             User user = (User) session.getAttribute("user");
-            user.setBalance(amount);
-
-            request.getRequestDispatcher("/CommandController?command=shop").forward(request, response);
-
+            InvoiceConnector ic = new InvoiceConnector();
+            List<ShoppingCart> invoices = ic.getInvoices(user.getUserName());
+            session.setAttribute("invoices", invoices);
+            
+            request.getRequestDispatcher("/userpage.jsp").forward(request, response);
+            
         } catch (Exception ex)
         {
             System.out.println(ex.getMessage());
         }
-
     }
-
+    
 }

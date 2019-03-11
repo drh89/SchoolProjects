@@ -50,7 +50,7 @@
 
             Quantity
             <input type ="number" name ="quantity" value="1" size="2" min="1" max="100" required><br>
-            <br><input type="submit" value="Add to cart" formaction= "shoppingcart.jsp">
+            <br><input type="submit" value="Add to cart" formaction= "CommandController?command=shoppingcart">
             <%
                 if (cupcake == null)
                 {
@@ -86,7 +86,7 @@
             out.println("<br><br><b>Total price: " + cart.getTotalPrice() + "</b>");
         %>
         <form method = "POST">
-            <br><br><input type="submit" value="Checkout" formaction= "checkout.jsp">
+            <br><br><input type="submit" value="Checkout" formaction= "CommandController?command=checkout">
         </form>
     </div>
 </center>
