@@ -14,12 +14,15 @@
         background-position: 70% 30%;
     }
 </style>
+
+
 <center id="index">
-    <form method = "POST">   
-        <%
-            String res = (String) session.getAttribute("res");
-        %>  
-        <div>
+    <div>
+        <form method = "POST">   
+            <%
+                String res = (String) session.getAttribute("res");
+            %>  
+
             <%
                 out.println(res + "<br><br>");
             %>
@@ -29,12 +32,16 @@
             <br><br>
             <input type="submit" value="Login" formaction="CommandController?command=login">
             <br><br>
-            Email <input type ="text" name ="email" value="" minlength="6" required>
+            </form>
+            <form method="POST">
+            Email <input type ="text" name ="email" value="">
             <br><br>
+        
+        
             <input type="submit" value="Create user" formaction="CommandController?command=newuser">
+        </form>
+    </div>
 
-        </div>
-    </form>
 </center>
 </body>
 </html>

@@ -21,7 +21,7 @@
 <form method = "POST">
     <center id="shop">
         <div>
-            <br><br>Bottoms
+            <br><br><b>Bottoms</b>
             <select name="bottom">  
                 <option disabled selected>Choose bottom</option>
                 <%
@@ -34,7 +34,7 @@
             </select>
             &nbsp;&nbsp;
 
-            Toppings
+            <b>Toppings</b>
             <select name="topping"> 
                 <option disabled selected>Choose topping</option>
                 <%
@@ -48,14 +48,14 @@
             </select>
             &nbsp;&nbsp;
 
-            Quantity
+            <b>Quantity</b>
             <input type ="number" name ="quantity" value="1" size="2" min="1" max="100" required><br>
             <br><input type="submit" value="Add to cart" formaction= "CommandController?command=shoppingcart">
         </div>
     </center>
 </form>
 <br><br><br><br>
-<center id="shoppingcart">
+<center id="shop">
     <div>
         <form method = "POST">
             <table id="shoppingcart"> 

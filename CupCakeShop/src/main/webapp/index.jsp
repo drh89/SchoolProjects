@@ -12,11 +12,11 @@
             <br><br>
             Password <input type ="password" name ="password" value="" minlength="4" required>
             <br><br>
-            <input type="submit" value="Login" formaction="CommandController?command=login">
+            <button type="submit" formaction="CommandController?command=login">login</button>
             <br><br>
             Email <input type ="text" name ="email" value="">
             <br><br>
-            <input type="submit" value="Create user" formaction="CommandController?command=newuser">
+            <button type="submit" formaction="CommandController?command=newuser">Create user</button>
         </form>   
     </div> 
 </center>
