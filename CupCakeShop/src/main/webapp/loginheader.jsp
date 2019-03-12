@@ -13,16 +13,21 @@
         <title>SWEET RETREAT</title>
         <style>
 
-            #index input:hover, button:hover, select:hover {
+            .index  button:hover, select:hover {
                 background-color: rgba(239, 116, 172, 1.0);
                 color: white;
-                border-top-right-radius: 25px;
-                border-top-left-radius: 25px;
-                border-bottom-right-radius: 25px;
-                border-bottom-left-radius: 25px;
+                border-radius: 12px;
+                padding: 10px 10px;
             }
 
-            #index input {
+            .index input:hover {
+                background-color: rgba(239, 116, 172, 1.0);
+                color: white;
+                border-radius: 25px;
+                padding: 2px 2px;
+            }
+
+            .index input{
                 position: static; width: auto; 
                 display: inline-block;
                 align-items: center;
@@ -32,13 +37,10 @@
                 font-family: HelveticaNeue-Thin;
                 font-size: 16px;
                 text-align: center;
-                border-top-right-radius: 25px;
-                border-top-left-radius: 25px;
-                border-bottom-right-radius: 25px;
-                border-bottom-left-radius: 25px;
-            }
-            
-             #index button {
+                border-radius: 25px;
+           }
+
+            .index button {
                 position: static; width: auto; 
                 display: inline-block;
                 align-items: center;
@@ -48,10 +50,7 @@
                 font-family: HelveticaNeue-Thin;
                 font-size: 16px;
                 text-align: center;
-                border-top-right-radius: 25px;
-                border-top-left-radius: 25px;
-                border-bottom-right-radius: 25px;
-                border-bottom-left-radius: 25px;
+                border-radius: 25px;
             }
         </style>
     </head>

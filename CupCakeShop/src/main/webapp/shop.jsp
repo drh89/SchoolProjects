@@ -44,15 +44,17 @@
             &nbsp;&nbsp;
             <b>Quantity</b>
             <input type ="number" name ="quantity" value="1" size="2" min="1" max="100" required><br>
-            <br><br><br><input type="submit" value="Add to cart" formaction= "CommandController?command=shoppingcart">
             <%
                 String reply = (String) session.getAttribute("reply");
 
                 if (reply != null)
                 {
-                    out.println("<br><br>" + reply);
+                    out.println("<br><br><br>" + reply);
+                    session.removeAttribute("reply");
                 }
             %>
+            <br><br><br><button type="submit" formaction= "CommandController?command=shoppingcart">Add to cart</button>
+            
         </div>
     </center>
 </form>

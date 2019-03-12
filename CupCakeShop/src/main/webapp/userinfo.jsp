@@ -22,7 +22,7 @@
                 String update = (String) session.getAttribute("update");
                 if (update != null)
                 {
-                    out.println("<br><br>" + update);
+                    out.println("<br><br><br>" + update);
                     session.removeAttribute("update");
                 }
             %>

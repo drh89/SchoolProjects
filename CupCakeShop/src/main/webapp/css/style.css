@@ -8,13 +8,10 @@ and open the template in the editor.
     Author     : aamandajuhl and sofieamalielandt
 */
 
-#index div {
+.index div {
     border-style: solid;
     border-color: #f0d1e0;
-    border-top-right-radius: 25px;
-    border-top-left-radius: 25px;
-    border-bottom-right-radius: 25px;
-    border-bottom-left-radius: 25px;
+    border-radius: 25px;
     padding: 25px;
     box-sizing: border-box;
     width: 300px;
@@ -36,23 +33,27 @@ and open the template in the editor.
 #shop div {
     border-style: solid;
     border-color: #f0d1e0;
-    border-top-right-radius: 25px;
-    border-top-left-radius: 25px;
-    border-bottom-right-radius: 25px;
-    border-bottom-left-radius: 25px;
+    border-radius: 25px;
     padding: 25px;
     box-sizing: border-box;
     width: 700px;
     background-color: rgba(232, 206, 223, 0.80);
 }
+#checkout div {
+    border-style: solid;
+    border-color: #f0d1e0;
+    border-radius: 25px;
+    padding: 25px;
+    box-sizing: border-box;
+    width: 700px;
+    background-color: rgba(232, 206, 223, 0.80);
+    font-size: 20px;
+}
 
 #invoice div{
     border-style: solid;
     border-color: #f0d1e0;
-    border-top-right-radius: 25px;
-    border-top-left-radius: 25px;
-    border-bottom-right-radius: 25px;
-    border-bottom-left-radius: 25px;
+    border-radius: 25px;
     padding: 25px;
     box-sizing: border-box;
     width: 700px;
@@ -62,11 +63,7 @@ and open the template in the editor.
 #shoppingcart div{
     border-style: solid;
     border-color: #f0d1e0;
-    border-top-right-radius: 25px;
-    border-top-left-radius: 25px;
-    border-bottom-right-radius: 25px;
-    border-bottom-left-radius: 25px;
-    padding: 25px;
+    border-radius: 25px;
     box-sizing: border-box;
     width: 700px;
     background-color: rgba(232, 206, 223, 0.80);

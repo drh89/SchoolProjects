@@ -5,15 +5,15 @@
         background-position: 70% 30%;
     }         
 </style>
-<center id="index"> 
+<center class="index" id="index"> 
     <div>       
         <form method = "POST">
             Username <input type ="text" name ="username" value="" minlength="4" required>
-            <br><br>
+            <br><br><br>
             Password <input type ="password" name ="password" value="" minlength="4" required>
             <br><br>
-            <button type="submit" formaction="CommandController?command=login">login</button>
-            <br><br>
+            <button type="submit" formaction="CommandController?command=login">Login</button>
+            <br><br><br>
             Email <input type ="text" name ="email" value="">
             <br><br>
             <button type="submit" formaction="CommandController?command=newuser">Create user</button>

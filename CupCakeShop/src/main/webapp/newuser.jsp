@@ -14,9 +14,7 @@
         background-position: 70% 30%;
     }
 </style>
-
-
-<center id="index">
+<center class="index">
     <div>
         <form method = "POST">   
             <%
@@ -30,14 +28,14 @@
             <br><br>
             Password <input type ="password" name ="password" value="" minlength="4" required>
             <br><br>
-            <input type="submit" value="Login" formaction="CommandController?command=login">
+            <button type="submit" formaction="CommandController?command=login">Login</button>
             <br><br>
-            </form>
-            <form method="POST">
+        </form>
+        <form method="POST">
             Email <input type ="text" name ="email" value="">
             <br><br>
-        
-        
+
+
             <input type="submit" value="Create user" formaction="CommandController?command=newuser">
         </form>
     </div>

@@ -15,12 +15,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file = "header.jsp" %>
 
-<%    
-    String checkout = (String) session.getAttribute("checkout");
+<%    String checkout = (String) session.getAttribute("checkout");
     ShoppingCart invoice = (ShoppingCart) session.getAttribute("invoice");
 %>
 <form method = "POST">
-    <center id="shoppingcart">
+    <center id="checkout">
         <%
             if (checkout.equals("Thank you for your order"))
             {
@@ -33,7 +32,7 @@
                     <th><b>Price</b></th>
                     <th><b>Total</b></th>
                 </tr>
-                <%                    
+                <%
                     for (LineItem l : invoice.getLineItems())
                     {
                         out.println("<tr>");
@@ -48,15 +47,15 @@
             </table>
             <%                out.println("<br><br><b>Total price: " + invoice.getTotalPrice() + "</b>");
                 out.println("<br><br>" + checkout);
-                } else
-               {
+            } else
+            {
             %>
             <div>
                 <%
-                    out.println("<br><br>" + checkout);
+                        out.println("<br><br>" + checkout);
                     }
-%>
-                <br><br><input type="submit" value="Keep shopping" formaction= "CommandController?command=shop">
+                %>
+                <br><br><button type="submit" formaction= "CommandController?command=shop">Keep shopping</button>
             </div>
         </div>
     </center>

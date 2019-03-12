@@ -6,7 +6,7 @@
         background-position: 70% 30%;
     }
 </style>
-<center id="index">
+<center class="index">
     <form method= "POST" >
         <div>
             
@@ -14,7 +14,7 @@
             <br><br>
             Password <input type ="password" name ="password" value="">
             <br><br>
-            <input type="submit" value="Login" formaction="CommandController?command=login">
+            <button type="submit" formaction="CommandController?command=login">Login</button>
             <br><br>Wrong username or password
         </div>
     </form>
