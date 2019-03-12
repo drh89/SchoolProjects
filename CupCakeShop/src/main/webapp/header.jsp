@@ -107,6 +107,7 @@
                 font-family: HelveticaNeue-Thin;
                 font-size: 16px;
                 text-align: center;
+                padding: 5px 7px;
             }
             
 
@@ -114,7 +115,7 @@
                 background-color: rgba(239, 116, 172, 1.0);
                 color: white;
                 border-radius: 25px;
-                padding: 2px 2px;
+                padding: 5px 10px;
             }
             
             #shop select:hover, button:hover {

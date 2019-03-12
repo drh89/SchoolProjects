@@ -30,12 +30,8 @@
             <br><br>
             <button type="submit" formaction="CommandController?command=login">Login</button>
             <br><br>
-        </form>
-        <form method="POST">
             Email <input type ="text" name ="email" value="">
             <br><br>
-
-
             <input type="submit" value="Create user" formaction="CommandController?command=newuser">
         </form>
     </div>

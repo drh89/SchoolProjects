@@ -8,13 +8,13 @@
 <center class="index" id="index"> 
     <div>       
         <form method = "POST">
-            Username <input type ="text" name ="username" value="" minlength="4" required>
+            Username <input type ="text" name ="username" placeholder="username" minlength="4" required>
             <br><br><br>
-            Password <input type ="password" name ="password" value="" minlength="4" required>
+            Password <input type ="password" name ="password" placeholder="password" minlength="4" required>
             <br><br>
             <button type="submit" formaction="CommandController?command=login">Login</button>
             <br><br><br>
-            Email <input type ="text" name ="email" value="">
+            Email <input type ="text" name ="email" placeholder="username@email.com">
             <br><br>
             <button type="submit" formaction="CommandController?command=newuser">Create user</button>
         </form>   
