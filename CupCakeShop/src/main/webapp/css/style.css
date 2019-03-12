@@ -54,7 +54,7 @@ and open the template in the editor.
     border-style: solid;
     border-color: #f0d1e0;
     border-radius: 25px;
-    padding: 25px;
+    padding: 25px 10px;
     box-sizing: border-box;
     width: 700px;
     background-color: rgba(232, 206, 223, 0.80);
@@ -67,6 +67,7 @@ and open the template in the editor.
     box-sizing: border-box;
     width: 700px;
     background-color: rgba(232, 206, 223, 0.80);
+    padding: 25px;
 }
 
 #shoppingcart td, #shoppingcart th {

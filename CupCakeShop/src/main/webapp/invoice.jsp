@@ -15,7 +15,7 @@
 <form method="POST">
     <center id="shoppingcart">
         <div>
-            <%out.println("<b>Ordernumber: " + invoice.getInvoice_id() + "&nbsp;&nbsp;&nbsp;&nbsp;Orderdate: " + invoice.getDate() + "</b><br><br>");%>
+            <%out.println("<br><b>Ordernumber: " + invoice.getInvoice_id() + "&nbsp;&nbsp;&nbsp;&nbsp;Orderdate: " + invoice.getDate() + "</b><br><br>");%>
             <table id="shoppingcart"> 
                 <tr>
                     <th><b>Cupcake</b></th>
@@ -36,7 +36,7 @@
                 %>
             </table>
             <%
-                out.println("<br><br><b>Total price: " + invoice.getTotalPrice() + "</b>");
+                out.println("<br><br><b>Total price: " + invoice.getTotalPrice() + "</b><br>");
             %>
         </div>
     </center>
