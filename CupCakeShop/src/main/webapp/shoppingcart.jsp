@@ -50,7 +50,8 @@
 
             <b>Quantity</b>
             <input type ="number" name ="quantity" value="1" size="2" min="1" max="100" required><br>
-            <br><input type="submit" value="Add to cart" formaction= "CommandController?command=shoppingcart">
+            <br><br><br><input type="submit" value="Add to cart" formaction= "CommandController?command=shoppingcart">
+            <br>
         </div>
     </center>
 </form>
@@ -85,7 +86,7 @@
             %>
         </form>
         <form method = "POST">
-            <br><br><input type="submit" value="Checkout" formaction= "CommandController?command=checkout">
+            <br><br><br><input type="submit" value="Checkout" formaction= "CommandController?command=checkout">
         </form>
     </div>
 </center>

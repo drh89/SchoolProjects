@@ -13,7 +13,7 @@
                 out.println("<b>Username</b> <input type =\"text\" id=\"username\" name =\"username\" value=\"" + user.getUserName() + "\" minlength=\"4\" required disabled>");
                 out.println("<br><br><b>Email</b> <input id=\"email\" type =\"text\" name =\"email\" value=\"" + user.getEmail() + "\" disabled>");
             %>
-            <br><br>
+            <br><br><br><br>
 
             <%
                 out.println("<b>Old Password</b> <input id=\"oldpassword\" onclick=\"opassword()\" type =\"password\" name =\"oldpassword\" value=\"" + user.getPassword() + "\" minlength=\"4\" required disabled>");
@@ -26,7 +26,7 @@
                     session.removeAttribute("update");
                 }
             %>
-            <br><br>
+            <br><br><br>
             <button id="disable" type="submit" formaction="CommandController?command=update" disabled>save</button>
             <button id="enable" onclick="enableBtn()">update</button>
             <script>
