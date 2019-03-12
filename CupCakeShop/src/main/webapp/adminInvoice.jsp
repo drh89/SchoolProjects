@@ -19,7 +19,7 @@
             <%
                 out.println("<b>Ordernumber: " + invoice.getInvoice_id() + "&nbsp;&nbsp;&nbsp;&nbsp;Orderdate: " + invoice.getDate() + "</b>");
                 out.println("<br><br>Username: " + invoice.getUser().getUserName() + " - id: " + invoice.getUser().getId());
-                out.println("<br>Email: " + invoice.getUser().getEmail() + "<br><br>");
+                out.println("<br><br>Email: " + invoice.getUser().getEmail() + "<br><br>");
             %>
             <table id="shoppingcart"> 
                 <tr>

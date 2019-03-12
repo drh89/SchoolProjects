@@ -55,7 +55,7 @@
                         out.println("<br><br>" + checkout);
                     }
                 %>
-                <br><br><button type="submit" formaction= "shoppingcart.jsp">Back to cart</button>
+                <br><br><button type="submit" formaction= "CommandController?command=shop">Go back</button>
             </div>
         </div>
     </center>

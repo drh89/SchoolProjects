@@ -5,6 +5,9 @@
         background-position: 70% 30%;
     }         
 </style>
+<%
+    session.removeAttribute("user");
+%>
 <center class="index" id="index"> 
     <div>       
         <form method = "POST">
