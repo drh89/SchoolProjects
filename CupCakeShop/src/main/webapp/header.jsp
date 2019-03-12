@@ -97,7 +97,38 @@
                 border-radius: 0px;
             }
 
-            #shop input, select, button {
+            #shop input, select {
+                position: static; width: auto; 
+                display: inline-block;
+                align-items: center;
+                background-color: rgba(239, 116, 172, 0.4);
+                text-decoration: none;
+                border: none;
+                font-family: HelveticaNeue-Thin;
+                font-size: 16px;
+                text-align: center;
+                padding: 5px 9px;
+                border-radius: 25px;
+
+            }
+            
+             #shop button {
+                position: static; width: auto; 
+                display: inline-block;
+                align-items: center;
+                background-color: rgba(239, 116, 172, 1.0);
+                color: white;
+                border: none;
+                text-decoration: none;
+                font-family: HelveticaNeue-Thin;
+                font-size: 16px;
+                text-align: center;
+                padding: 5px 9px;
+                border-radius: 25px;
+
+            }
+            
+             #shop  select {
                 position: static; width: auto; 
                 display: inline-block;
                 align-items: center;
@@ -107,41 +138,53 @@
                 font-family: HelveticaNeue-Thin;
                 font-size: 16px;
                 text-align: center;
-                padding: 5px 7px;
+                padding: 5px 9px;
+                border-radius: 25px;
+
             }
             
-
-            #shop input:hover {
+            #shop input:hover  {
                 background-color: rgba(239, 116, 172, 1.0);
                 color: white;
                 border-radius: 25px;
-                padding: 5px 10px;
             }
             
-            #shop select:hover, button:hover {
+            #shop select:hover {
                 background-color: rgba(239, 116, 172, 1.0);
                 color: white;
                 border-radius: 25px;
-                padding: 10px 10px;
             }
+            
+            #shop button:hover {
+                background-color: rgba(239, 116, 172, 0.4);
+                border-radius: 25px;
+            }
+            
+            #shop button:disabled {
+                background-color: rgba(239, 116, 172, 0.4);
+                border-radius: 25px;
+            }
+           
 
-            #checkout input, button {
+            #checkout  button {
                 position: static; width: auto; 
                 display: inline-block;
                 align-items: center;
-                background-color: transparent;
+                background-color: rgba(239, 116, 172, 1.0);
+                color: white;
                 text-decoration: none;
-                border: none;
+                border: none; 
                 font-family: HelveticaNeue-Thin;
                 font-size: 16px;
                 text-align: center;
+                padding: 5px 9px;
+                border-radius: 25px;
             }
 
-            #checkout input:hover, button:hover {
-                background-color: rgba(239, 116, 172, 1.0);
+            #checkout button:hover {
+                background-color: rgba(239, 116, 172, 0.4);
                 color: white;
                 border-radius: 25px;
-                padding: 10px 10px;
             }
             .dropdown-content {
                 display: none;
@@ -231,7 +274,7 @@
                         </p>
                     </li>
                     <li>
-                        <button type="submit" formaction="CommandController?command=moneytransfer">Add money to account</button>          
+                        <button id="menu" type="submit" formaction="CommandController?command=moneytransfer">Add money to account</button>          
                         <input type ="number" name ="amount" placeholder="Enter amount" min="1" max="1000" required>
                     </li>
                 </ul>

@@ -50,7 +50,7 @@ public class ShoppingcartCommand extends Command
 
             }
             
-            else if (bottom == null && topping == null)
+            else if (bottom == null || topping == null)
                 {
                     String reply = "Please choose a bottom and a topping for your cupcake";
                     session.setAttribute("reply", reply);
