@@ -11,13 +11,13 @@
         <div>   
             <%                
                 out.println("<b>Username</b> <input type =\"text\" id=\"username\" name =\"username\" value=\"" + user.getUserName() + "\" minlength=\"4\" required disabled>");
-                out.println("<br><br><b>Email</b> <input id=\"email\" type =\"text\" name =\"email\" value=\"" + user.getEmail() + "\" disabled>");
+                out.println("<b>&nbsp;&nbsp;Email</b> <input id=\"email\" type =\"text\" name =\"email\" value=\"" + user.getEmail() + "\" disabled>");
             %>
             <br><br><br><br>
 
             <%
                 out.println("<b>Old Password</b> <input id=\"oldpassword\" onclick=\"opassword()\" type =\"password\" name =\"oldpassword\" value=\"" + user.getPassword() + "\" minlength=\"4\" required disabled>");
-                out.println("<b>New Password</b> <input id=\"newpassword\" onclick=\"password()\" type =\"password\" name =\"newpassword\" value=\"" + user.getPassword() + "\" minlength=\"4\" required disabled>");
+                out.println("<br><br><b>New Password</b> <input id=\"newpassword\" onclick=\"password()\" type =\"password\" name =\"newpassword\" value=\"" + user.getPassword() + "\" minlength=\"4\" required disabled>");
 
                 String update = (String) session.getAttribute("update");
                 if (update != null)
