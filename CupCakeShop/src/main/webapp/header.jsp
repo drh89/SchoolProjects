@@ -3,7 +3,6 @@
     Created on : 08-03-2019, 12:25:08
     Author     : aamandajuhl and sofieamalielandt
 --%>
-
 <%@page import="logic.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -111,8 +110,8 @@
                 border-radius: 25px;
 
             }
-            
-             #shop button {
+
+            #shop button {
                 position: static; width: auto; 
                 display: inline-block;
                 align-items: center;
@@ -125,10 +124,9 @@
                 text-align: center;
                 padding: 5px 9px;
                 border-radius: 25px;
-
             }
-            
-             #shop  select {
+
+            #shop  select {
                 position: static; width: auto; 
                 display: inline-block;
                 align-items: center;
@@ -140,31 +138,29 @@
                 text-align: center;
                 padding: 5px 9px;
                 border-radius: 25px;
-
             }
-            
+
             #shop input:hover  {
                 background-color: rgba(239, 116, 172, 1.0);
                 color: white;
                 border-radius: 25px;
             }
-            
+
             #shop select:hover {
                 background-color: rgba(239, 116, 172, 1.0);
                 color: white;
                 border-radius: 25px;
             }
-            
+
             #shop button:hover {
                 background-color: rgba(239, 116, 172, 0.4);
                 border-radius: 25px;
             }
-            
+
             #shop button:disabled {
                 background-color: rgba(239, 116, 172, 0.4);
                 border-radius: 25px;
             }
-           
 
             #checkout  button {
                 position: static; width: auto; 
@@ -190,7 +186,6 @@
                 display: none;
                 position: relative;
                 min-width: 100px;
-                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
                 z-index: 5;
             }
 
