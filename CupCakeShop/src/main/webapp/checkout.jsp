@@ -15,7 +15,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file = "header.jsp" %>
 
-<%    String checkout = (String) session.getAttribute("checkout");
+<%    
+    String checkout = (String) session.getAttribute("checkout");
     ShoppingCart invoice = (ShoppingCart) session.getAttribute("invoice");
 %>
 <form method = "POST">
@@ -45,7 +46,8 @@
 
                 %>
             </table>
-            <%                out.println("<br><br><b>Total price: " + invoice.getTotalPrice() + "</b>");
+            <%                
+                out.println("<br><br><b>Total price: " + invoice.getTotalPrice() + "</b>");
                 out.println("<br><br>" + checkout);
             } else
             {

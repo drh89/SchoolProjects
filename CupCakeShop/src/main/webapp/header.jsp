@@ -263,7 +263,7 @@
 
                         </div>
                     </li>
-                    <li><a class="active" href="index.jsp">Logout</a></li>
+                    <li><a class="active" href="CommandController?command=logout">Logout</a></li>
                     <center id="cart">
                         <li id="cart"><a class="active" href="shoppingcart.jsp"><img src="Images/shoppingcart.png" width="5%" height="5%"></a></li>
                     </center>

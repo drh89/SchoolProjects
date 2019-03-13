@@ -28,7 +28,6 @@ public class LoginCommand extends Command
             HttpSession session = request.getSession();
             LoginConnector lc = new LoginConnector();
 
-            session.removeAttribute("cart");
             String username = request.getParameter("username");
             String password = request.getParameter("password");
 
@@ -41,7 +40,6 @@ public class LoginCommand extends Command
             {
                 User user = lc.getUser(username);
                 session.setAttribute("user", user);
-                System.out.println("valid");
                 
                 request.getRequestDispatcher("/CommandController?command=shop").forward(request, response);
             }

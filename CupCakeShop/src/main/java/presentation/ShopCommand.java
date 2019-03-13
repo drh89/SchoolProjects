@@ -36,18 +36,21 @@ public class ShopCommand extends Command
             List<LineItem> lineitems = new ArrayList<>();
             User user = (User) session.getAttribute("user");
             ShoppingCart shoppingCart = new ShoppingCart(lineitems, user);
-            if(session.getAttribute("cart") == null)
+            if (session.getAttribute("cart") == null)
             {
                 session.setAttribute("cart", shoppingCart);
             }
+
+            if (session.getAttribute("bottoms") == null || session.getAttribute("toppings") == null)
+            {
+                List<Bottom> bottoms = cc.getCupcakeBottoms();
+                session.setAttribute("bottoms", bottoms);
+                List<Topping> toppings = cc.getCupcakeToppings();
+                session.setAttribute("toppings", toppings);
+            }
             
-             List<Bottom> bottoms = cc.getCupcakeBottoms();
-             session.setAttribute("bottoms", bottoms);
-             List<Topping> toppings = cc.getCupcakeToppings();
-             session.setAttribute("toppings", toppings);
-             
             request.getRequestDispatcher("/shop.jsp").forward(request, response);
-            
+
         } catch (Exception ex)
         {
             System.out.println(ex.getMessage());

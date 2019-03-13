@@ -93,16 +93,13 @@ public class LoginConnector
         {
             user.setUserName(username);
             user.setEmail(email);
-            System.out.println(user.getUserName());
             um.updateUser(user);
             return "Information saved";
+
         } else if (notInUse && !valid)
         {
-            um.updateUser(user);
             return "Wrong password";
         }
-
-        System.out.println(user.getUserName());
 
         return "Username already in use";
     }

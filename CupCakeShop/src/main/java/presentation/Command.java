@@ -78,6 +78,10 @@ public abstract class Command
             case "admininvoice":
                 c = new AdminnvoiceCommand();
                 break;
+                
+            case "logout":
+                c = new LogoutCommand();
+                break;
 
             default:
                 c = new UnknownCommand();

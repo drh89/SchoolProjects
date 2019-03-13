@@ -38,13 +38,11 @@ public class ShoppingcartCommand extends Command
             {
                 CupcakeConnector cc = new CupcakeConnector();
                 Cupcake cupcake = cc.getCupCake(bottom, topping);
-                session.setAttribute("cupcake", cupcake);
                 ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
 
                 if (cupcake != null)
                 {
                     cart.addCupcake(new LineItem(cupcake, quantity));
-                    session.removeAttribute("cupcake");
                     request.getRequestDispatcher("/shoppingcart.jsp").forward(request, response);
                 } 
 

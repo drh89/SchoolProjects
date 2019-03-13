@@ -39,6 +39,7 @@ public class CheckoutCommand extends Command
                 invoice = ic.getInvoice(cart.getInvoice_id());
                 session.setAttribute("invoice", invoice);
                 session.removeAttribute("cart");
+                session.removeAttribute("invoices");
             }
 
             request.getRequestDispatcher("/checkout.jsp").forward(request, response);

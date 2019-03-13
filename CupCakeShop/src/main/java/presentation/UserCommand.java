@@ -23,23 +23,29 @@ import logic.User;
  */
 public class UserCommand extends Command
 {
+
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         try
         {
             HttpSession session = request.getSession();
+            session.removeAttribute("invoice");
             User user = (User) session.getAttribute("user");
             InvoiceConnector ic = new InvoiceConnector();
-            List<ShoppingCart> invoices = ic.getInvoices(user.getUserName());
-            session.setAttribute("invoices", invoices);
-            
+
+            if (session.getAttribute("invoices") == null)
+            {
+                List<ShoppingCart> invoices = ic.getInvoices(user.getUserName());
+                session.setAttribute("invoices", invoices);
+            }
+
             request.getRequestDispatcher("/userpage.jsp").forward(request, response);
-            
+
         } catch (Exception ex)
         {
             System.out.println(ex.getMessage());
         }
     }
-    
+
 }
