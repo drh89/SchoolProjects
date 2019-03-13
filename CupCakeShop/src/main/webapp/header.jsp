@@ -97,7 +97,8 @@
             }
 
             #shop input, select {
-                position: static; width: auto; 
+                position: static; 
+                width: auto; 
                 display: inline-block;
                 align-items: center;
                 background-color: rgba(239, 116, 172, 0.4);
@@ -106,10 +107,9 @@
                 font-family: HelveticaNeue-Thin;
                 font-size: 16px;
                 text-align: center;
-                padding: 5px 9px;
+                padding: 5px 10px;
                 border-radius: 25px;
                 text-align: center;
-
             }
 
             #shop button {

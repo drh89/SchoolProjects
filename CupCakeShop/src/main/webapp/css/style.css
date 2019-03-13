@@ -38,7 +38,7 @@ and open the template in the editor.
     box-sizing: border-box;
     width: 700px;
     background-color: rgba(232, 206, 223, 0.80);
-    text-align: end;
+    text-align: center;
 }
 
 #checkout div {
@@ -75,14 +75,6 @@ and open the template in the editor.
 #shoppingcart td, #shoppingcart th {
     padding: 8px;
     text-align: center;
-}
-
-#shoppingcart p {
-    text-align: left;
-}
-
-#shoppingcart b {
-    text-align: left; 
 }
 
 body{

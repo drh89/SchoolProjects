@@ -8,16 +8,17 @@
 
 <form method = "POST">
     <center id="shop"> 
-        <div>   
+        <div> 
+            <table id="shoppingcart">
             <%                
-                out.println("<b>Username</b> <input type =\"text\" id=\"username\" name =\"username\" value=\"" + user.getUserName() + "\" minlength=\"4\" required disabled>");
-                out.println("<b>&nbsp;&nbsp;Email</b> <input id=\"email\" type =\"text\" name =\"email\" value=\"" + user.getEmail() + "\" disabled>");
+                out.println("<tr><td><b>Username</b></td> <td><input type =\"text\" id=\"username\" name =\"username\" value=\"" + user.getUserName() + "\" minlength=\"4\" required disabled></td></tr>");
+                out.println("<tr><td><b>Email</b></td> <td><input id=\"email\" type =\"text\" name =\"email\" value=\"" + user.getEmail() + "\" disabled></td></tr>");
             %>
-            <br><br><br><br>
-
+            </table>
+            <br><br>
             <%
                 out.println("<b>Old Password</b> <input id=\"oldpassword\" onclick=\"opassword()\" type =\"password\" name =\"oldpassword\" value=\"" + user.getPassword() + "\" minlength=\"4\" required disabled>");
-                out.println("<br><br><b>New Password</b> <input id=\"newpassword\" onclick=\"password()\" type =\"password\" name =\"newpassword\" value=\"" + user.getPassword() + "\" minlength=\"4\" required disabled>");
+                out.println("&nbsp;&nbsp;&nbsp;&nbsp;<b>New Password</b> <input id=\"newpassword\" onclick=\"password()\" type =\"password\" name =\"newpassword\" value=\"" + user.getPassword() + "\" minlength=\"4\" required disabled>");
 
                 String update = (String) session.getAttribute("update");
                 if (update != null)
