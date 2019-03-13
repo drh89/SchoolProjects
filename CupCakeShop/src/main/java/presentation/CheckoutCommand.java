@@ -40,7 +40,7 @@ public class CheckoutCommand extends Command
                 session.setAttribute("invoice", invoice);
                 session.removeAttribute("cart");
                 session.removeAttribute("invoices");
-            }
+                }
 
             request.getRequestDispatcher("/checkout.jsp").forward(request, response);
 

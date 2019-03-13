@@ -26,6 +26,8 @@ public class LogoutCommand extends Command
         session.removeAttribute("invoices");
         session.removeAttribute("cart");
         session.removeAttribute("allinvoices");
+        session.removeAttribute("bottoms");
+        session.removeAttribute("toppings");
 
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
