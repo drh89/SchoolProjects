@@ -20,6 +20,19 @@ import logic.ShoppingCart;
 public class RemoveItemCommand extends Command
 {
 
+    /**
+     * Retrieves parameters topping_id and bottom_id, retrieves attribute cart
+     * from session, loops through the List of lineItems in cart, if a matching
+     * combination of topping and bottom is found, LineItem is removed -
+     * forwards to shoppingcart.jsp - if the List of LineItems is empty -
+     * forwards to CommandController with shop as path.
+     *
+     * @param request a HttpServletRequest
+     * @param response a HttpServletResponse
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     * @see logic.ShoppingCart#removeCupcake(logic.LineItem)
+     */
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
@@ -38,13 +51,12 @@ public class RemoveItemCommand extends Command
             }
         }
         cart.removeCupcake(result);
-        
+
         if (cart.getLineItems().isEmpty())
         {
             request.getRequestDispatcher("/CommandController?command=shop").forward(request, response);
         }
         response.sendRedirect(request.getContextPath() + "/shoppingcart.jsp");
-        //request.getRequestDispatcher("/CommandController?command=shoppingcart").forward(request, response);
     }
 
 }

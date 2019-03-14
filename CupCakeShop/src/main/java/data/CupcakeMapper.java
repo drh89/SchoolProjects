@@ -7,6 +7,7 @@ package data;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,17 +21,26 @@ import logic.Topping;
 public class CupcakeMapper
 {
 
-    private DatabaseConnector dbc = new DatabaseConnector();
-    // private DBConnector connector = null;
+    private final DatabaseConnector dbc = new DatabaseConnector();
 
-    public CupcakeMapper() throws Exception
+    /**
+     * Creates and initializes a newly created DatabaseConnector for further use
+     * in methods, and sets datasource for the connector.
+     *
+     * @throws java.sql.SQLException if initializing not possible
+     */
+    public CupcakeMapper() throws SQLException
     {
         DataSourceMysql dataSourceMysql = new DataSourceMysql();
         dbc.setDataSource(dataSourceMysql.getDataSource());
-        //this.connector = new DBConnector();
     }
 
-    public List<Bottom> getAllBottoms() throws Exception
+    /**
+     * Executes the query in the database to collect a list of objects from the class Bottom.
+     * @return an arraylist of object from the class Bottom
+     * @throws java.sql.SQLException if executing of query is not possible
+     */
+    public List<Bottom> getAllBottoms() throws SQLException
     {
 
         List<Bottom> bottoms = new ArrayList();
@@ -59,7 +69,12 @@ public class CupcakeMapper
         return bottoms;
     }
 
-    public List<Topping> getAllToppings() throws Exception
+    /**
+     * Executes the query in the database to collect a list of objects from the class Topping.
+     * @return an arraylist of objects from the class Topping
+     * @throws java.sql.SQLException if executing of query is not possible
+     */
+    public List<Topping> getAllToppings() throws SQLException
     {
 
         List<Topping> toppings = new ArrayList();
@@ -88,7 +103,13 @@ public class CupcakeMapper
         return toppings;
     }
 
-    public Topping getTopping(int topping_id) throws Exception
+     /**
+     * Executes the query in the database to collect an object from the class Topping with a specific topping_id.
+     * @param topping_id is used to detect the specific topping in the database
+     * @return an object from the class Topping
+     * @throws java.sql.SQLException if executing of query is not possible
+     */
+    public Topping getTopping(int topping_id) throws SQLException
     {
 
         dbc.open();
@@ -118,7 +139,14 @@ public class CupcakeMapper
         return topping;
     }
 
-    public Bottom getBottom(int bottom_id) throws Exception
+    /**
+     * Executes the query in the database to collect an object from the class Bottom with a specific bottom_id.
+     * @param bottom_id is used to detect the specific bottom in the database
+     * @return an object from the class Bottom
+     * @throws java.sql.SQLException if executing of query is not possible
+     *
+     */
+    public Bottom getBottom(int bottom_id) throws SQLException
     {
 
         dbc.open();

@@ -6,6 +6,7 @@
 package logic;
 
 import data.UserMapper;
+import java.sql.SQLException;
 
 /**
  *
@@ -21,6 +22,16 @@ public class User
     private double balance;
     private String type;
 
+     /**
+     * Initializes the values of a newly created User.
+     *
+     * @param id an Integer
+     * @param userName a String
+     * @param password a String
+     * @param email a String
+     * @param balance a Double
+     * @param type a String
+     */
     public User(int id, String userName, String password, String email, double balance, String type)
     {
         this.id = id;
@@ -31,6 +42,13 @@ public class User
         this.type = type;
     }
 
+     /**
+     * Initializes the values of a newly created User, initializes type as customer and balance as 0.
+     *
+     * @param userName a String
+     * @param password a String
+     * @param email a String
+     */
     public User(String userName, String password, String email)
     {
         this.userName = userName;
@@ -40,11 +58,17 @@ public class User
         this.type = "customer";
     }
 
+    /**
+     * @return the type
+     */
     public String getType()
     {
         return type;
     }
 
+    /**
+     * @return the id
+     */
     public int getId()
     {
         return id;
@@ -58,6 +82,11 @@ public class User
         return userName;
     }
 
+    /**
+     * Sets the userName to userName.
+     *
+     * @param userName a String
+     */
     public void setUserName(String userName)
     {
         this.userName = userName;
@@ -72,7 +101,9 @@ public class User
     }
 
     /**
-     * @param password the password to set
+     * Sets the password to password.
+     *
+     * @param password a String
      */
     public void setPassword(String password)
     {
@@ -88,7 +119,9 @@ public class User
     }
 
     /**
-     * @param email the email to set
+     * Sets the Email to email.
+     *
+     * @param email a String
      */
     public void setEmail(String email)
     {
@@ -103,18 +136,33 @@ public class User
         return balance;
     }
 
-    public void setBalance(double money) throws Exception
+    /**
+     * Adds money to the balance and updates the balance to the database.
+     *
+     * @param money a Double
+     * @throws java.sql.SQLException if update not possible
+     * @see data.UserMapper#updateBalance(int, double) 
+     */
+    public void setBalance(double money) throws SQLException
     {
         UserMapper um = new UserMapper();
         this.balance = balance + money;
         um.updateBalance(id, balance);
     }
 
+     /**
+     * Subtracts price from the balance.
+     *
+     * @param price a Double
+     */
     public void pay(double price)
     {
         this.balance = balance - price;
     }
 
+    /**
+     * @return a string with the values of id, userName, email and balance
+     */
     @Override
     public String toString()
     {

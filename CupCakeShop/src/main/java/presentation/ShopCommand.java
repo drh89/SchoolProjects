@@ -26,6 +26,17 @@ import logic.User;
 public class ShopCommand extends Command
 {
 
+    /**
+     * An empty List of LineItems is created, user is retrieved from session,
+     * and an object from the class ShoppingCart is created - if the attributes
+     * cart, bottoms and toppings is not already saved in session, this is done
+     * - forwards to shop.jsp.
+     *
+     * @param request a HttpServletRequest
+     * @param response a HttpServletResponse
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
@@ -48,7 +59,7 @@ public class ShopCommand extends Command
                 List<Topping> toppings = cc.getCupcakeToppings();
                 session.setAttribute("toppings", toppings);
             }
-            
+
             request.getRequestDispatcher("/shop.jsp").forward(request, response);
 
         } catch (Exception ex)

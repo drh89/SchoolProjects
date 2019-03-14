@@ -6,8 +6,6 @@
 package presentation;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,6 +20,17 @@ import logic.ShoppingCart;
 public class AdminnvoiceCommand extends Command
 {
 
+    /**
+     * Retrieves parameter selected and uses this parameter as invoice_id for
+     * retrieval of an invoice, this invoice is saved in session as invoice, and
+     * forwards to adminInvoice.jsp.
+     *
+     * @param request a HttpServletRequest
+     * @param response a HttpServletResponse
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     * @see logic.InvoiceConnector#getInvoice(int) 
+     */
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
@@ -32,9 +41,9 @@ public class AdminnvoiceCommand extends Command
             InvoiceConnector ic = new InvoiceConnector();
             ShoppingCart invoice = ic.getInvoice(invoice_id);
             session.setAttribute("invoice", invoice);
-            
+
             request.getRequestDispatcher("/adminInvoice.jsp").forward(request, response);
-     
+
         } catch (Exception ex)
         {
             System.out.println(ex.getMessage());

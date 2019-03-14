@@ -20,6 +20,18 @@ import logic.User;
 public class LoginCommand extends Command
 {
 
+    /**
+     * Retrieves parameters username and password, checks if combination is
+     * valid to a user in the database, if true user i saved as an attribute in
+     * session and forwards to CommandController with shop as path - if false
+     * forwards to defaultLogin.jsp.
+     *
+     * @param request a HttpServletRequest
+     * @param response a HttpServletResponse
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     * @see logic.LoginConnector#isValid(java.lang.String, java.lang.String)
+     */
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
@@ -40,7 +52,7 @@ public class LoginCommand extends Command
             {
                 User user = lc.getUser(username);
                 session.setAttribute("user", user);
-                
+
                 request.getRequestDispatcher("/CommandController?command=shop").forward(request, response);
             }
 

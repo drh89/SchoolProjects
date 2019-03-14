@@ -19,6 +19,13 @@ public abstract class Command
 
     public abstract void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 
+    /**
+     * The path is isolated, and a suitable command is determined on behalf of
+     * this
+     *
+     * @param request a HttpServletRequest
+     * @return the suitable command
+     */
     public static Command from(HttpServletRequest request)
     {
         Command c;
@@ -62,7 +69,7 @@ public abstract class Command
             case "userinformation":
                 c = new UserinfoCommand();
                 break;
-                
+
             case "update":
                 c = new UserupdateCommand();
                 break;
@@ -78,7 +85,7 @@ public abstract class Command
             case "admininvoice":
                 c = new AdminnvoiceCommand();
                 break;
-                
+
             case "logout":
                 c = new LogoutCommand();
                 break;

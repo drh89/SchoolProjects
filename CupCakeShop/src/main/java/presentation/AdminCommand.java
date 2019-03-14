@@ -21,6 +21,17 @@ import logic.ShoppingCart;
 public class AdminCommand extends Command
 {
 
+    /**
+     * Removes the attribute invoice from request session, and retrieves a List
+     * of objects from the class ShoppingCart, if this is not already saved in
+     * session as allinvoices, and forwards to adminpage.jsp.
+     *
+     * @param request a HttpServletRequest
+     * @param response a HttpServletResponse
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     * @see logic.InvoiceConnector#getAllInvoices() 
+     */
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {

@@ -18,6 +18,15 @@ import javax.servlet.http.HttpSession;
 public class LogoutCommand extends Command
 {
 
+    /**
+     * Removes attributes user, invoices, cart, allinvoices, bottoms and
+     * toppings from session - forwards to index.jsp
+     *
+     * @param request a HttpServletRequest
+     * @param response a HttpServletResponse
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {

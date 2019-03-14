@@ -19,6 +19,16 @@ import logic.User;
 public class MoneyTransferCommand extends Command
 {
 
+    /**
+     * Retrieves parameter amount and retrives attribute user from session, and
+     * updates user's balance with amount - forwards to CommandController with
+     * shop as path.
+     *
+     * @param request a HttpServletRequest
+     * @param response a HttpServletResponse
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {

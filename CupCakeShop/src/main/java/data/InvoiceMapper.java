@@ -25,22 +25,36 @@ import logic.User;
 public class InvoiceMapper
 {
 
-    private DatabaseConnector dbc = new DatabaseConnector();
+    private final DatabaseConnector dbc = new DatabaseConnector();
     private UserMapper um = null;
     private CupcakeMapper cm = null;
-    // private DBConnector connector = null;
 
-    public InvoiceMapper() throws Exception
+    /**
+     * Creates and initializes a newly created DatabaseConnector, UserMapper and
+     * CupcakeMapper for further use in methods, and sets datasource for the
+     * connector.
+     *
+     * @throws java.sql.SQLException if initializing not possible
+     */
+    public InvoiceMapper() throws SQLException
     {
         DataSourceMysql dataSourceMysql = new DataSourceMysql();
         dbc.setDataSource(dataSourceMysql.getDataSource());
 
         um = new UserMapper();
         cm = new CupcakeMapper();
-        //this.connector = new DBConnector();
     }
 
-    public ShoppingCart getInvoice(int invoice_id) throws SQLException, Exception
+    /**
+     * Executes the query in the database to collect an object from the class
+     * ShoppingCart with a specific invoice_id.
+     *
+     * @param invoice_id is used to detect the specific invoice in the database
+     * @return an object from the class ShoppingCart
+     * @throws java.sql.SQLException if executing of query is not possible
+     * @see #getLineItems(int) 
+     */
+    public ShoppingCart getInvoice(int invoice_id) throws SQLException
     {
         ShoppingCart invoice = null;
 
@@ -72,7 +86,16 @@ public class InvoiceMapper
         return invoice;
     }
 
-    public List<ShoppingCart> getInvoices(String username) throws Exception
+    /**
+     * Executes the query in the database to collect a list of objects from the
+     * class ShoppingCart with a specific user attached.
+     *
+     * @param username used to detect tne user
+     * @return an arraylist of objects from the class ShoppingCart
+     * @throws java.sql.SQLException if executing of query is not possible
+     * @see #getLineItems(int) 
+     */
+    public List<ShoppingCart> getInvoices(String username) throws SQLException
     {
         List<ShoppingCart> invoices = new ArrayList();
 
@@ -102,7 +125,15 @@ public class InvoiceMapper
         return invoices;
     }
 
-    public List<ShoppingCart> getAllInvoices() throws Exception
+    /**
+     * Executes the query in the database to collect a list of objects from the
+     * class ShoppingCart.
+     *
+     * @return an arraylist of object from the class ShoppingCart
+     * @throws java.sql.SQLException if executing of query is not possible
+     * @see #getLineItems(int) 
+     */
+    public List<ShoppingCart> getAllInvoices() throws SQLException
     {
         List<ShoppingCart> invoices = new ArrayList();
 
@@ -134,7 +165,15 @@ public class InvoiceMapper
         return invoices;
     }
 
-    private List<LineItem> getLineItems(int invoice_id) throws Exception
+    /**
+     * Executes the query in the database to collect List of obejcts from the
+     * class LineItem with a specific invoice_id.
+     *
+     * @param invoice_id is used to detect the specific lineitems
+     * @return an arraylist of object from the class LineItem
+     * @throws java.sql.SQLException if executing of query is not possible
+     */
+    private List<LineItem> getLineItems(int invoice_id) throws SQLException
     {
         List<LineItem> lineitems = new ArrayList();
 
@@ -169,6 +208,14 @@ public class InvoiceMapper
         return lineitems;
     }
 
+    /**
+     * Executes the query in the database to insert an object from the class
+     * ShoppingCart as well as the lineitems in the ShoppingCart into the
+     * database, with the newly retrieved invoice_id.
+     *
+     * @param cart the ShoppingCart to insert in database
+     * @throws java.sql.SQLException if executing update is not possible
+     */
     public void newInvoice(ShoppingCart cart) throws SQLException
     {
         dbc.open();
@@ -204,6 +251,12 @@ public class InvoiceMapper
 
     }
 
+    /**
+     * Executes the query in the database to insert an object from the class
+     * LineItem into the database.
+     * @param i the LineItem to insert in database
+     * @throws java.sql.SQLException if executing update is not possible
+     */
     private void addItem(LineItem i) throws SQLException
     {
         String query = "INSERT INTO Cupcakes.invoice_has_items"
@@ -225,43 +278,5 @@ public class InvoiceMapper
         statement.setInt(4, quantity);
         statement.setDouble(5, price);
         statement.executeUpdate();
-    }
-
-    public static void main(String[] args) throws Exception
-    {
-        UserMapper um = new UserMapper();
-        CupcakeMapper cm = new CupcakeMapper();
-
-//        User user = um.getUser("amalie");
-//
-//        List<LineItem> list = new ArrayList<>();
-//
-//         ShoppingCart cart = new ShoppingCart(list, user);
-//
-//        List<Bottom> bottoms = cm.getAllBottoms();
-//        List<Topping> toppings = cm.getAllToppings();
-//        Cupcake cupcake = new Cupcake(bottoms.get(0), toppings.get(0));
-//        Cupcake cupcake2 = new Cupcake(bottoms.get(2), toppings.get(3));
-//
-//        LineItem i = new LineItem(cupcake, 2, cart.getInvoice_id());
-//        LineItem i2 = new LineItem(cupcake2, 1, cart.getInvoice_id());
-//
-//        cart.addCupcake(i);
-//        cart.addCupcake(i2);
-        InvoiceMapper m = new InvoiceMapper();
-        //m.newInvoice(cart);
-
-        List<ShoppingCart> invoices = m.getAllInvoices();
-        for (ShoppingCart invoice : invoices)
-        {
-            System.out.println(invoice);
-        }
-
-        //for (ShoppingCart invoice : invoices)
-        //{
-        // System.out.println(invoice);
-        //}
-//        ShoppingCart invoice = m.getInvoice(cart.getInvoice_id());
-//        System.out.println(invoice);
     }
 }

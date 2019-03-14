@@ -12,10 +12,17 @@ package logic;
 public class Bottom
 {
 
-    private int bottom_id;
-    private String flavour;
-    private double price;
+    private final int bottom_id;
+    private final String flavour;
+    private final double price;
 
+     /**
+     * Initializes the value of a newly created Bottom.
+     *
+     * @param bottom_id an Integer
+     * @param flavour a String
+     * @param price a Double
+     */
     public Bottom(int bottom_id, String flavour, double price)
     {
         this.bottom_id = bottom_id;
@@ -23,6 +30,10 @@ public class Bottom
         this.price = price;
     }
 
+     /**
+      * 
+     * @return bottom_id
+     */
     public int getBottom_id()
     {
         return bottom_id;
@@ -37,29 +48,16 @@ public class Bottom
     }
 
     /**
-     * @param flavour the flavour to set
-     */
-    public void setFlavour(String flavour)
-    {
-        this.flavour = flavour;
-    }
-
-    /**
      * @return the price
      */
     public double getPrice()
     {
         return price;
     }
-
+    
     /**
-     * @param price the price to set
+     * @return a string with the values of falvour and price
      */
-    public void setPrice(double price)
-    {
-        this.price = price;
-    }
-
     @Override
     public String toString()
     {

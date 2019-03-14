@@ -55,7 +55,7 @@
     </center>
 </form>
 <br><br><br><br>
-<center id="shop">
+<center id="shoppingcart">
     <div>
         <form method = "POST">
             <table id="shoppingcart"> 

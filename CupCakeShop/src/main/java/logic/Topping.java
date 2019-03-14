@@ -16,6 +16,13 @@ public class Topping
     private String flavour;
     private double price;
 
+    /**
+     * Initializes the value of a newly created Topping.
+     *
+     * @param topping_id an Integer
+     * @param flavour a String
+     * @param price a Double
+     */
     public Topping(int topping_id, String flavour, double price)
     {
         this.topping_id = topping_id;
@@ -23,6 +30,10 @@ public class Topping
         this.price = price;
     }
 
+    /**
+     *
+     * @return topping_id
+     */
     public int getTopping_id()
     {
         return topping_id;
@@ -37,14 +48,6 @@ public class Topping
     }
 
     /**
-     * @param flavour the flavour to set
-     */
-    public void setFlavour(String flavour)
-    {
-        this.flavour = flavour;
-    }
-
-    /**
      * @return the price
      */
     public double getPrice()
@@ -53,13 +56,8 @@ public class Topping
     }
 
     /**
-     * @param price the price to set
+     * @return a string with the values of falvour and price
      */
-    public void setPrice(double price)
-    {
-        this.price = price;
-    }
-
     @Override
     public String toString()
     {

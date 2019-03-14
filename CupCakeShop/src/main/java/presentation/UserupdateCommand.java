@@ -20,6 +20,20 @@ import logic.User;
 public class UserupdateCommand extends Command
 {
 
+    /**
+     * Retrieves parameters username, oldpassword, newpassword and email, and
+     * retrives attribute user from session, userdata is updated, a String is
+     * return as response, this is saved in session as update, updated user is
+     * also saved in session as user - forwards to CommandController with
+     * userinformation as path.
+     *
+     * @param request a HttpServletRequest
+     * @param response a HttpServletResponse
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     * @see logic.LoginConnector#updateUser(logic.User, java.lang.String,
+     * java.lang.String, java.lang.String, java.lang.String)
+     */
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {

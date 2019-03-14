@@ -20,16 +20,29 @@ import logic.User;
 public class UserMapper
 {
 
-    private DatabaseConnector dbc = new DatabaseConnector();
+    private final DatabaseConnector dbc = new DatabaseConnector();
 
-    //private DBConnector connector = null;
-    public UserMapper() throws Exception
+    /**
+     * Creates and initializes a newly created DatabaseConnector for further use
+     * in methods, and sets datasource for the connector.
+     *
+     * @throws java.sql.SQLException if initializing not possible
+     */
+    public UserMapper() throws SQLException
     {
         DataSourceMysql dataSourceMysql = new DataSourceMysql();
         dbc.setDataSource(dataSourceMysql.getDataSource());
-        //this.connector = new DBConnector();
+
     }
 
+    /**
+     * Executes the query in the database to collect an object from the class
+     * User with a specific username.
+     *
+     * @param username is used to detect the specific User in the database
+     * @return an object from the class User
+     * @throws java.sql.SQLException if executing of query is not possible
+     */
     public User getUser(String username) throws SQLException
     {
         dbc.open();
@@ -69,6 +82,14 @@ public class UserMapper
         return user;
     }
 
+    /**
+     * Executes the query in the database to collect an object from the class
+     * User with a specific user_id.
+     *
+     * @param user_id is used to detect the specific User in the database
+     * @return an object from the class User
+     * @throws java.sql.SQLException if executing of query is not possible
+     */
     public User getUser(int user_id) throws SQLException
     {
         dbc.open();
@@ -108,6 +129,14 @@ public class UserMapper
         return user;
     }
 
+    /**
+     * Executes the query in the database to update the attribute balance on a
+     * User with a specific user_id.
+     *
+     * @param user_id is used to detect the specific User in the database
+     * @param balance the new value to insert on balance
+     * @throws java.sql.SQLException if executing update is not possible
+     */
     public void updateBalance(int user_id, double balance) throws SQLException
     {
         dbc.open();
@@ -125,6 +154,11 @@ public class UserMapper
         dbc.close();
     }
     
+    /**
+     * Executes the query in the database to update the attributes username, password and email on a specific User.
+     * @param user is used to detect the specific User in the database
+     * @throws java.sql.SQLException if executing update is not possible
+     */
     public void updateUser(User user) throws SQLException
     {
         dbc.open();
@@ -146,6 +180,13 @@ public class UserMapper
         dbc.close();
     }
 
+    /**
+     * Executes the query in the database to insert an object from the class
+     * User.
+     *
+     * @param newUser the User to insert in database
+     * @throws java.sql.SQLException if executing update is not possible
+     */
     public void newUser(User newUser) throws SQLException
     {
         dbc.open();
@@ -168,7 +209,14 @@ public class UserMapper
         dbc.close();
     }
 
-    public List<User> getAllUsers() throws Exception
+    /**
+     * Executes the query in the database to collect a list of objects from the
+     * class User.
+     *
+     * @return an arraylist of object from the class User
+     * @throws java.sql.SQLException if executing of query is not possible
+     */
+    public List<User> getAllUsers() throws SQLException
     {
         dbc.open();
         List<User> users = new ArrayList();
@@ -203,13 +251,4 @@ public class UserMapper
         return users;
     }
 
-    public static void main(String[] args) throws Exception
-    {
-        UserMapper userMapper = new UserMapper();
-        User user = new User(37,"Essa", "1234", "sveskemås@hotsveske.com", 0, "customer");
-        //userMapper.newUser(user);
-        userMapper.updateUser(user);
-        System.out.println(userMapper.getAllUsers());
-        
-    }
 }

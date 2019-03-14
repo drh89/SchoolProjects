@@ -17,6 +17,10 @@ public class DataSourceMysql
 
     private MysqlDataSource dataSource = new MysqlDataSource();
 
+    /**
+     * Initializes the information for connection to database.
+     * 
+     */
     public DataSourceMysql()
     {
         try
@@ -34,6 +38,9 @@ public class DataSourceMysql
 
     }
 
+    /**
+     * @return a dataSource with the specified information for connection.
+     */
     public MysqlDataSource getDataSource()
     {
         return dataSource;

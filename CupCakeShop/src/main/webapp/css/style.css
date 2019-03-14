@@ -70,8 +70,12 @@ and open the template in the editor.
     width: 700px;
     background-color: rgba(232, 206, 223, 0.80);
     padding: 25px;
+    text-align: center;
 }
 
+#shoppingcart table{
+    text-align: center;
+}
 #shoppingcart td, #shoppingcart th {
     padding: 8px;
     text-align: center;

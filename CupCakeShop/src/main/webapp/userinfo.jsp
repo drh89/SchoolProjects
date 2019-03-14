@@ -7,7 +7,7 @@
 <%@include file = "header.jsp" %>
 
 <form method = "POST">
-    <center id="shop"> 
+    <center id="shoppingcart"> 
         <div> 
             <table id="shoppingcart">
             <%                

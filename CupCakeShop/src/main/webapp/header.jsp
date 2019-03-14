@@ -163,6 +163,55 @@
                 border-radius: 25px;
             }
 
+            #shoppingcart button {
+                position: static; width: auto; 
+                display: inline-block;
+                align-items: center;
+                background-color: rgba(239, 116, 172, 1.0);
+                color: white;
+                border: none;
+                text-decoration: none;
+                font-family: HelveticaNeue-Thin;
+                font-size: 16px;
+                text-align: center;
+                padding: 5px 9px;
+                border-radius: 25px;
+            }
+
+            #shoppingcart input:hover {
+                background-color: rgba(239, 116, 172, 1.0);
+                color: white;
+                border-radius: 25px;
+            }
+
+            #shoppingcart button:hover {
+                background-color: rgba(239, 116, 172, 0.4);
+                border-radius: 25px;
+            }
+
+            #shoppingcart button:disabled {
+                background-color: rgba(239, 116, 172, 0.4);
+                border-radius: 25px;
+            }
+
+            #shoppingcart input, select {
+                position: static; 
+                width: auto; 
+                display: inline-block;
+                align-items: center;
+                background-color: rgba(239, 116, 172, 0.4);
+                text-decoration: none;
+                border: none;
+                font-family: HelveticaNeue-Thin;
+                font-size: 16px;
+                text-align: center;
+                padding: 5px 5px;
+                border-radius: 25px;
+                text-align: center;
+            }
+
+
+
             #checkout  button {
                 position: static; width: auto; 
                 display: inline-block;

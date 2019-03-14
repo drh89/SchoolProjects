@@ -24,15 +24,19 @@ public class DatabaseConnector
     private Statement statement;
     private ResultSet resultSet;
 
-    public DatabaseConnector()
-    {
-    }
-
+    /**
+     * Used for ininitializing parameter dataSource as dataSource.
+     * @param dataSource withholds information for connection to the database
+     */
     public void setDataSource(DataSource dataSource)
     {
         this.dataSource = dataSource;
     }
 
+    /**
+     * Used to open connection to database.
+     * @throws java.sql.SQLException if connection not possible
+     */
     public void open() throws SQLException
     {
         if (connection == null || connection.isClosed())
@@ -41,6 +45,10 @@ public class DatabaseConnector
         }
     }
 
+    /**
+     * Used to close connection to database.
+     * @throws java.sql.SQLException if ending connection not possible
+     */
     public void close() throws SQLException
     {
         if (resultSet != null)
@@ -60,11 +68,24 @@ public class DatabaseConnector
         }
     }
 
+    /**
+     * Used to convert a string to a prepared statement for the database.
+     * @param sql withholds specific data manipulation language, to withdraw specified data from database 
+     * @return the string converted to a prepared statement 
+     * @throws java.sql.SQLException if conversion not possible
+     */
     public PreparedStatement preparedStatement(String sql) throws SQLException
     {
         return connection.prepareStatement(sql);
     }
 
+    /**
+     * Used to convert a string to a prepared statement for the database as well as making data avaible for retrieval.
+     * @param sql withholds specific data manipulation language, to withdraw specified data from database 
+     * @param indicator indicating what data should be made available for retrieval
+     * @return the string converted to a prepared statement 
+     * @throws java.sql.SQLException if conversion not possible
+     */
     public PreparedStatement preparedStatement(String sql, int indicator) throws SQLException
     {
         return connection.prepareStatement(sql, indicator);
