@@ -1,3 +1,3 @@
 # SchoolProjects
 
-Sofie Amalie Landt, Dennis Hansen, Nicklas, Amanda Juhl Hansen
+Sofie Amalie Landt & Amanda Juhl Hansen
