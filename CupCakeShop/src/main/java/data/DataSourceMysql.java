@@ -25,11 +25,11 @@ public class DataSourceMysql
     {
         try
         {
-            dataSource.setServerName("142.93.160.41");
+            dataSource.setServerName("157.230.97.134");
             dataSource.setPort(3306);
             dataSource.setDatabaseName("Cupcakes");
-            dataSource.setUser("Dennis");
-            dataSource.setPassword("12345");
+            dataSource.setUser("amanda");
+            dataSource.setPassword("1234");
             dataSource.setUseSSL(false);
         } catch (SQLException ex)
         {
