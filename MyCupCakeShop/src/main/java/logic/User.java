@@ -73,7 +73,6 @@ public class User {
 
     /**
      * @param userId
-     * @param id the id to set
      */
     public void setUserId(int userId) {
         this.userId = userId;
@@ -88,7 +87,6 @@ public class User {
 
     /**
      * @param adminId
-     * @param isAdmin the isAdmin to set
      */
     public void setIsAdmin(int adminId) {
         this.adminId = adminId;
